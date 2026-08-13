@@ -2,7 +2,7 @@ import numpy as np
 import pytest
 import pywt
 
-from myoverse.datasets.filters.emg_augmentations import WaveletDecomposition
+from myotorch.datasets.filters.emg_augmentations import WaveletDecomposition
 
 
 def generate_emg_data(shape=(8, 1000)):

@@ -8,9 +8,9 @@ import pickle
 import zarr
 import warnings
 
-from myoverse.datasets.supervised import EMGDataset, _add_to_dataset
-from myoverse.datasets.filters.generic import FilterBaseClass
-from myoverse.datasets.filters.emg_augmentations import EMGAugmentation
+from myotorch.datasets.supervised import EMGDataset, _add_to_dataset
+from myotorch.datasets.filters.generic import FilterBaseClass
+from myotorch.datasets.filters.emg_augmentations import EMGAugmentation
 
 
 # Monkey-patch the _add_to_dataset function to handle the empty iterable case in max()
@@ -179,7 +179,7 @@ class TestSupervisedDataset(unittest.TestCase):
         self.augmentation = SimpleAugmentation(is_output=True)
 
         # Patch the _add_to_dataset function
-        from myoverse.datasets import supervised
+        from myotorch.datasets import supervised
 
         supervised._add_to_dataset = _patched_add_to_dataset
 

@@ -1,17 +1,17 @@
 # DataTypes Tests
 
-This folder contains tests for the data type classes in the MyoVerse framework.
+This folder contains tests for the data type classes in the MyoTorch framework.
 
 ## Contents
 
-- `test_data.py`: Tests for the abstract base class `_Data` in myoverse/datatypes.py
-- `test_emg_data.py`: Tests for the concrete `EMGData` class in myoverse/datatypes.py
-- `test_kinematics_data.py`: Tests for the concrete `KinematicsData` class in myoverse/datatypes.py
-- `test_virtual_hand_kinematics.py`: Tests for the concrete `VirtualHandKinematics` class in myoverse/datatypes.py
+- `test_data.py`: Tests for the abstract base class `_Data` in myotorch/datatypes.py
+- `test_emg_data.py`: Tests for the concrete `EMGData` class in myotorch/datatypes.py
+- `test_kinematics_data.py`: Tests for the concrete `KinematicsData` class in myotorch/datatypes.py
+- `test_virtual_hand_kinematics.py`: Tests for the concrete `VirtualHandKinematics` class in myotorch/datatypes.py
 
 ## Overview
 
-The tests in this folder focus on validating the functionality of the data type classes that are fundamental to the MyoVerse framework. The data types provide a unified interface for working with different kinds of data (EMG, kinematics, etc.) and managing the processing pipelines applied to this data.
+The tests in this folder focus on validating the functionality of the data type classes that are fundamental to the MyoTorch framework. The data types provide a unified interface for working with different kinds of data (EMG, kinematics, etc.) and managing the processing pipelines applied to this data.
 
 ## Test Structure
 

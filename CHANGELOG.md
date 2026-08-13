@@ -18,7 +18,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 - `SlidingWindowTransform` base class for consistent transform implementations
-- MLflow experiment tracking and visualization (`myoverse/tracking.py`)
+- MLflow experiment tracking and visualization (`myotorch/tracking.py`)
 - RAM caching and multiprocessing support in `ContinuousDataset`
 - Lazy dataloader initialization for faster startup
 - Cache pre-loading in main process before spawning workers
@@ -78,7 +78,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.1.3] - 2025-05-01
 
 ### Added
-- Package `__version__` attribute in `myoverse/__init__.py` that dynamically reads from pyproject.toml 
+- Package `__version__` attribute in `myotorch/__init__.py` that dynamically reads from pyproject.toml 
 - Version number included in logging timestamp prefix
 
 ### Changed
@@ -165,7 +165,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## Publications
 
-The following research papers have utilized MyoVerse:
+The following research papers have utilized MyoTorch:
 
 - IEEE Transactions on Biomedical Engineering (2024): [10.1109/TBME.2024.3432800](https://doi.org/10.1109/TBME.2024.3432800)
 - International Journal of Computer Science and Information Security (2024): [10.33965/ijcsis_2024190101](https://doi.org/10.33965/ijcsis_2024190101)
@@ -174,14 +174,14 @@ The following research papers have utilized MyoVerse:
 - IEEE Transactions on Neural Systems and Rehabilitation Engineering (2023): [10.1109/TNSRE.2023.3295060](https://doi.org/10.1109/TNSRE.2023.3295060)
 - 2022 44th Annual International Conference of the IEEE EMBC: [10.1109/EMBC48229.2022.9870937](https://doi.org/10.1109/EMBC48229.2022.9870937)
 
-[Unreleased]: https://github.com/NsquaredLab/MyoVerse/compare/v2.0.0...HEAD
-[2.0.0]: https://github.com/NsquaredLab/MyoVerse/compare/v1.1.6...v2.0.0
-[1.1.6]: https://github.com/NsquaredLab/MyoVerse/compare/v1.1.5...v1.1.6
-[1.1.5]: https://github.com/NsquaredLab/MyoVerse/compare/v1.1.4...v1.1.5
-[1.1.4]: https://github.com/NsquaredLab/MyoVerse/compare/v1.1.3...v1.1.4
-[1.1.3]: https://github.com/NsquaredLab/MyoVerse/compare/v1.1.2...v1.1.3
-[1.1.2]: https://github.com/NsquaredLab/MyoVerse/compare/v1.1.1...v1.1.2
-[1.1.1]: https://github.com/NsquaredLab/MyoVerse/compare/v1.1.0...v1.1.1
-[1.1.0]: https://github.com/NsquaredLab/MyoVerse/compare/v1.0.0...v1.1.0
-[1.0.0]: https://github.com/NsquaredLab/MyoVerse/compare/v0.1.0...v1.0.0
-[0.1.0]: https://github.com/NsquaredLab/MyoVerse/releases/tag/v0.1.0 
+[Unreleased]: https://github.com/NsquaredLab/MyoTorch/compare/v2.0.0...HEAD
+[2.0.0]: https://github.com/NsquaredLab/MyoTorch/compare/v1.1.6...v2.0.0
+[1.1.6]: https://github.com/NsquaredLab/MyoTorch/compare/v1.1.5...v1.1.6
+[1.1.5]: https://github.com/NsquaredLab/MyoTorch/compare/v1.1.4...v1.1.5
+[1.1.4]: https://github.com/NsquaredLab/MyoTorch/compare/v1.1.3...v1.1.4
+[1.1.3]: https://github.com/NsquaredLab/MyoTorch/compare/v1.1.2...v1.1.3
+[1.1.2]: https://github.com/NsquaredLab/MyoTorch/compare/v1.1.1...v1.1.2
+[1.1.1]: https://github.com/NsquaredLab/MyoTorch/compare/v1.1.0...v1.1.1
+[1.1.0]: https://github.com/NsquaredLab/MyoTorch/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/NsquaredLab/MyoTorch/compare/v0.1.0...v1.0.0
+[0.1.0]: https://github.com/NsquaredLab/MyoTorch/releases/tag/v0.1.0 

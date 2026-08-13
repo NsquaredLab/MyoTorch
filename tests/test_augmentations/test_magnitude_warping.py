@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from myoverse.datasets.filters.emg_augmentations import MagnitudeWarping
+from myotorch.datasets.filters.emg_augmentations import MagnitudeWarping
 
 
 def generate_emg_data(shape=(8, 1000)):

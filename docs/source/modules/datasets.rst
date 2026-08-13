@@ -10,7 +10,7 @@ The datasets module provides a layered architecture for data handling:
 
 Storage
 -------
-.. currentmodule:: myoverse.datasets
+.. currentmodule:: myotorch.datasets
 .. autosummary::
     :toctree: generated/datasets
     :template: class.rst
@@ -20,7 +20,7 @@ Storage
 
 Base Dataset
 ------------
-.. currentmodule:: myoverse.datasets.base
+.. currentmodule:: myotorch.datasets.base
 .. autosummary::
     :toctree: generated/datasets
     :template: class.rst
@@ -29,7 +29,7 @@ Base Dataset
 
 Paradigms
 ---------
-.. currentmodule:: myoverse.datasets.paradigms
+.. currentmodule:: myotorch.datasets.paradigms
 .. autosummary::
     :toctree: generated/datasets
     :template: class.rst
@@ -38,7 +38,7 @@ Paradigms
 
 Integration
 -----------
-.. currentmodule:: myoverse.datasets.datamodule
+.. currentmodule:: myotorch.datasets.datamodule
 .. autosummary::
     :toctree: generated/datasets
     :template: class.rst
@@ -47,7 +47,7 @@ Integration
 
 Utilities
 ---------
-.. currentmodule:: myoverse.datasets.utils
+.. currentmodule:: myotorch.datasets.utils
 .. autosummary::
     :toctree: generated/datasets
     :template: class.rst
@@ -59,7 +59,7 @@ Presets
 -------
 Pre-configured transforms for published papers.
 
-.. currentmodule:: myoverse.datasets.presets
+.. currentmodule:: myotorch.datasets.presets
 .. autosummary::
     :toctree: generated/datasets
     :template: class.rst

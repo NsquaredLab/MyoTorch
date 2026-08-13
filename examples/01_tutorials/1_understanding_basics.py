@@ -3,7 +3,7 @@ Transform Basics
 ================
 
 This example introduces the transform system - the core building block for
-data processing in MyoVerse. Transforms use PyTorch named tensors for
+data processing in MyoTorch. Transforms use PyTorch named tensors for
 dimension-aware operations that run on both CPU and GPU.
 """
 
@@ -18,12 +18,12 @@ from pathlib import Path
 import matplotlib.pyplot as plt
 import numpy as np
 import torch
-import myoverse
+import myotorch
 
 # Get the path to the data file
-# Find data directory relative to myoverse package (works in all contexts)
-import myoverse
-_pkg_dir = Path(myoverse.__file__).parent.parent
+# Find data directory relative to myotorch package (works in all contexts)
+import myotorch
+_pkg_dir = Path(myotorch.__file__).parent.parent
 DATA_DIR = _pkg_dir / "examples" / "data"
 if not DATA_DIR.exists():
     # Fallback for editable installs or different layouts
@@ -45,8 +45,8 @@ for task, data in emg_data.items():
 
 SAMPLING_FREQ = 2044
 
-# Create named tensor with myoverse
-emg = myoverse.emg_tensor(emg_data["1"], fs=SAMPLING_FREQ)
+# Create named tensor with myotorch
+emg = myotorch.emg_tensor(emg_data["1"], fs=SAMPLING_FREQ)
 
 print(f"\nNamed Tensor:")
 print(f"\tDimension names: {emg.names}")
@@ -82,7 +82,7 @@ plt.show()
 # Transforms explicitly specify which dimension they operate on.
 # No more axis=-1 guessing!
 
-from myoverse.transforms import Lowpass, Compose
+from myotorch.transforms import Lowpass, Compose
 
 # Create a lowpass filter - explicitly operates on "time" dimension
 lowpass = Lowpass(cutoff=20, fs=SAMPLING_FREQ, dim="time")
@@ -99,7 +99,7 @@ print(f"Dimensions are preserved!")
 # ----------------------------
 # Compose lets you chain multiple transforms together.
 
-from myoverse.transforms import Highpass, Rectify
+from myotorch.transforms import Highpass, Rectify
 
 # Each transform specifies its operating dimension
 feature_pipeline = Compose([
@@ -143,7 +143,7 @@ plt.show()
 # -------------------------------
 # Stack applies multiple transforms and combines results along a new dimension.
 
-from myoverse.transforms import Stack, Identity
+from myotorch.transforms import Stack, Identity
 
 # Create raw + filtered representations
 multi_repr = Stack({
@@ -202,9 +202,9 @@ plt.show()
 # %%
 # Other Useful Transforms
 # -----------------------
-# MyoVerse includes many transforms for signal processing.
+# MyoTorch includes many transforms for signal processing.
 
-from myoverse.transforms import Index, Mean, ZScore
+from myotorch.transforms import Index, Mean, ZScore
 
 # Index: select specific elements by dimension name
 select_channels = Index(indices=slice(0, 64), dim="channel")
@@ -242,7 +242,7 @@ else:
 # -------
 # Key concepts:
 #
-# 1. **Named Tensors** - Dimension names via `myoverse.emg_tensor()`
+# 1. **Named Tensors** - Dimension names via `myotorch.emg_tensor()`
 # 2. **Transforms** - Dimension-aware: `Lowpass(cutoff=20, fs=2048, dim="time")`
 # 3. **Compose** - Chain transforms together (from torchvision)
 # 4. **Stack** - Create multiple representations along new dimension

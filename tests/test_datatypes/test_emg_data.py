@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from unittest.mock import patch
 
-from myoverse.datatypes import EMGData, create_grid_layout
+from myotorch.datatypes import EMGData, create_grid_layout
 
 
 class TestEMGData(unittest.TestCase):

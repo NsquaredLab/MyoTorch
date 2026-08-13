@@ -20,7 +20,7 @@ and visualization, making it valuable for analyzing complex multichannel EMG rec
 # First, let's import the necessary libraries
 import numpy as np
 import matplotlib.pyplot as plt
-from myoverse.datatypes import EMGData, create_grid_layout
+from myotorch.datatypes import EMGData, create_grid_layout
 
 plt.style.use("fivethirtyeight")
 plt.rcParams["axes.grid"] = False

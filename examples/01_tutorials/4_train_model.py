@@ -12,9 +12,9 @@ from pathlib import Path
 import torch
 
 # Get the path to the data file
-# Find data directory relative to myoverse package (works in all contexts)
-import myoverse
-_pkg_dir = Path(myoverse.__file__).parent.parent
+# Find data directory relative to myotorch package (works in all contexts)
+import myotorch
+_pkg_dir = Path(myotorch.__file__).parent.parent
 DATA_DIR = _pkg_dir / "examples" / "data"
 if not DATA_DIR.exists():
     DATA_DIR = Path.cwd() / "examples" / "data"
@@ -28,7 +28,7 @@ print(f"Using device: {DEVICE}")
 # Use DatasetCreator with Modality transforms for pre-storage processing.
 # Here we use the EMBC paper configuration as an example.
 
-from myoverse.datasets import DatasetCreator, Modality, embc_kinematics_transform
+from myotorch.datasets import DatasetCreator, Modality, embc_kinematics_transform
 
 print("=" * 60)
 print("STEP 1: Dataset Creation")
@@ -65,7 +65,7 @@ creator.create()
 # - embc_train_transform: Creates dual representation (raw + lowpass) + augmentation
 # - embc_eval_transform: Same processing without augmentation
 
-from myoverse.datasets import embc_eval_transform, embc_target_transform, embc_train_transform
+from myotorch.datasets import embc_eval_transform, embc_target_transform, embc_train_transform
 
 print()
 print("=" * 60)
@@ -94,7 +94,7 @@ print(f"Target transform: {target_tf}")
 # - Transform application
 # - Batching and DataLoader creation
 
-from myoverse.datasets import DataModule
+from myotorch.datasets import DataModule
 
 print()
 print("=" * 60)
@@ -166,7 +166,7 @@ print("=" * 60)
 print("STEP 5: Model Setup")
 print("=" * 60)
 
-from myoverse.models import RaulNetV16
+from myotorch.models import RaulNetV16
 
 # Get actual channel count from data
 n_channels = emg_batch.shape[2]

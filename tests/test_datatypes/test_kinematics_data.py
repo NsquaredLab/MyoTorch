@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from unittest.mock import patch
 
-from myoverse.datatypes import KinematicsData
+from myotorch.datatypes import KinematicsData
 
 
 class TestKinematicsData(unittest.TestCase):
@@ -54,7 +54,7 @@ class TestKinematicsData(unittest.TestCase):
         # 4D data should be chunked
         self.assertTrue(self.kinematics_4d.is_chunked["Input"])
 
-    @patch("myoverse.datatypes.KinematicsData.plot", return_value=None)
+    @patch("myotorch.datatypes.KinematicsData.plot", return_value=None)
     def test_plot(self, mock_plot):
         """Test that plot method is called with the expected arguments."""
         # Test with standard parameters

@@ -17,12 +17,12 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import torch
-import myoverse
+import myotorch
 
 # Get the path to the data file
-# Find data directory relative to myoverse package (works in all contexts)
-import myoverse
-_pkg_dir = Path(myoverse.__file__).parent.parent
+# Find data directory relative to myotorch package (works in all contexts)
+import myotorch
+_pkg_dir = Path(myotorch.__file__).parent.parent
 DATA_DIR = _pkg_dir / "examples" / "data"
 if not DATA_DIR.exists():
     DATA_DIR = Path.cwd() / "examples" / "data"
@@ -30,9 +30,9 @@ if not DATA_DIR.exists():
 with open(DATA_DIR / "emg.pkl", "rb") as f:
     emg_data = pkl.load(f)
 
-# Create named tensor with myoverse
+# Create named tensor with myotorch
 SAMPLING_FREQ = 2044
-emg = myoverse.emg_tensor(emg_data["1"], fs=SAMPLING_FREQ)
+emg = myotorch.emg_tensor(emg_data["1"], fs=SAMPLING_FREQ)
 
 print(f"EMG data loaded: {emg.names} {emg.shape}")
 print(f"Device: {emg.device}")
@@ -61,7 +61,7 @@ plt.show()
 # ----------------------
 # Bandpass filtering to extract the useful EMG frequency band (20-450 Hz).
 
-from myoverse.transforms import Bandpass, Compose
+from myotorch.transforms import Bandpass, Compose
 
 # Create bandpass filter - explicitly operates on "time" dimension
 bandpass = Bandpass(low=20, high=450, fs=SAMPLING_FREQ, dim="time")
@@ -93,7 +93,7 @@ plt.show()
 # ----------------
 # Full-wave rectification converts negative values to positive.
 
-from myoverse.transforms import Rectify
+from myotorch.transforms import Rectify
 
 # Rectification is element-wise
 rectify = Rectify()
@@ -120,7 +120,7 @@ plt.show()
 # -------------------------
 # Root Mean Square (RMS) represents signal power over time windows.
 
-from myoverse.transforms import RMS
+from myotorch.transforms import RMS
 
 # RMS with sliding window - operates on "time" dimension
 rms = RMS(window_size=200, dim="time")  # ~100ms window
@@ -170,7 +170,7 @@ print(f"Output: {processed.names} {processed.shape}")
 # ----------------------------
 # Another common EMG feature - moving average of rectified signal.
 
-from myoverse.transforms import MAV
+from myotorch.transforms import MAV
 
 mav = MAV(window_size=200, dim="time")
 mav_feature = mav(rectified)
@@ -198,7 +198,7 @@ plt.show()
 # ----------------------
 # Compare different filter types.
 
-from myoverse.transforms import Highpass, Lowpass
+from myotorch.transforms import Highpass, Lowpass
 
 lowpass = Lowpass(cutoff=50, fs=SAMPLING_FREQ, dim="time")
 highpass = Highpass(cutoff=50, fs=SAMPLING_FREQ, dim="time")
@@ -232,7 +232,7 @@ plt.show()
 # ----------------
 # Z-score normalization for consistent scaling.
 
-from myoverse.transforms import ZScore
+from myotorch.transforms import ZScore
 
 # Z-score normalize each channel over time
 zscore = ZScore(dim="time")
@@ -253,7 +253,7 @@ print(f"\tStd:  {float(normalized_data.std()):.6f}")
 # --------------------
 # Add noise and warping for training augmentation.
 
-from myoverse.transforms import GaussianNoise, MagnitudeWarp
+from myotorch.transforms import GaussianNoise, MagnitudeWarp
 
 # Add Gaussian noise
 noise_aug = GaussianNoise(std=0.1)
@@ -289,7 +289,7 @@ plt.show()
 # ---------------------------
 # Extract multiple features using Stack.
 
-from myoverse.transforms import Stack
+from myotorch.transforms import Stack
 
 # Create multiple feature extractors
 feature_pipeline = Compose([
@@ -304,7 +304,7 @@ preprocessed = feature_pipeline(emg)
 features = Stack({
     "rms": RMS(window_size=200, dim="time"),
     "mav": MAV(window_size=200, dim="time"),
-    "var": myoverse.transforms.VAR(window_size=200, dim="time"),
+    "var": myotorch.transforms.VAR(window_size=200, dim="time"),
 }, dim="feature")
 
 multi_features = features(preprocessed)
@@ -331,7 +331,7 @@ else:
 # ------------------------------
 # Extend the Transform base class for custom processing.
 
-from myoverse.transforms import Transform
+from myotorch.transforms import Transform
 
 class MedianFilter(Transform):
     """Custom median filter transform using PyTorch.
@@ -351,7 +351,7 @@ class MedianFilter(Transform):
         self.kernel_size = kernel_size
 
     def _apply(self, x: torch.Tensor) -> torch.Tensor:
-        from myoverse.transforms.base import get_dim_index
+        from myotorch.transforms.base import get_dim_index
         dim_idx = get_dim_index(x, self.dim)
         names = x.names
 

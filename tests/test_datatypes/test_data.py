@@ -4,7 +4,7 @@ import unittest
 
 import numpy as np
 
-from myoverse.datatypes import (
+from myotorch.datatypes import (
     _Data,
     DeletedRepresentation,
     InputRepresentationName,

@@ -10,7 +10,7 @@ class TestModelAPI:
     def test_model_names_raul_net(self):
         """Test that RaulNet models follow naming convention."""
         # Get list of all model files in the new structure
-        model_dir = Path(__file__).parent.parent.parent / "myoverse" / "models" / "raul_net"
+        model_dir = Path(__file__).parent.parent.parent / "myotorch" / "models" / "raul_net"
         model_files = [
             p.stem for p in model_dir.glob("*.py")
             if not p.name.startswith("_") and p.name != "__init__.py"
@@ -20,7 +20,7 @@ class TestModelAPI:
         for model_name in sorted(model_files):
             try:
                 imported_module = importlib.import_module(
-                    f"myoverse.models.raul_net.{model_name}"
+                    f"myotorch.models.raul_net.{model_name}"
                 )
 
                 # Extract version number from filename (e.g., "v16" -> "16")
@@ -32,18 +32,18 @@ class TestModelAPI:
                 )
 
             except ModuleNotFoundError:
-                pytest.fail(f"Could not import myoverse.models.raul_net.{model_name}")
+                pytest.fail(f"Could not import myotorch.models.raul_net.{model_name}")
 
     def test_models_exported_from_package(self):
-        """Test that main models are exported from myoverse.models."""
-        from myoverse.models import RaulNetV16, RaulNetV17
+        """Test that main models are exported from myotorch.models."""
+        from myotorch.models import RaulNetV16, RaulNetV17
 
         assert RaulNetV16 is not None
         assert RaulNetV17 is not None
 
     def test_components_exported_from_package(self):
-        """Test that components are exported from myoverse.models."""
-        from myoverse.models import EuclideanDistance, SMU, PSerf
+        """Test that components are exported from myotorch.models."""
+        from myotorch.models import EuclideanDistance, SMU, PSerf
 
         assert EuclideanDistance is not None
         assert SMU is not None

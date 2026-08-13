@@ -12,7 +12,7 @@ V17 (Latest)
 
 The V17 model is the latest version with lazy configuration and TorchScript support.
 
-.. currentmodule:: myoverse.models.raul_net.v17
+.. currentmodule:: myotorch.models.raul_net.v17
 .. autosummary::
     :toctree: generated/models
     :template: class.rst
@@ -24,7 +24,7 @@ V16
 
 The V16 model was used in the MyoGestic paper (Simpetru et al., 2024).
 
-.. currentmodule:: myoverse.models.raul_net.v16
+.. currentmodule:: myotorch.models.raul_net.v16
 .. autosummary::
     :toctree: generated/models
     :template: class.rst
@@ -40,7 +40,7 @@ Activation Functions
 
 Custom learnable activation functions for neural networks.
 
-.. currentmodule:: myoverse.models.components.activation_functions
+.. currentmodule:: myotorch.models.components.activation_functions
 .. autosummary::
     :toctree: generated/models
     :template: class.rst
@@ -54,7 +54,7 @@ Loss Functions
 
 Custom loss functions for kinematics prediction.
 
-.. currentmodule:: myoverse.models.components.losses
+.. currentmodule:: myotorch.models.components.losses
 .. autosummary::
     :toctree: generated/models
     :template: class.rst
@@ -66,7 +66,7 @@ Utilities
 
 Utility modules for model building.
 
-.. currentmodule:: myoverse.models.components.utils
+.. currentmodule:: myotorch.models.components.utils
 .. autosummary::
     :toctree: generated/models
     :template: class.rst
