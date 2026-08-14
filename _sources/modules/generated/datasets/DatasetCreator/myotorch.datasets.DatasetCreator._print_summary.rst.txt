@@ -1,0 +1,6 @@
+myotorch.datasets.DatasetCreator.\_print\_summary
+=================================================
+
+.. currentmodule:: myotorch.datasets
+
+.. automethod:: DatasetCreator._print_summary

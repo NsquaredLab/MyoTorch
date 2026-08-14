@@ -1,0 +1,6 @@
+myotorch.datasets.base.WindowedDataset.\_\_getstate\_\_
+=======================================================
+
+.. currentmodule:: myotorch.datasets.base
+
+.. automethod:: WindowedDataset.__getstate__

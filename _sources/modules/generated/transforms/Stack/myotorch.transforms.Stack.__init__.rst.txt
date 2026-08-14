@@ -1,0 +1,6 @@
+myotorch.transforms.Stack.\_\_init\_\_
+======================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Stack.__init__

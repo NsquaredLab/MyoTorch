@@ -1,0 +1,6 @@
+myotorch.transforms.ChannelShuffle.\_\_init\_\_
+===============================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: ChannelShuffle.__init__

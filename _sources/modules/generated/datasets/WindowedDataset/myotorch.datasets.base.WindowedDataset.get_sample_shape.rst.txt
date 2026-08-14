@@ -1,0 +1,6 @@
+myotorch.datasets.base.WindowedDataset.get\_sample\_shape
+=========================================================
+
+.. currentmodule:: myotorch.datasets.base
+
+.. automethod:: WindowedDataset.get_sample_shape

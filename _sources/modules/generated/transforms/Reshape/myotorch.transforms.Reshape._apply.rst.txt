@@ -1,0 +1,6 @@
+myotorch.transforms.Reshape.\_apply
+===================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Reshape._apply

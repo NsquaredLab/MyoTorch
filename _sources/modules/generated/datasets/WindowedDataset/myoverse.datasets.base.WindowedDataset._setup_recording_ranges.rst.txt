@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.\_setup\_recording\_ranges
-=================================================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset._setup_recording_ranges

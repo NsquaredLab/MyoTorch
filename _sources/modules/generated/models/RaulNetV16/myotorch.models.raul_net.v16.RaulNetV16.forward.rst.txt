@@ -1,0 +1,6 @@
+myotorch.models.raul\_net.v16.RaulNetV16.forward
+================================================
+
+.. currentmodule:: myotorch.models.raul_net.v16
+
+.. automethod:: RaulNetV16.forward

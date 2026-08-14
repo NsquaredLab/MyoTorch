@@ -1,0 +1,6 @@
+myotorch.transforms.Transform.\_\_repr\_\_
+==========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Transform.__repr__

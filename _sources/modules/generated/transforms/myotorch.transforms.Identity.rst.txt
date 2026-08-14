@@ -1,0 +1,18 @@
+﻿Identity
+============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Identity
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Identity
+       
+            ~Identity._apply
+        
+        

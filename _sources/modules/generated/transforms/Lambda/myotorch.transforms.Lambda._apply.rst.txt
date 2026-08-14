@@ -1,0 +1,6 @@
+myotorch.transforms.Lambda.\_apply
+==================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Lambda._apply

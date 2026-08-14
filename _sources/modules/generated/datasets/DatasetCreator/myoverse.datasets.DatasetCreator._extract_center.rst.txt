@@ -1,6 +1,0 @@
-myoverse.datasets.DatasetCreator.\_extract\_center
-==================================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: DatasetCreator._extract_center

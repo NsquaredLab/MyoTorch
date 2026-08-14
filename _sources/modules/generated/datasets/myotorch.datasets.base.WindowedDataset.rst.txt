@@ -1,0 +1,33 @@
+﻿WindowedDataset
+======================================
+
+.. currentmodule:: myotorch.datasets.base
+
+.. autoclass:: WindowedDataset
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: WindowedDataset
+       
+            ~WindowedDataset.__getitem__
+            ~WindowedDataset.__getstate__
+            ~WindowedDataset.__init__
+            ~WindowedDataset.__len__
+            ~WindowedDataset.__setstate__
+            ~WindowedDataset._ensure_cache_loaded
+            ~WindowedDataset._get_deterministic_position
+            ~WindowedDataset._get_dim_names
+            ~WindowedDataset._get_task_for_recording
+            ~WindowedDataset._global_to_local
+            ~WindowedDataset._load_window
+            ~WindowedDataset._sample_random_position
+            ~WindowedDataset._setup_recording_ranges
+            ~WindowedDataset._to_tensor
+            ~WindowedDataset.get_sample_shape
+            ~WindowedDataset.reseed
+        
+        

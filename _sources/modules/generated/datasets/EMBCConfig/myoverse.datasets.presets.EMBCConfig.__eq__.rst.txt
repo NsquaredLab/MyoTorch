@@ -1,6 +1,0 @@
-myoverse.datasets.presets.EMBCConfig.\_\_eq\_\_
-===============================================
-
-.. currentmodule:: myoverse.datasets.presets
-
-.. automethod:: EMBCConfig.__eq__

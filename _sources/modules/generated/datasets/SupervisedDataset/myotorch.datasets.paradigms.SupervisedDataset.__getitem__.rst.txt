@@ -1,0 +1,6 @@
+myotorch.datasets.paradigms.SupervisedDataset.\_\_getitem\_\_
+=============================================================
+
+.. currentmodule:: myotorch.datasets.paradigms
+
+.. automethod:: SupervisedDataset.__getitem__

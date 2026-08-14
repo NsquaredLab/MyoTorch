@@ -1,6 +1,0 @@
-myoverse.transforms.BatchNorm.\_\_init\_\_
-==========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: BatchNorm.__init__

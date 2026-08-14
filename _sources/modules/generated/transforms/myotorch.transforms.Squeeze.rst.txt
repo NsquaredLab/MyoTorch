@@ -1,0 +1,19 @@
+﻿Squeeze
+===========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Squeeze
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Squeeze
+       
+            ~Squeeze.__init__
+            ~Squeeze._apply
+        
+        

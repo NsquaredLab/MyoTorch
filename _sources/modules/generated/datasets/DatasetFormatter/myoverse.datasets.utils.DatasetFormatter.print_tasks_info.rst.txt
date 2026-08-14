@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DatasetFormatter.print\_tasks\_info
-===========================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DatasetFormatter.print_tasks_info

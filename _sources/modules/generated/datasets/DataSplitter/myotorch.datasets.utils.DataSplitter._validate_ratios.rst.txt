@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DataSplitter.\_validate\_ratios
+=======================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DataSplitter._validate_ratios

@@ -1,0 +1,6 @@
+myotorch.transforms.Stack.\_apply
+=================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Stack._apply

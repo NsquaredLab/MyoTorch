@@ -1,0 +1,6 @@
+myotorch.transforms.RMS.\_compute\_window
+=========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: RMS._compute_window

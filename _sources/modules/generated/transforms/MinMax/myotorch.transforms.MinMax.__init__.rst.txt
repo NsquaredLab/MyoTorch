@@ -1,0 +1,6 @@
+myotorch.transforms.MinMax.\_\_init\_\_
+=======================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: MinMax.__init__

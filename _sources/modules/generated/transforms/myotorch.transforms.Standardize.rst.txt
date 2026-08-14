@@ -1,0 +1,19 @@
+﻿Standardize
+===============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Standardize
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Standardize
+       
+            ~Standardize.__init__
+            ~Standardize._apply
+        
+        

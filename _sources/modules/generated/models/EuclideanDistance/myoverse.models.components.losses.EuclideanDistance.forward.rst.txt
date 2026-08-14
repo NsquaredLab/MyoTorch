@@ -1,6 +1,0 @@
-myoverse.models.components.losses.EuclideanDistance.forward
-===========================================================
-
-.. currentmodule:: myoverse.models.components.losses
-
-.. automethod:: EuclideanDistance.forward

@@ -1,6 +1,0 @@
-myoverse.transforms.MinMax.\_apply
-==================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: MinMax._apply

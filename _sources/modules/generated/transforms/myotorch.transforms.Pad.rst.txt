@@ -1,0 +1,19 @@
+﻿Pad
+=======================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Pad
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Pad
+       
+            ~Pad.__init__
+            ~Pad._apply
+        
+        

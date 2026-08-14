@@ -1,0 +1,6 @@
+myotorch.transforms.Index.\_apply
+=================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Index._apply

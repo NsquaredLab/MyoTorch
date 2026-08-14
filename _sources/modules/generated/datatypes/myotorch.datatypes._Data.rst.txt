@@ -1,0 +1,29 @@
+﻿_Data
+========================
+
+.. currentmodule:: myotorch.datatypes
+
+.. autoclass:: _Data
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: _Data
+       
+            ~_Data.__copy__
+            ~_Data.__getitem__
+            ~_Data.__init__
+            ~_Data.__repr__
+            ~_Data.__setitem__
+            ~_Data.__str__
+            ~_Data._check_if_chunked
+            ~_Data.delete_data
+            ~_Data.load
+            ~_Data.memory_usage
+            ~_Data.plot
+            ~_Data.save
+        
+        

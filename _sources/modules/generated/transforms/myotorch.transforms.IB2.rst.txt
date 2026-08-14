@@ -1,0 +1,18 @@
+﻿IB2
+=======================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: IB2
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: IB2
+       
+            ~IB2.__init__
+        
+        

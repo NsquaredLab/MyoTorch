@@ -1,6 +1,0 @@
-myoverse.datatypes.VirtualHandKinematics.plot
-=============================================
-
-.. currentmodule:: myoverse.datatypes
-
-.. automethod:: VirtualHandKinematics.plot

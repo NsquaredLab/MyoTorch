@@ -1,6 +1,0 @@
-myoverse.transforms.Highpass.\_\_init\_\_
-=========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Highpass.__init__

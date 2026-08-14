@@ -1,0 +1,6 @@
+myotorch.transforms.Lowpass.\_apply
+===================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Lowpass._apply

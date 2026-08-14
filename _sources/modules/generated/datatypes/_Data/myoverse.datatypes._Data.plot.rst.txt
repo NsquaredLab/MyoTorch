@@ -1,6 +1,0 @@
-myoverse.datatypes.\_Data.plot
-==============================
-
-.. currentmodule:: myoverse.datatypes
-
-.. automethod:: _Data.plot

@@ -1,0 +1,19 @@
+﻿ClampRange
+==============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: ClampRange
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ClampRange
+       
+            ~ClampRange.__init__
+            ~ClampRange._apply
+        
+        

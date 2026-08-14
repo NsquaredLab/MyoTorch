@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DatasetFormatter.print\_augmentation\_config
+====================================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DatasetFormatter.print_augmentation_config

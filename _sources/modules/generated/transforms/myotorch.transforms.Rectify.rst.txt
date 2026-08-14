@@ -1,0 +1,18 @@
+﻿Rectify
+===========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Rectify
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Rectify
+       
+            ~Rectify._apply
+        
+        

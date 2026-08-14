@@ -1,0 +1,6 @@
+myotorch.models.raul\_net.v17.RaulNetV17.\_\_init\_\_
+=====================================================
+
+.. currentmodule:: myotorch.models.raul_net.v17
+
+.. automethod:: RaulNetV17.__init__

@@ -1,6 +1,0 @@
-myoverse.transforms.Concat.\_apply
-==================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Concat._apply

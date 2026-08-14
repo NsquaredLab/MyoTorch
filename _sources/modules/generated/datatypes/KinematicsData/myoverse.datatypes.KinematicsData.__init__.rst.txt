@@ -1,6 +1,0 @@
-myoverse.datatypes.KinematicsData.\_\_init\_\_
-==============================================
-
-.. currentmodule:: myoverse.datatypes
-
-.. automethod:: KinematicsData.__init__

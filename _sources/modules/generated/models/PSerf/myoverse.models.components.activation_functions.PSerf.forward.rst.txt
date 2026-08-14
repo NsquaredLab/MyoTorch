@@ -1,6 +1,0 @@
-myoverse.models.components.activation\_functions.PSerf.forward
-==============================================================
-
-.. currentmodule:: myoverse.models.components.activation_functions
-
-.. automethod:: PSerf.forward

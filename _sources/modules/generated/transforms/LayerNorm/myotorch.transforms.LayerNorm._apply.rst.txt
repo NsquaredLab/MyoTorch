@@ -1,0 +1,6 @@
+myotorch.transforms.LayerNorm.\_apply
+=====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: LayerNorm._apply

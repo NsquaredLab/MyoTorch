@@ -1,6 +1,0 @@
-myoverse.transforms.SlidingWindowTransform.\_apply
-==================================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: SlidingWindowTransform._apply

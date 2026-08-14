@@ -1,6 +1,0 @@
-myoverse.transforms.Flatten.\_\_init\_\_
-========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Flatten.__init__

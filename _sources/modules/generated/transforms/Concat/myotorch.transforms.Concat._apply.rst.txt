@@ -1,0 +1,6 @@
+myotorch.transforms.Concat.\_apply
+==================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Concat._apply

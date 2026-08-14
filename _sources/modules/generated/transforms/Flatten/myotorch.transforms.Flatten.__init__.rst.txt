@@ -1,0 +1,6 @@
+myotorch.transforms.Flatten.\_\_init\_\_
+========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Flatten.__init__

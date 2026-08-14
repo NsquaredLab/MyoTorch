@@ -1,0 +1,6 @@
+myotorch.transforms.Dropout.\_apply
+===================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Dropout._apply

@@ -1,0 +1,6 @@
+myotorch.datatypes.EMGData.plot\_grid\_layout
+=============================================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: EMGData.plot_grid_layout

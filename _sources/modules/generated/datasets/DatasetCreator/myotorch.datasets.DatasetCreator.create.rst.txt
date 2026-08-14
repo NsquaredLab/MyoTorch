@@ -1,0 +1,6 @@
+myotorch.datasets.DatasetCreator.create
+=======================================
+
+.. currentmodule:: myotorch.datasets
+
+.. automethod:: DatasetCreator.create

@@ -1,0 +1,18 @@
+﻿TSD
+=======================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: TSD
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: TSD
+       
+            ~TSD.__init__
+        
+        

@@ -1,0 +1,6 @@
+myotorch.datasets.DatasetCreator.\_extract\_center
+==================================================
+
+.. currentmodule:: myotorch.datasets
+
+.. automethod:: DatasetCreator._extract_center

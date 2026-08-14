@@ -1,0 +1,19 @@
+﻿InstanceNorm
+================================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: InstanceNorm
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: InstanceNorm
+       
+            ~InstanceNorm.__init__
+            ~InstanceNorm._apply
+        
+        

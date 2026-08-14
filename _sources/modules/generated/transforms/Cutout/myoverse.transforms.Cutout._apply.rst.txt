@@ -1,6 +1,0 @@
-myoverse.transforms.Cutout.\_apply
-==================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Cutout._apply

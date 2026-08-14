@@ -1,6 +1,0 @@
-myoverse.transforms.InstanceNorm.\_\_init\_\_
-=============================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: InstanceNorm.__init__

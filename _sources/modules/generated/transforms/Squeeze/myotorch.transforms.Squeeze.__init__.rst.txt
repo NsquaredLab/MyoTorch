@@ -1,0 +1,6 @@
+myotorch.transforms.Squeeze.\_\_init\_\_
+========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Squeeze.__init__

@@ -1,0 +1,19 @@
+﻿Sum
+=======================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Sum
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Sum
+       
+            ~Sum.__init__
+            ~Sum._apply
+        
+        

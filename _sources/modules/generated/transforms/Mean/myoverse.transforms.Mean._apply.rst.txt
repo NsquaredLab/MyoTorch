@@ -1,6 +1,0 @@
-myoverse.transforms.Mean.\_apply
-================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Mean._apply

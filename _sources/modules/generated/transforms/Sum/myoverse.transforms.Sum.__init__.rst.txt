@@ -1,6 +1,0 @@
-myoverse.transforms.Sum.\_\_init\_\_
-====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Sum.__init__

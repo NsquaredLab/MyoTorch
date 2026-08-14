@@ -1,6 +1,0 @@
-myoverse.datasets.DatasetCreator.\_process\_all\_tasks
-======================================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: DatasetCreator._process_all_tasks

@@ -1,6 +1,0 @@
-myoverse.models.components.utils.WeightedSum.forward
-====================================================
-
-.. currentmodule:: myoverse.models.components.utils
-
-.. automethod:: WeightedSum.forward

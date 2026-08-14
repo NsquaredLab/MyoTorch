@@ -1,6 +1,0 @@
-myoverse.transforms.LayerNorm.\_apply
-=====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: LayerNorm._apply

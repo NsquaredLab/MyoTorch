@@ -1,0 +1,6 @@
+myotorch.datatypes.\_Data.delete\_data
+======================================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: _Data.delete_data

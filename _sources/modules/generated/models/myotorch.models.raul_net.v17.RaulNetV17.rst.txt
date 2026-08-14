@@ -1,0 +1,25 @@
+﻿RaulNetV17
+=======================================
+
+.. currentmodule:: myotorch.models.raul_net.v17
+
+.. autoclass:: RaulNetV17
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: RaulNetV17
+       
+            ~RaulNetV17.__init__
+            ~RaulNetV17._reshape_and_normalize
+            ~RaulNetV17.configure_model
+            ~RaulNetV17.configure_optimizers
+            ~RaulNetV17.forward
+            ~RaulNetV17.test_step
+            ~RaulNetV17.training_step
+            ~RaulNetV17.validation_step
+        
+        

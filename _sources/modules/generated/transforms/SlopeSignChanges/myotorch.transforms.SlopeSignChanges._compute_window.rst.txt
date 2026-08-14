@@ -1,0 +1,6 @@
+myotorch.transforms.SlopeSignChanges.\_compute\_window
+======================================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: SlopeSignChanges._compute_window

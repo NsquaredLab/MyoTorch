@@ -1,0 +1,18 @@
+﻿LSD
+=======================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: LSD
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: LSD
+       
+            ~LSD.__init__
+        
+        

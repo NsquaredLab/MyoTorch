@@ -1,0 +1,6 @@
+myotorch.datasets.DatasetCreator.\_split\_continuous
+====================================================
+
+.. currentmodule:: myotorch.datasets
+
+.. automethod:: DatasetCreator._split_continuous

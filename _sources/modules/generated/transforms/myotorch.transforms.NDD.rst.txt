@@ -1,0 +1,18 @@
+﻿NDD
+=======================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: NDD
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: NDD
+       
+            ~NDD.__init__
+        
+        

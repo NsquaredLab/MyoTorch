@@ -1,6 +1,0 @@
-myoverse.transforms.Normalize.\_apply
-=====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Normalize._apply

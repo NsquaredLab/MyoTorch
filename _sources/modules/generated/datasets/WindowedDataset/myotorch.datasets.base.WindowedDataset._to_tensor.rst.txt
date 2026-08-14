@@ -1,0 +1,6 @@
+myotorch.datasets.base.WindowedDataset.\_to\_tensor
+===================================================
+
+.. currentmodule:: myotorch.datasets.base
+
+.. automethod:: WindowedDataset._to_tensor

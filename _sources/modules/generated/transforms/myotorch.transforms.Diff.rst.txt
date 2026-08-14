@@ -1,0 +1,19 @@
+﻿Diff
+========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Diff
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Diff
+       
+            ~Diff.__init__
+            ~Diff._apply
+        
+        

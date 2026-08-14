@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DataSplitter.split\_dict
-================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DataSplitter.split_dict

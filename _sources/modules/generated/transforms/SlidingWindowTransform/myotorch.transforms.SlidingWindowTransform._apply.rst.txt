@@ -1,0 +1,6 @@
+myotorch.transforms.SlidingWindowTransform.\_apply
+==================================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: SlidingWindowTransform._apply

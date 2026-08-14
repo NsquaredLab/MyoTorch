@@ -1,0 +1,6 @@
+myotorch.datasets.base.WindowedDataset.\_get\_dim\_names
+========================================================
+
+.. currentmodule:: myotorch.datasets.base
+
+.. automethod:: WindowedDataset._get_dim_names

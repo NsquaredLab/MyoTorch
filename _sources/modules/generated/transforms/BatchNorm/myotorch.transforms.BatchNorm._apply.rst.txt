@@ -1,0 +1,6 @@
+myotorch.transforms.BatchNorm.\_apply
+=====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: BatchNorm._apply

@@ -1,0 +1,6 @@
+myotorch.models.raul\_net.v17.RaulNetV17.configure\_optimizers
+==============================================================
+
+.. currentmodule:: myotorch.models.raul_net.v17
+
+.. automethod:: RaulNetV17.configure_optimizers

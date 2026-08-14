@@ -1,0 +1,19 @@
+﻿Notch
+=========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Notch
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Notch
+       
+            ~Notch.__init__
+            ~Notch._apply
+        
+        

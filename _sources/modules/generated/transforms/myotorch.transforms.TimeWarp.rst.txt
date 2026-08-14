@@ -1,0 +1,19 @@
+﻿TimeWarp
+============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: TimeWarp
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: TimeWarp
+       
+            ~TimeWarp.__init__
+            ~TimeWarp._apply
+        
+        

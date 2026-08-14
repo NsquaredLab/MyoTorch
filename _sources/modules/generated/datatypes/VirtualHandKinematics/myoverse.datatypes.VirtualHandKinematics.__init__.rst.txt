@@ -1,6 +1,0 @@
-myoverse.datatypes.VirtualHandKinematics.\_\_init\_\_
-=====================================================
-
-.. currentmodule:: myoverse.datatypes
-
-.. automethod:: VirtualHandKinematics.__init__

@@ -1,6 +1,0 @@
-myoverse.transforms.ChannelShuffle.\_apply
-==========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: ChannelShuffle._apply

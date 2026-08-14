@@ -1,0 +1,6 @@
+myotorch.transforms.Bandpass.\_apply
+====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Bandpass._apply

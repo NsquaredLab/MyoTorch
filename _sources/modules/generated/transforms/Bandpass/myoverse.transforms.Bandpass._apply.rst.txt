@@ -1,6 +1,0 @@
-myoverse.transforms.Bandpass.\_apply
-====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Bandpass._apply

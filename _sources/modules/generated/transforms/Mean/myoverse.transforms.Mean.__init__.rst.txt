@@ -1,6 +1,0 @@
-myoverse.transforms.Mean.\_\_init\_\_
-=====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Mean.__init__

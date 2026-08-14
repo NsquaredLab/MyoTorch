@@ -1,0 +1,6 @@
+myotorch.transforms.Scale.\_apply
+=================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Scale._apply

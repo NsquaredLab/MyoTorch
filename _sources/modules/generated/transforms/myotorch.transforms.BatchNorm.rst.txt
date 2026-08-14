@@ -1,0 +1,19 @@
+﻿BatchNorm
+=============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: BatchNorm
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: BatchNorm
+       
+            ~BatchNorm.__init__
+            ~BatchNorm._apply
+        
+        

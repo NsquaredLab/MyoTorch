@@ -1,6 +1,0 @@
-myoverse.datasets.DatasetCreator.\_print\_data\_structure
-=========================================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: DatasetCreator._print_data_structure

@@ -1,6 +1,0 @@
-myoverse.datatypes.EMGData.\_get\_grid\_dimensions
-==================================================
-
-.. currentmodule:: myoverse.datatypes
-
-.. automethod:: EMGData._get_grid_dimensions

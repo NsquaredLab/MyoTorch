@@ -1,6 +1,0 @@
-myoverse.models.components.activation\_functions.SAU.\_\_init\_\_
-=================================================================
-
-.. currentmodule:: myoverse.models.components.activation_functions
-
-.. automethod:: SAU.__init__

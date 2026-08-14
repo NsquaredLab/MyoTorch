@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DatasetFormatter.print\_config
-======================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DatasetFormatter.print_config

@@ -6,7 +6,7 @@
 
 Computation times
 =================
-**00:32.250** total execution time for 4 files **from auto_examples/01_tutorials**:
+**00:29.424** total execution time for 4 files **from auto_examples/01_tutorials**:
 
 .. container::
 
@@ -33,14 +33,14 @@ Computation times
      - Time
      - Mem (MB)
    * - :ref:`sphx_glr_auto_examples_01_tutorials_4_train_model.py` (``4_train_model.py``)
-     - 00:14.063
-     - 678.4
+     - 00:13.342
+     - 674.4
    * - :ref:`sphx_glr_auto_examples_01_tutorials_1_understanding_basics.py` (``1_understanding_basics.py``)
-     - 00:09.453
-     - 1470.2
+     - 00:08.755
+     - 1267.4
    * - :ref:`sphx_glr_auto_examples_01_tutorials_2_complex_filtering.py` (``2_complex_filtering.py``)
-     - 00:07.980
-     - 818.9
+     - 00:06.589
+     - 938.3
    * - :ref:`sphx_glr_auto_examples_01_tutorials_3_create_dataset.py` (``3_create_dataset.py``)
-     - 00:00.754
-     - 625.5
+     - 00:00.738
+     - 623.3

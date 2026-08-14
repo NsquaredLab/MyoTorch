@@ -1,0 +1,6 @@
+myotorch.transforms.TSD.\_\_init\_\_
+====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: TSD.__init__

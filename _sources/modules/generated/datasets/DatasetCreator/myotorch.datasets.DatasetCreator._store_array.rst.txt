@@ -1,0 +1,6 @@
+myotorch.datasets.DatasetCreator.\_store\_array
+===============================================
+
+.. currentmodule:: myotorch.datasets
+
+.. automethod:: DatasetCreator._store_array

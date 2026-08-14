@@ -1,0 +1,21 @@
+﻿EMGData
+==========================
+
+.. currentmodule:: myotorch.datatypes
+
+.. autoclass:: EMGData
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: EMGData
+       
+            ~EMGData.__init__
+            ~EMGData._get_grid_dimensions
+            ~EMGData.plot
+            ~EMGData.plot_grid_layout
+        
+        

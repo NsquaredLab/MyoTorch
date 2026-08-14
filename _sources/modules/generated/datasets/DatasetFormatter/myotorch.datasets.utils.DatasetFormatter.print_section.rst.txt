@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DatasetFormatter.print\_section
+=======================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DatasetFormatter.print_section

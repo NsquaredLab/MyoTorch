@@ -1,6 +1,0 @@
-myoverse.transforms.SlopeSignChanges.\_compute\_window
-======================================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: SlopeSignChanges._compute_window

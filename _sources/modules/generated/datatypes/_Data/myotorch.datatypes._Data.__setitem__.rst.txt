@@ -1,0 +1,6 @@
+myotorch.datatypes.\_Data.\_\_setitem\_\_
+=========================================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: _Data.__setitem__

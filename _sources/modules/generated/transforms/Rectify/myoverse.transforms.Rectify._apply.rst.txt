@@ -1,6 +1,0 @@
-myoverse.transforms.Rectify.\_apply
-===================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Rectify._apply

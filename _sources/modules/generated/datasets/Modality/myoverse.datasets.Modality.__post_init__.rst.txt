@@ -1,6 +1,0 @@
-myoverse.datasets.Modality.\_\_post\_init\_\_
-=============================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: Modality.__post_init__

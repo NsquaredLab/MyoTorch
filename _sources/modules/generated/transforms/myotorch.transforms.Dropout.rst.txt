@@ -1,0 +1,21 @@
+﻿Dropout
+===========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Dropout
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Dropout
+       
+            ~Dropout.__init__
+            ~Dropout._apply
+            ~Dropout.eval
+            ~Dropout.train
+        
+        

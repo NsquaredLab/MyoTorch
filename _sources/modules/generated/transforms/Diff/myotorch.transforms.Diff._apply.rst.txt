@@ -1,0 +1,6 @@
+myotorch.transforms.Diff.\_apply
+================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Diff._apply

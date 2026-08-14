@@ -1,0 +1,6 @@
+myotorch.transforms.Notch.\_apply
+=================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Notch._apply

@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DatasetFormatter.\_calculate\_sizes
+===========================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DatasetFormatter._calculate_sizes

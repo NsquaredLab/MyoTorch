@@ -1,0 +1,6 @@
+myotorch.transforms.Identity.\_apply
+====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Identity._apply

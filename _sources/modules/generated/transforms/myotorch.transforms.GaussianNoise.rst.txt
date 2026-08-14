@@ -1,0 +1,19 @@
+﻿GaussianNoise
+=================================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: GaussianNoise
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: GaussianNoise
+       
+            ~GaussianNoise.__init__
+            ~GaussianNoise._apply
+        
+        

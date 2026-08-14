@@ -1,0 +1,6 @@
+myotorch.transforms.SpatialFilter.\_apply
+=========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: SpatialFilter._apply

@@ -1,0 +1,19 @@
+﻿SupervisedDataset
+=============================================
+
+.. currentmodule:: myotorch.datasets.paradigms
+
+.. autoclass:: SupervisedDataset
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: SupervisedDataset
+       
+            ~SupervisedDataset.__getitem__
+            ~SupervisedDataset.__init__
+        
+        

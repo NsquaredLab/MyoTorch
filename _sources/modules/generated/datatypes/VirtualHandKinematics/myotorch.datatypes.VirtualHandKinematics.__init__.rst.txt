@@ -1,0 +1,6 @@
+myotorch.datatypes.VirtualHandKinematics.\_\_init\_\_
+=====================================================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: VirtualHandKinematics.__init__

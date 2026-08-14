@@ -1,6 +1,0 @@
-myoverse.transforms.ClampRange.\_\_init\_\_
-===========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: ClampRange.__init__

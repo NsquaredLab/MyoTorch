@@ -1,0 +1,6 @@
+myotorch.transforms.Concat.\_\_init\_\_
+=======================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Concat.__init__

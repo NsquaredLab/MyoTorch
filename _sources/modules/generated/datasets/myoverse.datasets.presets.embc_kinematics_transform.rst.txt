@@ -1,6 +1,0 @@
-﻿myoverse.datasets.presets.embc\_kinematics\_transform
-=====================================================
-
-.. currentmodule:: myoverse.datasets.presets
-
-.. autofunction:: embc_kinematics_transform

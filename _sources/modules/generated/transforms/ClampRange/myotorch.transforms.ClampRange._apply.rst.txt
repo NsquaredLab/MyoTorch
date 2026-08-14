@@ -1,0 +1,6 @@
+myotorch.transforms.ClampRange.\_apply
+======================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: ClampRange._apply

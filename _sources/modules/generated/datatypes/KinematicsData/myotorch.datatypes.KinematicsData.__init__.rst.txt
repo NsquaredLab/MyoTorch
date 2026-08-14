@@ -1,0 +1,6 @@
+myotorch.datatypes.KinematicsData.\_\_init\_\_
+==============================================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: KinematicsData.__init__

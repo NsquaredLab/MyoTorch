@@ -1,6 +1,0 @@
-myoverse.transforms.Scale.\_\_init\_\_
-======================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Scale.__init__

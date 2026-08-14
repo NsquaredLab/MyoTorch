@@ -1,0 +1,19 @@
+﻿Reshape
+===========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Reshape
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Reshape
+       
+            ~Reshape.__init__
+            ~Reshape._apply
+        
+        

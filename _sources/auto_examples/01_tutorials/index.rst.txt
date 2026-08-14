@@ -8,6 +8,10 @@ Tutorials
 -----------------
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -17,7 +21,7 @@ Tutorials
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example introduces the transform system - the core building block for data processing in MyoVerse. Transforms use PyTorch named tensors for dimension-aware operations that run on both CPU and GPU.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example introduces the transform system - the core building block for data processing in MyoTorch. Transforms use PyTorch named tensors for dimension-aware operations that run on both CPU and GPU.">
 
 .. only:: html
 

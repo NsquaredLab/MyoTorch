@@ -16,12 +16,12 @@ from pathlib import Path
 
 import matplotlib.pyplot as plt
 import torch
-import myoverse
+import myotorch
 
 # Get the path to the data file
-# Find data directory relative to myoverse package (works in all contexts)
-import myoverse
-_pkg_dir = Path(myoverse.__file__).parent.parent
+# Find data directory relative to myotorch package (works in all contexts)
+import myotorch
+_pkg_dir = Path(myotorch.__file__).parent.parent
 DATA_DIR = _pkg_dir / "examples" / "data"
 if not DATA_DIR.exists():
     DATA_DIR = Path.cwd() / "examples" / "data"
@@ -30,7 +30,7 @@ with open(DATA_DIR / "emg.pkl", "rb") as f:
     emg_data = pkl.load(f)
 
 SAMPLING_FREQ = 2048
-emg = myoverse.emg_tensor(emg_data["1"], fs=SAMPLING_FREQ)
+emg = myotorch.emg_tensor(emg_data["1"], fs=SAMPLING_FREQ)
 
 print(f"EMG data loaded: {emg.names} {emg.shape}")
 
@@ -43,7 +43,7 @@ plt.style.use("fivethirtyeight")
 # 1. Highpass filter (20 Hz) to remove DC and movement artifacts
 # 2. Lowpass filter (450 Hz) to remove high frequency noise
 
-from myoverse.transforms import Compose, Highpass, Lowpass
+from myotorch.transforms import Compose, Highpass, Lowpass
 
 # Preprocessing pipeline using Compose
 preprocess = Compose([
@@ -60,7 +60,7 @@ print(f"Preprocessed: {filtered.names} {filtered.shape}")
 # Often we want multiple representations of the same signal.
 # Stack applies multiple transforms and combines them along a new dimension.
 
-from myoverse.transforms import Identity, Stack
+from myotorch.transforms import Identity, Stack
 
 # Create two representations:
 # - "raw": Just the preprocessed signal
@@ -124,7 +124,7 @@ plt.show()
 # --------------------------------------------------
 # Create multiple feature representations from the same input.
 
-from myoverse.transforms import Rectify
+from myotorch.transforms import Rectify
 
 # Stack with nested Compose for complex branches
 feature_stack = Stack({
@@ -163,7 +163,7 @@ plt.show()
 # ------------------------------------
 # Extract RMS features from multiple representations.
 
-from myoverse.transforms import RMS
+from myotorch.transforms import RMS
 
 rms_pipeline = Compose([
     # Preprocess
@@ -241,7 +241,7 @@ plt.show()
 # ------------------------------------
 # A full pipeline with preprocessing, feature extraction, and normalization.
 
-from myoverse.transforms import ZScore
+from myotorch.transforms import ZScore
 
 full_pipeline = Compose([
     Highpass(cutoff=20, fs=SAMPLING_FREQ, dim="time"),

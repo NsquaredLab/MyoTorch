@@ -1,6 +1,0 @@
-myoverse.transforms.SlidingWindowTransform.\_\_init\_\_
-=======================================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: SlidingWindowTransform.__init__

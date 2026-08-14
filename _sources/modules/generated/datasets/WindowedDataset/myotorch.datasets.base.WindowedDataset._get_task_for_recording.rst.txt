@@ -1,0 +1,6 @@
+myotorch.datasets.base.WindowedDataset.\_get\_task\_for\_recording
+==================================================================
+
+.. currentmodule:: myotorch.datasets.base
+
+.. automethod:: WindowedDataset._get_task_for_recording

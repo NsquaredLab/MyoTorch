@@ -1,6 +1,0 @@
-myoverse.transforms.Diff.\_\_init\_\_
-=====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Diff.__init__

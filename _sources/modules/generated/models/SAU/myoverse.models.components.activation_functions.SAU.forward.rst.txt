@@ -1,6 +1,0 @@
-myoverse.models.components.activation\_functions.SAU.forward
-============================================================
-
-.. currentmodule:: myoverse.models.components.activation_functions
-
-.. automethod:: SAU.forward

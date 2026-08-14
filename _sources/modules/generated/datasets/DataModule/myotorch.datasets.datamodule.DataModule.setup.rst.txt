@@ -1,0 +1,6 @@
+myotorch.datasets.datamodule.DataModule.setup
+=============================================
+
+.. currentmodule:: myotorch.datasets.datamodule
+
+.. automethod:: DataModule.setup

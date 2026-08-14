@@ -1,0 +1,6 @@
+myotorch.datasets.Modality.load
+===============================
+
+.. currentmodule:: myotorch.datasets
+
+.. automethod:: Modality.load

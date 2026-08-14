@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DataSplitter.\_validate\_ratios
-=======================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DataSplitter._validate_ratios

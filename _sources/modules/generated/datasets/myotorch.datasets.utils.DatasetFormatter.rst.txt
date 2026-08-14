@@ -1,0 +1,31 @@
+﻿DatasetFormatter
+========================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. autoclass:: DatasetFormatter
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: DatasetFormatter
+       
+            ~DatasetFormatter.__init__
+            ~DatasetFormatter._calculate_sizes
+            ~DatasetFormatter._print_structure_tree
+            ~DatasetFormatter.print_action
+            ~DatasetFormatter.print_augmentation_config
+            ~DatasetFormatter.print_config
+            ~DatasetFormatter.print_data_panel
+            ~DatasetFormatter.print_data_structure
+            ~DatasetFormatter.print_header
+            ~DatasetFormatter.print_section
+            ~DatasetFormatter.print_split_sizes
+            ~DatasetFormatter.print_summary
+            ~DatasetFormatter.print_tasks_info
+            ~DatasetFormatter.should_print
+        
+        

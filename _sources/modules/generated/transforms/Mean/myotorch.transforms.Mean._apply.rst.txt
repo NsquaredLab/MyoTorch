@@ -1,0 +1,6 @@
+myotorch.transforms.Mean.\_apply
+================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Mean._apply

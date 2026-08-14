@@ -1,0 +1,6 @@
+myotorch.transforms.MAV.\_compute\_window
+=========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: MAV._compute_window

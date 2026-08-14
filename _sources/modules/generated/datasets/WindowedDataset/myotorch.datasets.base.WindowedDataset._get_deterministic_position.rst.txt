@@ -1,0 +1,6 @@
+myotorch.datasets.base.WindowedDataset.\_get\_deterministic\_position
+=====================================================================
+
+.. currentmodule:: myotorch.datasets.base
+
+.. automethod:: WindowedDataset._get_deterministic_position

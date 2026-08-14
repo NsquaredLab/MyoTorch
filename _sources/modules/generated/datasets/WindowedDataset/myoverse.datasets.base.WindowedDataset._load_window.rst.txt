@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.\_load\_window
-=====================================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset._load_window

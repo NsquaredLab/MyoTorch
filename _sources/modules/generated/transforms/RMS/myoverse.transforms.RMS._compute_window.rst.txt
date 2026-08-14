@@ -1,6 +1,0 @@
-myoverse.transforms.RMS.\_compute\_window
-=========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: RMS._compute_window

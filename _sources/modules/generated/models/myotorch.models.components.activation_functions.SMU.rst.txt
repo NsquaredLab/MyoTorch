@@ -1,0 +1,19 @@
+﻿SMU
+===================================================
+
+.. currentmodule:: myotorch.models.components.activation_functions
+
+.. autoclass:: SMU
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: SMU
+       
+            ~SMU.__init__
+            ~SMU.forward
+        
+        

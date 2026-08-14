@@ -1,0 +1,6 @@
+myotorch.transforms.Standardize.\_apply
+=======================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Standardize._apply

@@ -1,0 +1,19 @@
+﻿Lambda
+==========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Lambda
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Lambda
+       
+            ~Lambda.__init__
+            ~Lambda._apply
+        
+        

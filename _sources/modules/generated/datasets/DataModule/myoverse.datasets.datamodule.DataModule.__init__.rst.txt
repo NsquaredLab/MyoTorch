@@ -1,6 +1,0 @@
-myoverse.datasets.datamodule.DataModule.\_\_init\_\_
-====================================================
-
-.. currentmodule:: myoverse.datasets.datamodule
-
-.. automethod:: DataModule.__init__

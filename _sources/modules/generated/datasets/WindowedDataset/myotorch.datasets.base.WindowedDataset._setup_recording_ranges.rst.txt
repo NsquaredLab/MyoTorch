@@ -1,0 +1,6 @@
+myotorch.datasets.base.WindowedDataset.\_setup\_recording\_ranges
+=================================================================
+
+.. currentmodule:: myotorch.datasets.base
+
+.. automethod:: WindowedDataset._setup_recording_ranges

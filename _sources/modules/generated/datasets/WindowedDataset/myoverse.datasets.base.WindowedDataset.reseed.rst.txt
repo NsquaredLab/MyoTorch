@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.reseed
-=============================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset.reseed

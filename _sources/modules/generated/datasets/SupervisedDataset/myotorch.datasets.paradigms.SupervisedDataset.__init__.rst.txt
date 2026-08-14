@@ -1,0 +1,6 @@
+myotorch.datasets.paradigms.SupervisedDataset.\_\_init\_\_
+==========================================================
+
+.. currentmodule:: myotorch.datasets.paradigms
+
+.. automethod:: SupervisedDataset.__init__

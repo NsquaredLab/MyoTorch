@@ -1,6 +1,0 @@
-myoverse.models.raul\_net.v16.RaulNetV16.\_reshape\_and\_normalize
-==================================================================
-
-.. currentmodule:: myoverse.models.raul_net.v16
-
-.. automethod:: RaulNetV16._reshape_and_normalize

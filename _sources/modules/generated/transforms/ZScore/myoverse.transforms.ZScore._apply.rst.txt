@@ -1,6 +1,0 @@
-myoverse.transforms.ZScore.\_apply
-==================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: ZScore._apply

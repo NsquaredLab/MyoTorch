@@ -1,0 +1,6 @@
+myotorch.transforms.Cutout.\_apply
+==================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Cutout._apply

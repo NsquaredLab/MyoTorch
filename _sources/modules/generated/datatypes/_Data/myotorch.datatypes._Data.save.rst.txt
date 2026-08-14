@@ -1,0 +1,6 @@
+myotorch.datatypes.\_Data.save
+==============================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: _Data.save

@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.\_\_init\_\_
-===================================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset.__init__

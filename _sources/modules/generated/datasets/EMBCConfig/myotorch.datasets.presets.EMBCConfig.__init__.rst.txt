@@ -1,0 +1,6 @@
+myotorch.datasets.presets.EMBCConfig.\_\_init\_\_
+=================================================
+
+.. currentmodule:: myotorch.datasets.presets
+
+.. automethod:: EMBCConfig.__init__

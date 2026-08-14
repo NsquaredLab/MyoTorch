@@ -1,6 +1,0 @@
-myoverse.transforms.TSD.\_\_init\_\_
-====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: TSD.__init__

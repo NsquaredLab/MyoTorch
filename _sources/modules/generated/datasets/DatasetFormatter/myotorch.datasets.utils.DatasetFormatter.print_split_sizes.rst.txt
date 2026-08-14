@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DatasetFormatter.print\_split\_sizes
+============================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DatasetFormatter.print_split_sizes

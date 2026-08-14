@@ -1,6 +1,0 @@
-myoverse.models.raul\_net.v17.RaulNetV17.forward
-================================================
-
-.. currentmodule:: myoverse.models.raul_net.v17
-
-.. automethod:: RaulNetV17.forward

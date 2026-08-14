@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.\_ensure\_cache\_loaded
-==============================================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset._ensure_cache_loaded

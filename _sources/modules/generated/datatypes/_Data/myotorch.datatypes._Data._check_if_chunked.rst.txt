@@ -1,0 +1,6 @@
+myotorch.datatypes.\_Data.\_check\_if\_chunked
+==============================================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: _Data._check_if_chunked

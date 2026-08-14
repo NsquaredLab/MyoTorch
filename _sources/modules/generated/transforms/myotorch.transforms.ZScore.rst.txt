@@ -1,0 +1,19 @@
+﻿ZScore
+==========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: ZScore
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ZScore
+       
+            ~ZScore.__init__
+            ~ZScore._apply
+        
+        

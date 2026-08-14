@@ -1,0 +1,19 @@
+﻿TimeShift
+=============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: TimeShift
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: TimeShift
+       
+            ~TimeShift.__init__
+            ~TimeShift._apply
+        
+        

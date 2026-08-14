@@ -1,0 +1,19 @@
+﻿Normalize
+=============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Normalize
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Normalize
+       
+            ~Normalize.__init__
+            ~Normalize._apply
+        
+        

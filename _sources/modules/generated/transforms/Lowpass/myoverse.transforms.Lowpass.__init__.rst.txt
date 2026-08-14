@@ -1,6 +1,0 @@
-myoverse.transforms.Lowpass.\_\_init\_\_
-========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Lowpass.__init__

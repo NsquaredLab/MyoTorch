@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.\_global\_to\_local
-==========================================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset._global_to_local

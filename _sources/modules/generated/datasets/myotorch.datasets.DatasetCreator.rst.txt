@@ -1,0 +1,28 @@
+﻿DatasetCreator
+================================
+
+.. currentmodule:: myotorch.datasets
+
+.. autoclass:: DatasetCreator
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: DatasetCreator
+       
+            ~DatasetCreator.__init__
+            ~DatasetCreator._extract_center
+            ~DatasetCreator._print_config
+            ~DatasetCreator._print_data_structure
+            ~DatasetCreator._print_header
+            ~DatasetCreator._print_summary
+            ~DatasetCreator._process_all_tasks
+            ~DatasetCreator._process_task
+            ~DatasetCreator._split_continuous
+            ~DatasetCreator._store_array
+            ~DatasetCreator.create
+        
+        

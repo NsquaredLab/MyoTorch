@@ -1,0 +1,18 @@
+﻿RMS
+=======================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: RMS
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: RMS
+       
+            ~RMS._compute_window
+        
+        

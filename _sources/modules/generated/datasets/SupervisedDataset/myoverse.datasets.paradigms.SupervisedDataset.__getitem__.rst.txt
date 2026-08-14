@@ -1,6 +1,0 @@
-myoverse.datasets.paradigms.SupervisedDataset.\_\_getitem\_\_
-=============================================================
-
-.. currentmodule:: myoverse.datasets.paradigms
-
-.. automethod:: SupervisedDataset.__getitem__

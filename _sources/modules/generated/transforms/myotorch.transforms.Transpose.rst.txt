@@ -1,0 +1,19 @@
+﻿Transpose
+=============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Transpose
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Transpose
+       
+            ~Transpose.__init__
+            ~Transpose._apply
+        
+        

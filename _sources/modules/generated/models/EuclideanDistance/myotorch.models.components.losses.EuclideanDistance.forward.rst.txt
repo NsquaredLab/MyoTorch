@@ -1,0 +1,6 @@
+myotorch.models.components.losses.EuclideanDistance.forward
+===========================================================
+
+.. currentmodule:: myotorch.models.components.losses
+
+.. automethod:: EuclideanDistance.forward

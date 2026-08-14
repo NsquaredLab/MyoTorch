@@ -1,6 +1,0 @@
-myoverse.transforms.Highpass.\_apply
-====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Highpass._apply

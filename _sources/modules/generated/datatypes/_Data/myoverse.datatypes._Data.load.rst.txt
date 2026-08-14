@@ -1,6 +1,0 @@
-myoverse.datatypes.\_Data.load
-==============================
-
-.. currentmodule:: myoverse.datatypes
-
-.. automethod:: _Data.load

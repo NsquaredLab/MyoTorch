@@ -1,0 +1,19 @@
+﻿PSerf
+=====================================================
+
+.. currentmodule:: myotorch.models.components.activation_functions
+
+.. autoclass:: PSerf
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: PSerf
+       
+            ~PSerf.__init__
+            ~PSerf.forward
+        
+        

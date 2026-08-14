@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DatasetFormatter.should\_print
+======================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DatasetFormatter.should_print

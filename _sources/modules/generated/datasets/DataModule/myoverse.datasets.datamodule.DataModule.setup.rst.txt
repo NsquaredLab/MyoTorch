@@ -1,6 +1,0 @@
-myoverse.datasets.datamodule.DataModule.setup
-=============================================
-
-.. currentmodule:: myoverse.datasets.datamodule
-
-.. automethod:: DataModule.setup

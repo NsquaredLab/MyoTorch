@@ -1,6 +1,0 @@
-myoverse.transforms.Pad.\_apply
-===============================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Pad._apply

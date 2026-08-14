@@ -1,0 +1,6 @@
+myotorch.transforms.Pad.\_apply
+===============================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Pad._apply

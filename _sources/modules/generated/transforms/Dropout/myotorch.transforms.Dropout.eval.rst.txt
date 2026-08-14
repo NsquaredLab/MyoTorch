@@ -1,0 +1,6 @@
+myotorch.transforms.Dropout.eval
+================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Dropout.eval

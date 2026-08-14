@@ -1,6 +1,0 @@
-myoverse.transforms.NDD.\_\_init\_\_
-====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: NDD.__init__

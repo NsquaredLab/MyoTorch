@@ -1,0 +1,19 @@
+﻿Unsqueeze
+=============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Unsqueeze
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Unsqueeze
+       
+            ~Unsqueeze.__init__
+            ~Unsqueeze._apply
+        
+        

@@ -1,0 +1,18 @@
+﻿VAR
+=======================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: VAR
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: VAR
+       
+            ~VAR._compute_window
+        
+        

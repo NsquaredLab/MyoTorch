@@ -1,6 +1,0 @@
-myoverse.transforms.TimeShift.\_\_init\_\_
-==========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: TimeShift.__init__

@@ -1,0 +1,968 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Cutout &#8212; myotorch 2.0.0 Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../../_static/styles/theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+<link href="../../../_static/styles/pydata-sphinx-theme.css?digest=90905a2f556bf617f1a9" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=8f2a1f02" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery.css?v=fd6457a4" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-binder.css?v=f4aeca0c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-dataframe.css?v=2082cf3c" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sg_gallery-rendered-html.css?v=1277b6f3" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/custom.css?v=2204a824" />
+  
+  <!-- So that users can add custom icons -->
+  <script defer src="../../../_static/scripts/fontawesome.js?digest=90905a2f556bf617f1a9"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9" />
+<link rel="preload" as="script" href="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9" />
+
+    <script src="../../../_static/documentation_options.js?v=51b770b3"></script>
+    <script src="../../../_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="../../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../../_static/sg-tags.js?v=d80f6fa4"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'modules/generated/transforms/myotorch.transforms.Cutout';</script>
+    <script>DOCUMENTATION_OPTIONS.search_as_you_type = false;</script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="myotorch.transforms.Cutout.__init__" href="Cutout/myotorch.transforms.Cutout.__init__.html" />
+    <link rel="prev" title="myotorch.transforms.Scale._apply" href="Scale/myotorch.transforms.Scale._apply.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="2.0.0" />
+  
+    
+    <script src="../../../_static/searchtools.js"></script>
+    <script src="../../../_static/language_data.js"></script>
+    <script src="../../../searchindex.js"></script>
+  
+  </head>
+  <body data-default-mode="">
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+  
+  
+  
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header id="pst-header" class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../../../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">myotorch 2.0.0 Documentation</p>
+  
+</a></div>
+    
+      <div class="navbar-item">
+<div class="nav-item">
+  <div class="version-switcher__container dropdown">
+      <button id="version-switcher-button" type="button" class="version-switcher__button btn btn-sm navbar-btn" aria-haspopup="true" aria-expanded="false">
+          Version 2.0.0
+      </button>
+      
+      
+      
+  </div>
+</div> </div>
+    
+      <div class="navbar-item"><div class="nav-item">
+   <span>
+      made at the <a href="https://www.nsquared.tf.fau.de/" target="_blank">N² Lab</a>
+   </span>
+</div> </div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../api_documentation.html">
+    API Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contributing.html">
+    Contributing to MyoTorch
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+      
+        <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/NsquaredLab/MyoTorch" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../auto_examples/index.html">
+    Examples
+  </a>
+</li>
+
+
+<li class="nav-item current active">
+  <a class="nav-link nav-internal" href="../../../api_documentation.html">
+    API Documentation
+  </a>
+</li>
+
+
+<li class="nav-item ">
+  <a class="nav-link nav-internal" href="../../../contributing.html">
+    Contributing to MyoTorch
+  </a>
+</li>
+
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<div class="theme-switch-container dropdown pst-js-only" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Color mode">
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button dropdown-toggle" aria-label="Color mode" data-bs-toggle="dropdown">
+    <i class="theme-switch fa-solid fa-sun fa-lg fa-fw" data-mode="light" title="Light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg fa-fw" data-mode="dark" title="Dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg fa-fw" data-mode="auto" title="System Settings"></i>
+  </button>
+  <ul class="dropdown-menu dropdown-menu-end">
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg fa-fw me-1"></i>System Settings</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="light"><i class="fa-solid fa-sun fa-lg fa-fw me-1"></i>Light</button></li>
+    <li><button class="dropdown-item d-flex align-items-center theme-change-button" data-mode="dark"><i class="fa-solid fa-moon fa-lg fa-fw me-1"></i>Dark</button></li>
+  </ul>
+</div></div>
+        
+          <div class="navbar-item"><ul class="navbar-icon-links"
+    aria-label="Icon Links">
+        <li class="nav-item">
+          
+          
+          
+          
+          
+          
+          
+          
+          <a href="https://github.com/NsquaredLab/MyoTorch" title="GitHub" class="nav-link pst-navbar-icon" rel="noopener" target="_blank" data-bs-toggle="tooltip" data-bs-placement="bottom"><i class="fa-brands fa-square-github fa-lg" aria-hidden="true"></i><span class="visually-hidden">GitHub</span></a>
+        </li>
+</ul></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item pst-sidebar-collapse"><button id="pst-collapse-sidebar-button" aria-expanded="true" aria-controls="pst-primary-sidebar">
+  <svg class="pst-icon" role="img" aria-hidden="true" focusable="false" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+    <path fill="currentColor" d="M3 15.5C2.36232 15.5 1.74874 15.2564 1.28478 14.8189C0.820828 14.3815 0.541576 13.7832 0.504167 13.1467L0.5 13L0.5 3C0.499965 2.36232 0.743605 1.74874 1.18107 1.28478C1.61854 0.820828 2.21676 0.541576 2.85333 0.504167L3 0.5L13 0.5C13.6377 0.499965 14.2513 0.743605 14.7152 1.18107C15.1792 1.61854 15.4584 2.21676 15.4958 2.85333L15.5 3L15.5 13C15.5 13.6377 15.2564 14.2513 14.8189 14.7152C14.3815 15.1792 13.7832 15.4584 13.1467 15.4958L13 15.5L3 15.5ZM3 13.8333L10.5 13.8333L10.5 2.16667L3 2.16667C2.79589 2.16669 2.59889 2.24163 2.44636 2.37726C2.29383 2.5129 2.19638 2.69979 2.1725 2.9025L2.16667 3L2.16667 13C2.16669 13.2041 2.24163 13.4011 2.37726 13.5536C2.5129 13.7062 2.69979 13.8036 2.9025 13.8275L3 13.8333ZM6.65583 10.325L6.5775 10.2558L4.91083 8.58917C4.76735 8.44567 4.68116 8.25476 4.66843 8.05223C4.65569 7.84971 4.71729 7.6495 4.84167 7.48917L4.91083 7.41083L6.5775 5.74417C6.72747 5.59471 6.9287 5.50794 7.14032 5.50148C7.35194 5.49502 7.55809 5.56935 7.7169 5.70937C7.8757 5.8494 7.97525 6.04463 7.99533 6.25539C8.01541 6.46616 7.95451 6.67667 7.825 6.84417L7.75583 6.9225L6.67917 8L7.75583 9.0775C7.89931 9.22099 7.98551 9.41191 7.99824 9.61443C8.01097 9.81695 7.94938 10.0172 7.825 10.1775L7.75583 10.2558C7.61234 10.3993 7.42142 10.4855 7.2189 10.4982C7.01638 10.511 6.81617 10.4494 6.65583 10.325Z"/>
+  </svg>
+  <span class="pst-collapse-sidebar-label">Collapse Sidebar</span>
+  <span class="pst-expand-sidebar-label">Expand Sidebar</span>
+</button></div>
+        <div class="sidebar-primary-item">
+
+<nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../datatypes.html">Data Types</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datatypes/myotorch.datatypes.EMGData.html">EMGData</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/EMGData/myotorch.datatypes.EMGData.__init__.html">myotorch.datatypes.EMGData.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/EMGData/myotorch.datatypes.EMGData._get_grid_dimensions.html">myotorch.datatypes.EMGData._get_grid_dimensions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/EMGData/myotorch.datatypes.EMGData.plot.html">myotorch.datatypes.EMGData.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/EMGData/myotorch.datatypes.EMGData.plot_grid_layout.html">myotorch.datatypes.EMGData.plot_grid_layout</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datatypes/myotorch.datatypes.KinematicsData.html">KinematicsData</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/KinematicsData/myotorch.datatypes.KinematicsData.__init__.html">myotorch.datatypes.KinematicsData.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/KinematicsData/myotorch.datatypes.KinematicsData.plot.html">myotorch.datatypes.KinematicsData.plot</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datatypes/myotorch.datatypes.VirtualHandKinematics.html">VirtualHandKinematics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/VirtualHandKinematics/myotorch.datatypes.VirtualHandKinematics.__init__.html">myotorch.datatypes.VirtualHandKinematics.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/VirtualHandKinematics/myotorch.datatypes.VirtualHandKinematics.plot.html">myotorch.datatypes.VirtualHandKinematics.plot</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datatypes/myotorch.datatypes._Data.html">_Data</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.__copy__.html">myotorch.datatypes._Data.__copy__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.__getitem__.html">myotorch.datatypes._Data.__getitem__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.__init__.html">myotorch.datatypes._Data.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.__repr__.html">myotorch.datatypes._Data.__repr__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.__setitem__.html">myotorch.datatypes._Data.__setitem__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.__str__.html">myotorch.datatypes._Data.__str__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data._check_if_chunked.html">myotorch.datatypes._Data._check_if_chunked</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.delete_data.html">myotorch.datatypes._Data.delete_data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.load.html">myotorch.datatypes._Data.load</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.memory_usage.html">myotorch.datatypes._Data.memory_usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.plot.html">myotorch.datatypes._Data.plot</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datatypes/_Data/myotorch.datatypes._Data.save.html">myotorch.datatypes._Data.save</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../../filters.html">Transforms</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Transform.html">Transform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Transform/myotorch.transforms.Transform.__call__.html">myotorch.transforms.Transform.__call__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Transform/myotorch.transforms.Transform.__init__.html">myotorch.transforms.Transform.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Transform/myotorch.transforms.Transform.__repr__.html">myotorch.transforms.Transform.__repr__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Transform/myotorch.transforms.Transform._apply.html">myotorch.transforms.Transform._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.SlidingWindowTransform.html">SlidingWindowTransform</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="SlidingWindowTransform/myotorch.transforms.SlidingWindowTransform.__init__.html">myotorch.transforms.SlidingWindowTransform.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SlidingWindowTransform/myotorch.transforms.SlidingWindowTransform._apply.html">myotorch.transforms.SlidingWindowTransform._apply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SlidingWindowTransform/myotorch.transforms.SlidingWindowTransform._compute_window.html">myotorch.transforms.SlidingWindowTransform._compute_window</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.RMS.html">RMS</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="RMS/myotorch.transforms.RMS._compute_window.html">myotorch.transforms.RMS._compute_window</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.MAV.html">MAV</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="MAV/myotorch.transforms.MAV._compute_window.html">myotorch.transforms.MAV._compute_window</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.VAR.html">VAR</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="VAR/myotorch.transforms.VAR._compute_window.html">myotorch.transforms.VAR._compute_window</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Rectify.html">Rectify</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Rectify/myotorch.transforms.Rectify._apply.html">myotorch.transforms.Rectify._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Bandpass.html">Bandpass</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Bandpass/myotorch.transforms.Bandpass.__init__.html">myotorch.transforms.Bandpass.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Bandpass/myotorch.transforms.Bandpass._apply.html">myotorch.transforms.Bandpass._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Highpass.html">Highpass</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Highpass/myotorch.transforms.Highpass.__init__.html">myotorch.transforms.Highpass.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Highpass/myotorch.transforms.Highpass._apply.html">myotorch.transforms.Highpass._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Lowpass.html">Lowpass</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Lowpass/myotorch.transforms.Lowpass.__init__.html">myotorch.transforms.Lowpass.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Lowpass/myotorch.transforms.Lowpass._apply.html">myotorch.transforms.Lowpass._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Notch.html">Notch</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Notch/myotorch.transforms.Notch.__init__.html">myotorch.transforms.Notch.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Notch/myotorch.transforms.Notch._apply.html">myotorch.transforms.Notch._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.ZeroCrossings.html">ZeroCrossings</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ZeroCrossings/myotorch.transforms.ZeroCrossings._compute_window.html">myotorch.transforms.ZeroCrossings._compute_window</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.SlopeSignChanges.html">SlopeSignChanges</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="SlopeSignChanges/myotorch.transforms.SlopeSignChanges._compute_window.html">myotorch.transforms.SlopeSignChanges._compute_window</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.WaveformLength.html">WaveformLength</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="WaveformLength/myotorch.transforms.WaveformLength._compute_window.html">myotorch.transforms.WaveformLength._compute_window</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Diff.html">Diff</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Diff/myotorch.transforms.Diff.__init__.html">myotorch.transforms.Diff.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Diff/myotorch.transforms.Diff._apply.html">myotorch.transforms.Diff._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.ZScore.html">ZScore</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ZScore/myotorch.transforms.ZScore.__init__.html">myotorch.transforms.ZScore.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ZScore/myotorch.transforms.ZScore._apply.html">myotorch.transforms.ZScore._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.MinMax.html">MinMax</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="MinMax/myotorch.transforms.MinMax.__init__.html">myotorch.transforms.MinMax.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MinMax/myotorch.transforms.MinMax._apply.html">myotorch.transforms.MinMax._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Normalize.html">Normalize</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Normalize/myotorch.transforms.Normalize.__init__.html">myotorch.transforms.Normalize.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Normalize/myotorch.transforms.Normalize._apply.html">myotorch.transforms.Normalize._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Standardize.html">Standardize</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Standardize/myotorch.transforms.Standardize.__init__.html">myotorch.transforms.Standardize.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Standardize/myotorch.transforms.Standardize._apply.html">myotorch.transforms.Standardize._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.InstanceNorm.html">InstanceNorm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="InstanceNorm/myotorch.transforms.InstanceNorm.__init__.html">myotorch.transforms.InstanceNorm.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="InstanceNorm/myotorch.transforms.InstanceNorm._apply.html">myotorch.transforms.InstanceNorm._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.LayerNorm.html">LayerNorm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="LayerNorm/myotorch.transforms.LayerNorm.__init__.html">myotorch.transforms.LayerNorm.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="LayerNorm/myotorch.transforms.LayerNorm._apply.html">myotorch.transforms.LayerNorm._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.BatchNorm.html">BatchNorm</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="BatchNorm/myotorch.transforms.BatchNorm.__init__.html">myotorch.transforms.BatchNorm.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="BatchNorm/myotorch.transforms.BatchNorm._apply.html">myotorch.transforms.BatchNorm._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.ClampRange.html">ClampRange</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ClampRange/myotorch.transforms.ClampRange.__init__.html">myotorch.transforms.ClampRange.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ClampRange/myotorch.transforms.ClampRange._apply.html">myotorch.transforms.ClampRange._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Reshape.html">Reshape</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Reshape/myotorch.transforms.Reshape.__init__.html">myotorch.transforms.Reshape.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Reshape/myotorch.transforms.Reshape._apply.html">myotorch.transforms.Reshape._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Index.html">Index</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Index/myotorch.transforms.Index.__init__.html">myotorch.transforms.Index.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Index/myotorch.transforms.Index._apply.html">myotorch.transforms.Index._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Flatten.html">Flatten</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Flatten/myotorch.transforms.Flatten.__init__.html">myotorch.transforms.Flatten.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Flatten/myotorch.transforms.Flatten._apply.html">myotorch.transforms.Flatten._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Squeeze.html">Squeeze</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Squeeze/myotorch.transforms.Squeeze.__init__.html">myotorch.transforms.Squeeze.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Squeeze/myotorch.transforms.Squeeze._apply.html">myotorch.transforms.Squeeze._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Unsqueeze.html">Unsqueeze</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Unsqueeze/myotorch.transforms.Unsqueeze.__init__.html">myotorch.transforms.Unsqueeze.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Unsqueeze/myotorch.transforms.Unsqueeze._apply.html">myotorch.transforms.Unsqueeze._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Transpose.html">Transpose</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Transpose/myotorch.transforms.Transpose.__init__.html">myotorch.transforms.Transpose.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Transpose/myotorch.transforms.Transpose._apply.html">myotorch.transforms.Transpose._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Mean.html">Mean</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Mean/myotorch.transforms.Mean.__init__.html">myotorch.transforms.Mean.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Mean/myotorch.transforms.Mean._apply.html">myotorch.transforms.Mean._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Sum.html">Sum</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Sum/myotorch.transforms.Sum.__init__.html">myotorch.transforms.Sum.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Sum/myotorch.transforms.Sum._apply.html">myotorch.transforms.Sum._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Stack.html">Stack</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Stack/myotorch.transforms.Stack.__init__.html">myotorch.transforms.Stack.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Stack/myotorch.transforms.Stack._apply.html">myotorch.transforms.Stack._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Concat.html">Concat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Concat/myotorch.transforms.Concat.__init__.html">myotorch.transforms.Concat.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Concat/myotorch.transforms.Concat._apply.html">myotorch.transforms.Concat._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Lambda.html">Lambda</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Lambda/myotorch.transforms.Lambda.__init__.html">myotorch.transforms.Lambda.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Lambda/myotorch.transforms.Lambda._apply.html">myotorch.transforms.Lambda._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Identity.html">Identity</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Identity/myotorch.transforms.Identity._apply.html">myotorch.transforms.Identity._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Repeat.html">Repeat</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Repeat/myotorch.transforms.Repeat.__init__.html">myotorch.transforms.Repeat.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Repeat/myotorch.transforms.Repeat._apply.html">myotorch.transforms.Repeat._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Pad.html">Pad</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Pad/myotorch.transforms.Pad.__init__.html">myotorch.transforms.Pad.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Pad/myotorch.transforms.Pad._apply.html">myotorch.transforms.Pad._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.GaussianNoise.html">GaussianNoise</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="GaussianNoise/myotorch.transforms.GaussianNoise.__init__.html">myotorch.transforms.GaussianNoise.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="GaussianNoise/myotorch.transforms.GaussianNoise._apply.html">myotorch.transforms.GaussianNoise._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.MagnitudeWarp.html">MagnitudeWarp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="MagnitudeWarp/myotorch.transforms.MagnitudeWarp.__init__.html">myotorch.transforms.MagnitudeWarp.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MagnitudeWarp/myotorch.transforms.MagnitudeWarp._apply.html">myotorch.transforms.MagnitudeWarp._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.TimeWarp.html">TimeWarp</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="TimeWarp/myotorch.transforms.TimeWarp.__init__.html">myotorch.transforms.TimeWarp.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TimeWarp/myotorch.transforms.TimeWarp._apply.html">myotorch.transforms.TimeWarp._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Dropout.html">Dropout</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Dropout/myotorch.transforms.Dropout.__init__.html">myotorch.transforms.Dropout.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dropout/myotorch.transforms.Dropout._apply.html">myotorch.transforms.Dropout._apply</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dropout/myotorch.transforms.Dropout.eval.html">myotorch.transforms.Dropout.eval</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Dropout/myotorch.transforms.Dropout.train.html">myotorch.transforms.Dropout.train</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.ChannelShuffle.html">ChannelShuffle</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="ChannelShuffle/myotorch.transforms.ChannelShuffle.__init__.html">myotorch.transforms.ChannelShuffle.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ChannelShuffle/myotorch.transforms.ChannelShuffle._apply.html">myotorch.transforms.ChannelShuffle._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.TimeShift.html">TimeShift</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="TimeShift/myotorch.transforms.TimeShift.__init__.html">myotorch.transforms.TimeShift.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TimeShift/myotorch.transforms.TimeShift._apply.html">myotorch.transforms.TimeShift._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.Scale.html">Scale</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Scale/myotorch.transforms.Scale.__init__.html">myotorch.transforms.Scale.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Scale/myotorch.transforms.Scale._apply.html">myotorch.transforms.Scale._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#">Cutout</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="Cutout/myotorch.transforms.Cutout.__init__.html">myotorch.transforms.Cutout.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Cutout/myotorch.transforms.Cutout._apply.html">myotorch.transforms.Cutout._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.SpatialFilter.html">SpatialFilter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="SpatialFilter/myotorch.transforms.SpatialFilter.__init__.html">myotorch.transforms.SpatialFilter.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SpatialFilter/myotorch.transforms.SpatialFilter._apply.html">myotorch.transforms.SpatialFilter._apply</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.NDD.html">NDD</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="NDD/myotorch.transforms.NDD.__init__.html">myotorch.transforms.NDD.__init__</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.LSD.html">LSD</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="LSD/myotorch.transforms.LSD.__init__.html">myotorch.transforms.LSD.__init__</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.TSD.html">TSD</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="TSD/myotorch.transforms.TSD.__init__.html">myotorch.transforms.TSD.__init__</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="myotorch.transforms.IB2.html">IB2</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="IB2/myotorch.transforms.IB2.__init__.html">myotorch.transforms.IB2.__init__</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../datasets.html">Datasets</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datasets/myotorch.datasets.DatasetCreator.html">DatasetCreator</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator.__init__.html">myotorch.datasets.DatasetCreator.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator._extract_center.html">myotorch.datasets.DatasetCreator._extract_center</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator._print_config.html">myotorch.datasets.DatasetCreator._print_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator._print_data_structure.html">myotorch.datasets.DatasetCreator._print_data_structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator._print_header.html">myotorch.datasets.DatasetCreator._print_header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator._print_summary.html">myotorch.datasets.DatasetCreator._print_summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator._process_all_tasks.html">myotorch.datasets.DatasetCreator._process_all_tasks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator._process_task.html">myotorch.datasets.DatasetCreator._process_task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator._split_continuous.html">myotorch.datasets.DatasetCreator._split_continuous</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator._store_array.html">myotorch.datasets.DatasetCreator._store_array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetCreator/myotorch.datasets.DatasetCreator.create.html">myotorch.datasets.DatasetCreator.create</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datasets/myotorch.datasets.Modality.html">Modality</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/Modality/myotorch.datasets.Modality.__eq__.html">myotorch.datasets.Modality.__eq__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/Modality/myotorch.datasets.Modality.__init__.html">myotorch.datasets.Modality.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/Modality/myotorch.datasets.Modality.__post_init__.html">myotorch.datasets.Modality.__post_init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/Modality/myotorch.datasets.Modality.__repr__.html">myotorch.datasets.Modality.__repr__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/Modality/myotorch.datasets.Modality.load.html">myotorch.datasets.Modality.load</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datasets/myotorch.datasets.base.WindowedDataset.html">WindowedDataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset.__getitem__.html">myotorch.datasets.base.WindowedDataset.__getitem__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset.__getstate__.html">myotorch.datasets.base.WindowedDataset.__getstate__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset.__init__.html">myotorch.datasets.base.WindowedDataset.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset.__len__.html">myotorch.datasets.base.WindowedDataset.__len__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset.__setstate__.html">myotorch.datasets.base.WindowedDataset.__setstate__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset._ensure_cache_loaded.html">myotorch.datasets.base.WindowedDataset._ensure_cache_loaded</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset._get_deterministic_position.html">myotorch.datasets.base.WindowedDataset._get_deterministic_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset._get_dim_names.html">myotorch.datasets.base.WindowedDataset._get_dim_names</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset._get_task_for_recording.html">myotorch.datasets.base.WindowedDataset._get_task_for_recording</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset._global_to_local.html">myotorch.datasets.base.WindowedDataset._global_to_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset._load_window.html">myotorch.datasets.base.WindowedDataset._load_window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset._sample_random_position.html">myotorch.datasets.base.WindowedDataset._sample_random_position</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset._setup_recording_ranges.html">myotorch.datasets.base.WindowedDataset._setup_recording_ranges</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset._to_tensor.html">myotorch.datasets.base.WindowedDataset._to_tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset.get_sample_shape.html">myotorch.datasets.base.WindowedDataset.get_sample_shape</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/WindowedDataset/myotorch.datasets.base.WindowedDataset.reseed.html">myotorch.datasets.base.WindowedDataset.reseed</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datasets/myotorch.datasets.paradigms.SupervisedDataset.html">SupervisedDataset</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/SupervisedDataset/myotorch.datasets.paradigms.SupervisedDataset.__getitem__.html">myotorch.datasets.paradigms.SupervisedDataset.__getitem__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/SupervisedDataset/myotorch.datasets.paradigms.SupervisedDataset.__init__.html">myotorch.datasets.paradigms.SupervisedDataset.__init__</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datasets/myotorch.datasets.datamodule.DataModule.html">DataModule</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DataModule/myotorch.datasets.datamodule.DataModule.__init__.html">myotorch.datasets.datamodule.DataModule.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DataModule/myotorch.datasets.datamodule.DataModule.setup.html">myotorch.datasets.datamodule.DataModule.setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DataModule/myotorch.datasets.datamodule.DataModule.test_dataloader.html">myotorch.datasets.datamodule.DataModule.test_dataloader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DataModule/myotorch.datasets.datamodule.DataModule.train_dataloader.html">myotorch.datasets.datamodule.DataModule.train_dataloader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DataModule/myotorch.datasets.datamodule.DataModule.val_dataloader.html">myotorch.datasets.datamodule.DataModule.val_dataloader</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datasets/myotorch.datasets.utils.DataSplitter.html">DataSplitter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DataSplitter/myotorch.datasets.utils.DataSplitter.__init__.html">myotorch.datasets.utils.DataSplitter.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DataSplitter/myotorch.datasets.utils.DataSplitter._split_middle.html">myotorch.datasets.utils.DataSplitter._split_middle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DataSplitter/myotorch.datasets.utils.DataSplitter._validate_ratios.html">myotorch.datasets.utils.DataSplitter._validate_ratios</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DataSplitter/myotorch.datasets.utils.DataSplitter.split.html">myotorch.datasets.utils.DataSplitter.split</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DataSplitter/myotorch.datasets.utils.DataSplitter.split_dict.html">myotorch.datasets.utils.DataSplitter.split_dict</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datasets/myotorch.datasets.utils.DatasetFormatter.html">DatasetFormatter</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.__init__.html">myotorch.datasets.utils.DatasetFormatter.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter._calculate_sizes.html">myotorch.datasets.utils.DatasetFormatter._calculate_sizes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter._print_structure_tree.html">myotorch.datasets.utils.DatasetFormatter._print_structure_tree</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.print_action.html">myotorch.datasets.utils.DatasetFormatter.print_action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.print_augmentation_config.html">myotorch.datasets.utils.DatasetFormatter.print_augmentation_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.print_config.html">myotorch.datasets.utils.DatasetFormatter.print_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.print_data_panel.html">myotorch.datasets.utils.DatasetFormatter.print_data_panel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.print_data_structure.html">myotorch.datasets.utils.DatasetFormatter.print_data_structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.print_header.html">myotorch.datasets.utils.DatasetFormatter.print_header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.print_section.html">myotorch.datasets.utils.DatasetFormatter.print_section</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.print_split_sizes.html">myotorch.datasets.utils.DatasetFormatter.print_split_sizes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.print_summary.html">myotorch.datasets.utils.DatasetFormatter.print_summary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.print_tasks_info.html">myotorch.datasets.utils.DatasetFormatter.print_tasks_info</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/DatasetFormatter/myotorch.datasets.utils.DatasetFormatter.should_print.html">myotorch.datasets.utils.DatasetFormatter.should_print</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../datasets/myotorch.datasets.presets.EMBCConfig.html">EMBCConfig</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/EMBCConfig/myotorch.datasets.presets.EMBCConfig.__eq__.html">myotorch.datasets.presets.EMBCConfig.__eq__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/EMBCConfig/myotorch.datasets.presets.EMBCConfig.__init__.html">myotorch.datasets.presets.EMBCConfig.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../datasets/EMBCConfig/myotorch.datasets.presets.EMBCConfig.__repr__.html">myotorch.datasets.presets.EMBCConfig.__repr__</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/myotorch.datasets.presets.embc_train_transform.html">myotorch.datasets.presets.embc_train_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/myotorch.datasets.presets.embc_eval_transform.html">myotorch.datasets.presets.embc_eval_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/myotorch.datasets.presets.embc_target_transform.html">myotorch.datasets.presets.embc_target_transform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../datasets/myotorch.datasets.presets.embc_kinematics_transform.html">myotorch.datasets.presets.embc_kinematics_transform</a></li>
+</ul>
+</details></li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../models.html">Models</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../models/myotorch.models.raul_net.v17.RaulNetV17.html">RaulNetV17</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV17/myotorch.models.raul_net.v17.RaulNetV17.__init__.html">myotorch.models.raul_net.v17.RaulNetV17.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV17/myotorch.models.raul_net.v17.RaulNetV17._reshape_and_normalize.html">myotorch.models.raul_net.v17.RaulNetV17._reshape_and_normalize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV17/myotorch.models.raul_net.v17.RaulNetV17.configure_model.html">myotorch.models.raul_net.v17.RaulNetV17.configure_model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV17/myotorch.models.raul_net.v17.RaulNetV17.configure_optimizers.html">myotorch.models.raul_net.v17.RaulNetV17.configure_optimizers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV17/myotorch.models.raul_net.v17.RaulNetV17.forward.html">myotorch.models.raul_net.v17.RaulNetV17.forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV17/myotorch.models.raul_net.v17.RaulNetV17.test_step.html">myotorch.models.raul_net.v17.RaulNetV17.test_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV17/myotorch.models.raul_net.v17.RaulNetV17.training_step.html">myotorch.models.raul_net.v17.RaulNetV17.training_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV17/myotorch.models.raul_net.v17.RaulNetV17.validation_step.html">myotorch.models.raul_net.v17.RaulNetV17.validation_step</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../models/myotorch.models.raul_net.v16.RaulNetV16.html">RaulNetV16</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV16/myotorch.models.raul_net.v16.RaulNetV16.__init__.html">myotorch.models.raul_net.v16.RaulNetV16.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV16/myotorch.models.raul_net.v16.RaulNetV16._reshape_and_normalize.html">myotorch.models.raul_net.v16.RaulNetV16._reshape_and_normalize</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV16/myotorch.models.raul_net.v16.RaulNetV16.configure_optimizers.html">myotorch.models.raul_net.v16.RaulNetV16.configure_optimizers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV16/myotorch.models.raul_net.v16.RaulNetV16.forward.html">myotorch.models.raul_net.v16.RaulNetV16.forward</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV16/myotorch.models.raul_net.v16.RaulNetV16.test_step.html">myotorch.models.raul_net.v16.RaulNetV16.test_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV16/myotorch.models.raul_net.v16.RaulNetV16.training_step.html">myotorch.models.raul_net.v16.RaulNetV16.training_step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/RaulNetV16/myotorch.models.raul_net.v16.RaulNetV16.validation_step.html">myotorch.models.raul_net.v16.RaulNetV16.validation_step</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../models/myotorch.models.components.activation_functions.PSerf.html">PSerf</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../models/PSerf/myotorch.models.components.activation_functions.PSerf.__init__.html">myotorch.models.components.activation_functions.PSerf.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/PSerf/myotorch.models.components.activation_functions.PSerf.forward.html">myotorch.models.components.activation_functions.PSerf.forward</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../models/myotorch.models.components.activation_functions.SAU.html">SAU</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../models/SAU/myotorch.models.components.activation_functions.SAU.__init__.html">myotorch.models.components.activation_functions.SAU.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/SAU/myotorch.models.components.activation_functions.SAU.forward.html">myotorch.models.components.activation_functions.SAU.forward</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../models/myotorch.models.components.activation_functions.SMU.html">SMU</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../models/SMU/myotorch.models.components.activation_functions.SMU.__init__.html">myotorch.models.components.activation_functions.SMU.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/SMU/myotorch.models.components.activation_functions.SMU.forward.html">myotorch.models.components.activation_functions.SMU.forward</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../models/myotorch.models.components.losses.EuclideanDistance.html">EuclideanDistance</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../models/EuclideanDistance/myotorch.models.components.losses.EuclideanDistance.__init__.html">myotorch.models.components.losses.EuclideanDistance.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/EuclideanDistance/myotorch.models.components.losses.EuclideanDistance.forward.html">myotorch.models.components.losses.EuclideanDistance.forward</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../models/myotorch.models.components.utils.WeightedSum.html">WeightedSum</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../models/WeightedSum/myotorch.models.components.utils.WeightedSum.__init__.html">myotorch.models.components.utils.WeightedSum.__init__</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../models/WeightedSum/myotorch.models.components.utils.WeightedSum.forward.html">myotorch.models.components.utils.WeightedSum.forward</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+<nav aria-label="Breadcrumb" class="d-print-none">
+  <ul class="bd-breadcrumbs">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../../../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="../../../api_documentation.html" class="nav-link">API Documentation</a></li>
+    
+    
+    <li class="breadcrumb-item"><a href="../../filters.html" class="nav-link">Transforms</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page"><span class="ellipsis">Cutout</span></li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="cutout">
+<h1>Cutout<a class="headerlink" href="#cutout" title="Link to this heading">#</a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="myotorch.transforms.Cutout">
+<span class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></span><span class="sig-prename descclassname"><span class="pre">myotorch.transforms.</span></span><span class="sig-name descname"><span class="pre">Cutout</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">n_holes</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">1</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dim</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'time'</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../../../_modules/myotorch/transforms/augment.html#Cutout"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#myotorch.transforms.Cutout" title="Link to this definition">#</a></dt>
+<dd><p>Randomly zero out contiguous regions.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>n_holes</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a>) – Number of regions to cut out.</p></li>
+<li><p><strong>length</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><em>int</em></a><em> | </em><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Length of each cutout. If float &lt; 1, fraction of total length.</p></li>
+<li><p><strong>p</strong> (<a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><em>float</em></a>) – Probability of applying cutout.</p></li>
+<li><p><strong>dim</strong> (<a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><em>str</em></a>) – Dimension to cut along.</p></li>
+</ul>
+</dd>
+</dl>
+<p class="rubric">Examples</p>
+<div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">2048</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda&#39;</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="p">(</span><span class="s1">&#39;channel&#39;</span><span class="p">,</span> <span class="s1">&#39;time&#39;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cutout</span> <span class="o">=</span> <span class="n">Cutout</span><span class="p">(</span><span class="n">n_holes</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">y</span> <span class="o">=</span> <span class="n">cutout</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="Cutout/myotorch.transforms.Cutout.__init__.html#myotorch.transforms.Cutout.__init__" title="myotorch.transforms.Cutout.__init__"><code class="xref py py-obj docutils literal notranslate"><span class="pre">__init__</span></code></a>([n_holes, length, p, dim])</p></td>
+<td><p></p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="Cutout/myotorch.transforms.Cutout._apply.html#myotorch.transforms.Cutout._apply" title="myotorch.transforms.Cutout._apply"><code class="xref py py-obj docutils literal notranslate"><span class="pre">_apply</span></code></a>(x)</p></td>
+<td><p>Apply the transform.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="pst-show_toc_level nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#myotorch.transforms.Cutout"><code class="docutils literal notranslate"><span class="pre">Cutout</span></code></a></li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="../../../_sources/modules/generated/transforms/myotorch.transforms.Cutout.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../../../_static/scripts/bootstrap.js?digest=90905a2f556bf617f1a9"></script>
+<script defer src="../../../_static/scripts/pydata-sphinx-theme.js?digest=90905a2f556bf617f1a9"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2023 - 2026, n-squared lab, FAU Erlangen-Nürnberg, Germany.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 9.1.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  <!-- # L10n: Setting the PST URL as an argument as this does not need to be localized -->
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.20.0.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

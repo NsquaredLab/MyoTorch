@@ -1,0 +1,19 @@
+﻿Bandpass
+============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Bandpass
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Bandpass
+       
+            ~Bandpass.__init__
+            ~Bandpass._apply
+        
+        

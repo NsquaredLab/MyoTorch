@@ -1,0 +1,6 @@
+myotorch.transforms.Sum.\_apply
+===============================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Sum._apply

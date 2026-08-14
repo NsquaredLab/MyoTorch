@@ -1,0 +1,6 @@
+myotorch.datasets.datamodule.DataModule.val\_dataloader
+=======================================================
+
+.. currentmodule:: myotorch.datasets.datamodule
+
+.. automethod:: DataModule.val_dataloader

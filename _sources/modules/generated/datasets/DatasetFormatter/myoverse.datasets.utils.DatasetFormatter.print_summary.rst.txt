@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DatasetFormatter.print\_summary
-=======================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DatasetFormatter.print_summary

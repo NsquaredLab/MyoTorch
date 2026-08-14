@@ -1,0 +1,6 @@
+myotorch.datatypes.VirtualHandKinematics.plot
+=============================================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: VirtualHandKinematics.plot

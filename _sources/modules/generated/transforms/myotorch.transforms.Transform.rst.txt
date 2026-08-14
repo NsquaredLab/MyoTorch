@@ -1,0 +1,21 @@
+﻿Transform
+=============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Transform
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Transform
+       
+            ~Transform.__call__
+            ~Transform.__init__
+            ~Transform.__repr__
+            ~Transform._apply
+        
+        

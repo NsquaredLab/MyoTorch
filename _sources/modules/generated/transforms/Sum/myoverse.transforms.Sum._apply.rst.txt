@@ -1,6 +1,0 @@
-myoverse.transforms.Sum.\_apply
-===============================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Sum._apply

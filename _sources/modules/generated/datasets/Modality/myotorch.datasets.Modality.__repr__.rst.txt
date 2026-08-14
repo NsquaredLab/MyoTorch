@@ -1,0 +1,6 @@
+myotorch.datasets.Modality.\_\_repr\_\_
+=======================================
+
+.. currentmodule:: myotorch.datasets
+
+.. automethod:: Modality.__repr__

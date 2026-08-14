@@ -1,0 +1,6 @@
+﻿myotorch.datasets.presets.embc\_eval\_transform
+===============================================
+
+.. currentmodule:: myotorch.datasets.presets
+
+.. autofunction:: embc_eval_transform

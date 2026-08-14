@@ -1,6 +1,0 @@
-myoverse.models.raul\_net.v16.RaulNetV16.\_\_init\_\_
-=====================================================
-
-.. currentmodule:: myoverse.models.raul_net.v16
-
-.. automethod:: RaulNetV16.__init__

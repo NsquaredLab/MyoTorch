@@ -1,6 +1,0 @@
-myoverse.transforms.GaussianNoise.\_apply
-=========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: GaussianNoise._apply

@@ -1,0 +1,6 @@
+myotorch.datasets.DatasetCreator.\_process\_task
+================================================
+
+.. currentmodule:: myotorch.datasets
+
+.. automethod:: DatasetCreator._process_task

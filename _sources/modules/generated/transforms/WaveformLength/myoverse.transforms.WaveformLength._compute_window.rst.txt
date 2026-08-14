@@ -1,6 +1,0 @@
-myoverse.transforms.WaveformLength.\_compute\_window
-====================================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: WaveformLength._compute_window

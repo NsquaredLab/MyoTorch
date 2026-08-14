@@ -1,0 +1,6 @@
+myotorch.transforms.Squeeze.\_apply
+===================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Squeeze._apply

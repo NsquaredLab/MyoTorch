@@ -1,0 +1,6 @@
+myotorch.transforms.Highpass.\_\_init\_\_
+=========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Highpass.__init__

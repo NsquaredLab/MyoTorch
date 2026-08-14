@@ -1,6 +1,0 @@
-myoverse.transforms.LayerNorm.\_\_init\_\_
-==========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: LayerNorm.__init__

@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DatasetFormatter.\_calculate\_sizes
-===========================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DatasetFormatter._calculate_sizes

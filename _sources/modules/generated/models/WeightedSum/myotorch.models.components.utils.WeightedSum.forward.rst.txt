@@ -1,0 +1,6 @@
+myotorch.models.components.utils.WeightedSum.forward
+====================================================
+
+.. currentmodule:: myotorch.models.components.utils
+
+.. automethod:: WeightedSum.forward

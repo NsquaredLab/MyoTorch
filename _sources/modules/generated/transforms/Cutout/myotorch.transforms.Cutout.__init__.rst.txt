@@ -1,0 +1,6 @@
+myotorch.transforms.Cutout.\_\_init\_\_
+=======================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Cutout.__init__

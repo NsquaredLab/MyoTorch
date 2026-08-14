@@ -1,0 +1,6 @@
+myotorch.models.raul\_net.v17.RaulNetV17.test\_step
+===================================================
+
+.. currentmodule:: myotorch.models.raul_net.v17
+
+.. automethod:: RaulNetV17.test_step

@@ -1,6 +1,0 @@
-myoverse.transforms.Lambda.\_apply
-==================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Lambda._apply

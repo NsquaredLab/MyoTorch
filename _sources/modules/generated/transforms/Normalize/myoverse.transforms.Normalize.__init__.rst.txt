@@ -1,6 +1,0 @@
-myoverse.transforms.Normalize.\_\_init\_\_
-==========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Normalize.__init__

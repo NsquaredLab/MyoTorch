@@ -1,0 +1,20 @@
+﻿SlidingWindowTransform
+==========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: SlidingWindowTransform
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: SlidingWindowTransform
+       
+            ~SlidingWindowTransform.__init__
+            ~SlidingWindowTransform._apply
+            ~SlidingWindowTransform._compute_window
+        
+        

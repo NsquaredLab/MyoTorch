@@ -1,0 +1,6 @@
+myotorch.models.components.activation\_functions.PSerf.\_\_init\_\_
+===================================================================
+
+.. currentmodule:: myotorch.models.components.activation_functions
+
+.. automethod:: PSerf.__init__

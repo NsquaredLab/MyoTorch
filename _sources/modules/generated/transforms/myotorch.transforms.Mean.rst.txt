@@ -1,0 +1,19 @@
+﻿Mean
+========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Mean
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Mean
+       
+            ~Mean.__init__
+            ~Mean._apply
+        
+        

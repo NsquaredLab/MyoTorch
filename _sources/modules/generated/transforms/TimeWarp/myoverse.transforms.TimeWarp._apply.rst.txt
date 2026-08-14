@@ -1,6 +1,0 @@
-myoverse.transforms.TimeWarp.\_apply
-====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: TimeWarp._apply

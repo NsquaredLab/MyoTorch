@@ -1,0 +1,19 @@
+﻿LayerNorm
+=============================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: LayerNorm
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: LayerNorm
+       
+            ~LayerNorm.__init__
+            ~LayerNorm._apply
+        
+        

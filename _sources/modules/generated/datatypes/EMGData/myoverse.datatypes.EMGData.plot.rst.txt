@@ -1,6 +1,0 @@
-myoverse.datatypes.EMGData.plot
-===============================
-
-.. currentmodule:: myoverse.datatypes
-
-.. automethod:: EMGData.plot

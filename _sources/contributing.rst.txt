@@ -1,7 +1,7 @@
-Contributing to MyoVerse
+Contributing to MyoTorch
 =======================
 
-Thank you for your interest in contributing to MyoVerse! This guide will help you get started with the development process.
+Thank you for your interest in contributing to MyoTorch! This guide will help you get started with the development process.
 
 Setting Up Development Environment
 ---------------------------------
@@ -11,8 +11,8 @@ Setting Up Development Environment
 
    .. code-block:: bash
 
-      git clone https://github.com/NsquaredLab/MyoVerse.git
-      cd MyoVerse
+      git clone https://github.com/NsquaredLab/MyoTorch.git
+      cd MyoTorch
 
 3. Install uv (if you don't have it yet):
    
@@ -33,7 +33,7 @@ Setting Up Development Environment
         # Example for CUDA 12.6 - Get the correct command from PyTorch website!
         uv pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu126 --upgrade
 
-   * **For Linux:** Pytorch GPU is already installed by MyoVerse.
+   * **For Linux:** Pytorch GPU is already installed by MyoTorch.
 
 Contribution Workflow
 --------------------

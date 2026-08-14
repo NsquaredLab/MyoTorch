@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DataSplitter.\_\_init\_\_
-=================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DataSplitter.__init__

@@ -1,6 +1,0 @@
-myoverse.transforms.Transform.\_\_call\_\_
-==========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Transform.__call__

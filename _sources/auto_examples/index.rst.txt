@@ -7,6 +7,10 @@ Examples
 ========
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -26,6 +30,10 @@ Tutorials
 -----------------
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -35,7 +43,7 @@ Tutorials
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example introduces the transform system - the core building block for data processing in MyoVerse. Transforms use PyTorch named tensors for dimension-aware operations that run on both CPU and GPU.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example introduces the transform system - the core building block for data processing in MyoTorch. Transforms use PyTorch named tensors for dimension-aware operations that run on both CPU and GPU.">
 
 .. only:: html
 
@@ -113,6 +121,10 @@ Filters
 -----------------
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -156,7 +168,7 @@ Filters
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to use spatial filters on EMG data using MyoVerse. Spatial filters operate on electrode grids to compute spatial derivatives and enhance local patterns while reducing common-mode noise.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to use spatial filters on EMG data using MyoTorch. Spatial filters operate on electrode grids to compute spatial derivatives and enhance local patterns while reducing common-mode noise.">
 
 .. only:: html
 

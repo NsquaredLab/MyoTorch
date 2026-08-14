@@ -8,6 +8,10 @@ Filters
 -----------------
 
 
+.. raw:: html
+
+  <div id='sg-tag-list' class='sphx-glr-tag-list'></div>
+
 
 .. raw:: html
 
@@ -51,7 +55,7 @@ Filters
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to use spatial filters on EMG data using MyoVerse. Spatial filters operate on electrode grids to compute spatial derivatives and enhance local patterns while reducing common-mode noise.">
+    <div class="sphx-glr-thumbcontainer" tooltip="This example demonstrates how to use spatial filters on EMG data using MyoTorch. Spatial filters operate on electrode grids to compute spatial derivatives and enhance local patterns while reducing common-mode noise.">
 
 .. only:: html
 

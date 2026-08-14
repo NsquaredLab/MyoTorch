@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DatasetFormatter.print\_data\_structure
+===============================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DatasetFormatter.print_data_structure

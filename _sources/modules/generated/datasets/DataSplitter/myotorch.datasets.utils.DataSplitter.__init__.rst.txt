@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DataSplitter.\_\_init\_\_
+=================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DataSplitter.__init__

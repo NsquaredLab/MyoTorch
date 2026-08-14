@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DataSplitter.split\_dict
+================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DataSplitter.split_dict

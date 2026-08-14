@@ -1,0 +1,6 @@
+myotorch.transforms.Normalize.\_apply
+=====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Normalize._apply

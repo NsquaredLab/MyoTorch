@@ -1,0 +1,6 @@
+myotorch.models.components.utils.WeightedSum.\_\_init\_\_
+=========================================================
+
+.. currentmodule:: myotorch.models.components.utils
+
+.. automethod:: WeightedSum.__init__

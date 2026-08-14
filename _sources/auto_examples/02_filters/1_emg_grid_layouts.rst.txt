@@ -44,7 +44,7 @@ First, let's import the necessary libraries
 
     import numpy as np
     import matplotlib.pyplot as plt
-    from myoverse.datatypes import EMGData, create_grid_layout
+    from myotorch.datatypes import EMGData, create_grid_layout
 
     plt.style.use("fivethirtyeight")
     plt.rcParams["axes.grid"] = False
@@ -334,6 +334,12 @@ parameter accepts a list of grids, allowing you to represent complex multi-array
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    findfont: Failed to find font weight extra bold, now using 700.
+
 
 
 
@@ -444,15 +450,21 @@ grid layout for a circular electrode array.
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    findfont: Failed to find font weight extra bold, now using 700.
+
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 3.392 seconds)
+   **Total running time of the script:** (0 minutes 2.785 seconds)
 
-**Estimated memory usage:**  621 MB
+**Estimated memory usage:**  615 MB
 
 
 .. _sphx_glr_download_auto_examples_02_filters_1_emg_grid_layouts.py:

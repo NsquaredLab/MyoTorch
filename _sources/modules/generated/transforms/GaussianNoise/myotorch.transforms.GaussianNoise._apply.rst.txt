@@ -1,0 +1,6 @@
+myotorch.transforms.GaussianNoise.\_apply
+=========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: GaussianNoise._apply

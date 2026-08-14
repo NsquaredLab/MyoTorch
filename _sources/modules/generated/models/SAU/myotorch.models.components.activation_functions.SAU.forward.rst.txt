@@ -1,0 +1,6 @@
+myotorch.models.components.activation\_functions.SAU.forward
+============================================================
+
+.. currentmodule:: myotorch.models.components.activation_functions
+
+.. automethod:: SAU.forward

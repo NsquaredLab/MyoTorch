@@ -1,0 +1,6 @@
+myotorch.transforms.NDD.\_\_init\_\_
+====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: NDD.__init__

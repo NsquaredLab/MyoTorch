@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.\_get\_deterministic\_position
-=====================================================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset._get_deterministic_position

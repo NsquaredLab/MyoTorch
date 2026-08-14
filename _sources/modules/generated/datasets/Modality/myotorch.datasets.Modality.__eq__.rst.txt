@@ -1,0 +1,6 @@
+myotorch.datasets.Modality.\_\_eq\_\_
+=====================================
+
+.. currentmodule:: myotorch.datasets
+
+.. automethod:: Modality.__eq__

@@ -1,0 +1,6 @@
+myotorch.transforms.MinMax.\_apply
+==================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: MinMax._apply

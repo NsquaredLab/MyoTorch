@@ -1,0 +1,6 @@
+myotorch.datatypes.\_Data.plot
+==============================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: _Data.plot

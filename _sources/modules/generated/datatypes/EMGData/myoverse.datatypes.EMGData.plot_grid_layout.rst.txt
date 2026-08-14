@@ -1,6 +1,0 @@
-myoverse.datatypes.EMGData.plot\_grid\_layout
-=============================================
-
-.. currentmodule:: myoverse.datatypes
-
-.. automethod:: EMGData.plot_grid_layout

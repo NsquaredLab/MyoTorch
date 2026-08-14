@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.\_get\_dim\_names
-========================================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset._get_dim_names

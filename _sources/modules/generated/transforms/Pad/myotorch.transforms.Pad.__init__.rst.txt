@@ -1,0 +1,6 @@
+myotorch.transforms.Pad.\_\_init\_\_
+====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Pad.__init__

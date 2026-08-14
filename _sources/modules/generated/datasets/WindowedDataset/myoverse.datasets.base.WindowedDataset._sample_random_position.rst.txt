@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.\_sample\_random\_position
-=================================================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset._sample_random_position

@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.\_to\_tensor
-===================================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset._to_tensor

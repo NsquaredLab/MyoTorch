@@ -1,0 +1,6 @@
+myotorch.transforms.MagnitudeWarp.\_apply
+=========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: MagnitudeWarp._apply

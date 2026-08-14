@@ -1,0 +1,6 @@
+myotorch.transforms.Rectify.\_apply
+===================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Rectify._apply

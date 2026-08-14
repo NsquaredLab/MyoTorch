@@ -1,0 +1,6 @@
+myotorch.datasets.datamodule.DataModule.\_\_init\_\_
+====================================================
+
+.. currentmodule:: myotorch.datasets.datamodule
+
+.. automethod:: DataModule.__init__

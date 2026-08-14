@@ -1,0 +1,6 @@
+myotorch.transforms.Mean.\_\_init\_\_
+=====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Mean.__init__

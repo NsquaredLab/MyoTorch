@@ -1,0 +1,6 @@
+myotorch.transforms.ZScore.\_apply
+==================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: ZScore._apply

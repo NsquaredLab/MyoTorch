@@ -1,6 +1,0 @@
-myoverse.datasets.DatasetCreator.\_split\_continuous
-====================================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: DatasetCreator._split_continuous

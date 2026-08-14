@@ -1,6 +1,0 @@
-myoverse.datasets.Modality.\_\_eq\_\_
-=====================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: Modality.__eq__

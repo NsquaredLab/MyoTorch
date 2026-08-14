@@ -1,0 +1,6 @@
+myotorch.transforms.TimeShift.\_apply
+=====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: TimeShift._apply

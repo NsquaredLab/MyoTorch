@@ -1,0 +1,6 @@
+myotorch.transforms.Diff.\_\_init\_\_
+=====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Diff.__init__

@@ -1,0 +1,6 @@
+myotorch.transforms.LSD.\_\_init\_\_
+====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: LSD.__init__

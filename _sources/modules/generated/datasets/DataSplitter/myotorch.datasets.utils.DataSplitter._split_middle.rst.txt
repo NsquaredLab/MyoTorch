@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DataSplitter.\_split\_middle
+====================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DataSplitter._split_middle

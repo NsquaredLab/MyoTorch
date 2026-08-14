@@ -1,0 +1,19 @@
+﻿ChannelShuffle
+==================================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: ChannelShuffle
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: ChannelShuffle
+       
+            ~ChannelShuffle.__init__
+            ~ChannelShuffle._apply
+        
+        

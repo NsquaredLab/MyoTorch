@@ -1,0 +1,19 @@
+﻿WeightedSum
+============================================
+
+.. currentmodule:: myotorch.models.components.utils
+
+.. autoclass:: WeightedSum
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: WeightedSum
+       
+            ~WeightedSum.__init__
+            ~WeightedSum.forward
+        
+        

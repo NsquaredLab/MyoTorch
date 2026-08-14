@@ -1,6 +1,0 @@
-myoverse.transforms.MAV.\_compute\_window
-=========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: MAV._compute_window

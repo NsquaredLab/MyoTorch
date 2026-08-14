@@ -1,0 +1,6 @@
+myotorch.datasets.base.WindowedDataset.\_ensure\_cache\_loaded
+==============================================================
+
+.. currentmodule:: myotorch.datasets.base
+
+.. automethod:: WindowedDataset._ensure_cache_loaded

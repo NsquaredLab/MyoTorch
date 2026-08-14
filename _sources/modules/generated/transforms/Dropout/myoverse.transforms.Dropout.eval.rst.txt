@@ -1,6 +1,0 @@
-myoverse.transforms.Dropout.eval
-================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Dropout.eval

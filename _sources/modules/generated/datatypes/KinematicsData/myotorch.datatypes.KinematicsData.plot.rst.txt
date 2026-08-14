@@ -1,0 +1,6 @@
+myotorch.datatypes.KinematicsData.plot
+======================================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: KinematicsData.plot

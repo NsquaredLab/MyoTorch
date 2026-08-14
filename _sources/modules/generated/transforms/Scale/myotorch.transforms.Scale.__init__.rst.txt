@@ -1,0 +1,6 @@
+myotorch.transforms.Scale.\_\_init\_\_
+======================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Scale.__init__

@@ -1,0 +1,6 @@
+myotorch.datatypes.\_Data.memory\_usage
+=======================================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: _Data.memory_usage

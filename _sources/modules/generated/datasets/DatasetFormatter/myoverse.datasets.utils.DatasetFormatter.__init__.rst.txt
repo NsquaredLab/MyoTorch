@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DatasetFormatter.\_\_init\_\_
-=====================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DatasetFormatter.__init__

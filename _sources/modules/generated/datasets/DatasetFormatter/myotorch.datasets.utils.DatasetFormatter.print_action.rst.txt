@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DatasetFormatter.print\_action
+======================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DatasetFormatter.print_action

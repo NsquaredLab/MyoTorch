@@ -1,0 +1,6 @@
+myotorch.datasets.base.WindowedDataset.\_load\_window
+=====================================================
+
+.. currentmodule:: myotorch.datasets.base
+
+.. automethod:: WindowedDataset._load_window

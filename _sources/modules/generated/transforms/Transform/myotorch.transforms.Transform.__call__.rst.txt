@@ -1,0 +1,6 @@
+myotorch.transforms.Transform.\_\_call\_\_
+==========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Transform.__call__

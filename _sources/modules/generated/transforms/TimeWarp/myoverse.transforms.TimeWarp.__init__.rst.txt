@@ -1,6 +1,0 @@
-myoverse.transforms.TimeWarp.\_\_init\_\_
-=========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: TimeWarp.__init__

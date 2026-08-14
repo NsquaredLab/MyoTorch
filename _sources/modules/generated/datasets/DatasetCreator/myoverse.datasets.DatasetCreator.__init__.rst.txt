@@ -1,6 +1,0 @@
-myoverse.datasets.DatasetCreator.\_\_init\_\_
-=============================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: DatasetCreator.__init__

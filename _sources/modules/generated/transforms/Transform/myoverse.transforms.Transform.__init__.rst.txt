@@ -1,6 +1,0 @@
-myoverse.transforms.Transform.\_\_init\_\_
-==========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Transform.__init__

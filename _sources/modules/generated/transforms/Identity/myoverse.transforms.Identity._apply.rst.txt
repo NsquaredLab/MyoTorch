@@ -1,6 +1,0 @@
-myoverse.transforms.Identity.\_apply
-====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Identity._apply

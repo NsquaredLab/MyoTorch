@@ -1,0 +1,18 @@
+﻿WaveformLength
+==================================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: WaveformLength
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: WaveformLength
+       
+            ~WaveformLength._compute_window
+        
+        

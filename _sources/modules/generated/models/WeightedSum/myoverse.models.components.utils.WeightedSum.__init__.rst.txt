@@ -1,6 +1,0 @@
-myoverse.models.components.utils.WeightedSum.\_\_init\_\_
-=========================================================
-
-.. currentmodule:: myoverse.models.components.utils
-
-.. automethod:: WeightedSum.__init__

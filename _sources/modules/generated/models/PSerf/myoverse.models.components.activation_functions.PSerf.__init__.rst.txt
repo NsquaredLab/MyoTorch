@@ -1,6 +1,0 @@
-myoverse.models.components.activation\_functions.PSerf.\_\_init\_\_
-===================================================================
-
-.. currentmodule:: myoverse.models.components.activation_functions
-
-.. automethod:: PSerf.__init__

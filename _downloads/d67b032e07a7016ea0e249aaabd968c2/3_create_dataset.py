@@ -10,18 +10,18 @@ This example shows how to create a multi-modal dataset for training.
 # %%
 # Creating a Dataset with Multiple Modalities
 # --------------------------------------------
-# MyoVerse stores continuous data with named dimensions (xarray + zarr).
+# MyoTorch stores continuous data with named dimensions (xarray + zarr).
 # Any number of modalities can be stored - you decide what's input vs
 # target at training time, not storage time.
 #
 from pathlib import Path
 
-from myoverse.datasets import DatasetCreator, Modality
+from myotorch.datasets import DatasetCreator, Modality
 
 # Get the path to the data file
-# Find data directory relative to myoverse package (works in all contexts)
-import myoverse
-_pkg_dir = Path(myoverse.__file__).parent.parent
+# Find data directory relative to myotorch package (works in all contexts)
+import myotorch
+_pkg_dir = Path(myotorch.__file__).parent.parent
 DATA_DIR = _pkg_dir / "examples" / "data"
 if not DATA_DIR.exists():
     DATA_DIR = Path.cwd() / "examples" / "data"

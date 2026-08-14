@@ -1,0 +1,6 @@
+myotorch.transforms.Dropout.train
+=================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Dropout.train

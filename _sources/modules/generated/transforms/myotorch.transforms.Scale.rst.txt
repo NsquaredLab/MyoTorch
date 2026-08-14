@@ -1,0 +1,19 @@
+﻿Scale
+=========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Scale
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Scale
+       
+            ~Scale.__init__
+            ~Scale._apply
+        
+        

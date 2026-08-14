@@ -1,6 +1,0 @@
-myoverse.datasets.base.WindowedDataset.get\_sample\_shape
-=========================================================
-
-.. currentmodule:: myoverse.datasets.base
-
-.. automethod:: WindowedDataset.get_sample_shape

@@ -1,0 +1,6 @@
+myotorch.datatypes.EMGData.\_get\_grid\_dimensions
+==================================================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: EMGData._get_grid_dimensions

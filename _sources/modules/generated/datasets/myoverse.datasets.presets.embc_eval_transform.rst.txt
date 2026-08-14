@@ -1,6 +1,0 @@
-﻿myoverse.datasets.presets.embc\_eval\_transform
-===============================================
-
-.. currentmodule:: myoverse.datasets.presets
-
-.. autofunction:: embc_eval_transform

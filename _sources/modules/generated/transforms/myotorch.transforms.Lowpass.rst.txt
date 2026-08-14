@@ -1,0 +1,19 @@
+﻿Lowpass
+===========================
+
+.. currentmodule:: myotorch.transforms
+
+.. autoclass:: Lowpass
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: Lowpass
+       
+            ~Lowpass.__init__
+            ~Lowpass._apply
+        
+        

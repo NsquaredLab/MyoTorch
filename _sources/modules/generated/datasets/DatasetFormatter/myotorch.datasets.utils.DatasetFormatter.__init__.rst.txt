@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DatasetFormatter.\_\_init\_\_
+=====================================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DatasetFormatter.__init__

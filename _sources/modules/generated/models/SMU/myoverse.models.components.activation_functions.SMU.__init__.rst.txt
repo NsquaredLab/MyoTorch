@@ -1,6 +1,0 @@
-myoverse.models.components.activation\_functions.SMU.\_\_init\_\_
-=================================================================
-
-.. currentmodule:: myoverse.models.components.activation_functions
-
-.. automethod:: SMU.__init__

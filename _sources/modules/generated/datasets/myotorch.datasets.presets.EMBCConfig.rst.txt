@@ -1,0 +1,20 @@
+﻿EMBCConfig
+====================================
+
+.. currentmodule:: myotorch.datasets.presets
+
+.. autoclass:: EMBCConfig
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: EMBCConfig
+       
+            ~EMBCConfig.__eq__
+            ~EMBCConfig.__init__
+            ~EMBCConfig.__repr__
+        
+        

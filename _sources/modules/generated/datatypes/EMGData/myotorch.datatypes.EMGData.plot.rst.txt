@@ -1,0 +1,6 @@
+myotorch.datatypes.EMGData.plot
+===============================
+
+.. currentmodule:: myotorch.datatypes
+
+.. automethod:: EMGData.plot

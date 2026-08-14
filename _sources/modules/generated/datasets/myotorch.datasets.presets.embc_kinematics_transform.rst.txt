@@ -1,0 +1,6 @@
+﻿myotorch.datasets.presets.embc\_kinematics\_transform
+=====================================================
+
+.. currentmodule:: myotorch.datasets.presets
+
+.. autofunction:: embc_kinematics_transform

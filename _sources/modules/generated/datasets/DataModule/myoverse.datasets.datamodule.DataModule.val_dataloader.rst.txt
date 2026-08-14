@@ -1,6 +1,0 @@
-myoverse.datasets.datamodule.DataModule.val\_dataloader
-=======================================================
-
-.. currentmodule:: myoverse.datasets.datamodule
-
-.. automethod:: DataModule.val_dataloader

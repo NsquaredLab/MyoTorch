@@ -1,6 +1,0 @@
-myoverse.transforms.ZeroCrossings.\_compute\_window
-===================================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: ZeroCrossings._compute_window

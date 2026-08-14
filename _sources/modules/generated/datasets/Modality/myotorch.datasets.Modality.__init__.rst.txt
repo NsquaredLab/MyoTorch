@@ -1,0 +1,6 @@
+myotorch.datasets.Modality.\_\_init\_\_
+=======================================
+
+.. currentmodule:: myotorch.datasets
+
+.. automethod:: Modality.__init__

@@ -1,6 +1,0 @@
-myoverse.datasets.DatasetCreator.\_store\_array
-===============================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: DatasetCreator._store_array

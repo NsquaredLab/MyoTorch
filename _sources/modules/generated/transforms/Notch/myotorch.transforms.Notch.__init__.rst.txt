@@ -1,0 +1,6 @@
+myotorch.transforms.Notch.\_\_init\_\_
+======================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Notch.__init__

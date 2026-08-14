@@ -1,6 +1,0 @@
-myoverse.datasets.Modality.\_\_repr\_\_
-=======================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: Modality.__repr__

@@ -1,0 +1,6 @@
+myotorch.transforms.IB2.\_\_init\_\_
+====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: IB2.__init__

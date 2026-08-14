@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DatasetFormatter.\_print\_structure\_tree
-=================================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DatasetFormatter._print_structure_tree

@@ -1,0 +1,6 @@
+myotorch.transforms.InstanceNorm.\_apply
+========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: InstanceNorm._apply

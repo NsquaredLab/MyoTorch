@@ -1,0 +1,6 @@
+myotorch.transforms.Transform.\_apply
+=====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Transform._apply

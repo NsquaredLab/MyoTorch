@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DataSplitter.\_split\_middle
-====================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DataSplitter._split_middle

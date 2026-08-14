@@ -1,6 +1,0 @@
-myoverse.datasets.utils.DatasetFormatter.print\_split\_sizes
-============================================================
-
-.. currentmodule:: myoverse.datasets.utils
-
-.. automethod:: DatasetFormatter.print_split_sizes

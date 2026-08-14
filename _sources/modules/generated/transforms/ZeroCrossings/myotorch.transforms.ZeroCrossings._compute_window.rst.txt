@@ -1,0 +1,6 @@
+myotorch.transforms.ZeroCrossings.\_compute\_window
+===================================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: ZeroCrossings._compute_window

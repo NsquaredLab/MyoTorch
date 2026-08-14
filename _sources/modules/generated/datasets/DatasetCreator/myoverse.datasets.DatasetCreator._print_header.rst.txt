@@ -1,6 +1,0 @@
-myoverse.datasets.DatasetCreator.\_print\_header
-================================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: DatasetCreator._print_header

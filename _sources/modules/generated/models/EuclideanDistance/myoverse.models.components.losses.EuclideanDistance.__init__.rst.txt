@@ -1,6 +1,0 @@
-myoverse.models.components.losses.EuclideanDistance.\_\_init\_\_
-================================================================
-
-.. currentmodule:: myoverse.models.components.losses
-
-.. automethod:: EuclideanDistance.__init__

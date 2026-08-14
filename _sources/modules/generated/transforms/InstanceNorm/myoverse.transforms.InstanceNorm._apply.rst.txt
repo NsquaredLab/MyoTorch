@@ -1,6 +1,0 @@
-myoverse.transforms.InstanceNorm.\_apply
-========================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: InstanceNorm._apply

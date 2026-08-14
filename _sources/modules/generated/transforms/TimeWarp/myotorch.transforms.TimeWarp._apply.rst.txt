@@ -1,0 +1,6 @@
+myotorch.transforms.TimeWarp.\_apply
+====================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: TimeWarp._apply

@@ -1,0 +1,6 @@
+myotorch.transforms.Lambda.\_\_init\_\_
+=======================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Lambda.__init__

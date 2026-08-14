@@ -1,0 +1,6 @@
+myotorch.datasets.utils.DataSplitter.split
+==========================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. automethod:: DataSplitter.split

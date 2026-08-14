@@ -1,0 +1,22 @@
+﻿DataSplitter
+====================================
+
+.. currentmodule:: myotorch.datasets.utils
+
+.. autoclass:: DataSplitter
+
+   
+
+   
+   .. rubric:: Methods
+
+   .. autosummary::
+      :toctree: DataSplitter
+       
+            ~DataSplitter.__init__
+            ~DataSplitter._split_middle
+            ~DataSplitter._validate_ratios
+            ~DataSplitter.split
+            ~DataSplitter.split_dict
+        
+        

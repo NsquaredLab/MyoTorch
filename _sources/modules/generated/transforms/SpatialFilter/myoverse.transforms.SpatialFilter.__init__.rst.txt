@@ -1,6 +1,0 @@
-myoverse.transforms.SpatialFilter.\_\_init\_\_
-==============================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: SpatialFilter.__init__

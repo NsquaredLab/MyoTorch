@@ -1,6 +1,0 @@
-myoverse.transforms.Transpose.\_apply
-=====================================
-
-.. currentmodule:: myoverse.transforms
-
-.. automethod:: Transpose._apply

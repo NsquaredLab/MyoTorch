@@ -1,0 +1,6 @@
+myotorch.transforms.Bandpass.\_\_init\_\_
+=========================================
+
+.. currentmodule:: myotorch.transforms
+
+.. automethod:: Bandpass.__init__

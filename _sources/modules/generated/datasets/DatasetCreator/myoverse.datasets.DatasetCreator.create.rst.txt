@@ -1,6 +1,0 @@
-myoverse.datasets.DatasetCreator.create
-=======================================
-
-.. currentmodule:: myoverse.datasets
-
-.. automethod:: DatasetCreator.create
