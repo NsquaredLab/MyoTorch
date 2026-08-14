@@ -22,8 +22,6 @@ import os
 
 import toml
 
-# Initialize zarr with zarrs codec pipeline (must be done before any zarr imports)
-from myotorch.io import zarr_io as _zarr_io  # noqa: F401
 
 # Try multiple methods to get the version
 try:
@@ -43,5 +41,36 @@ except Exception:
     # If all methods fail, we at least have a default
     __version__ = "unknown"
 
-# Re-export commonly used utilities for convenient access
-from myotorch.transforms.base import emg_tensor, named_tensor  # noqa: E402
+# Submodules and convenience re-exports resolve lazily (PEP 562): importing
+# myotorch stays cheap (~30 ms instead of ~2.2 s pulling torch + lightning).
+_LAZY_SUBMODULES = ("datasets", "datatypes", "io", "models", "tracking", "transforms")
+_LAZY_ATTRS = {"emg_tensor": "myotorch.transforms.base",
+               "named_tensor": "myotorch.transforms.base"}
+
+__all__ = [*_LAZY_SUBMODULES, *_LAZY_ATTRS, "__version__"]
+
+_zarr_initialized = False
+
+
+def _ensure_zarr_init():
+    """zarr codec-pipeline config must run before myotorch touches zarr."""
+    global _zarr_initialized
+    if not _zarr_initialized:
+        import myotorch.io.zarr_io  # noqa: F401
+        _zarr_initialized = True
+
+
+def __getattr__(name):
+    import importlib
+
+    if name in _LAZY_SUBMODULES:
+        _ensure_zarr_init()
+        return importlib.import_module(f"myotorch.{name}")
+    if name in _LAZY_ATTRS:
+        _ensure_zarr_init()
+        return getattr(importlib.import_module(_LAZY_ATTRS[name]), name)
+    raise AttributeError(f"module 'myotorch' has no attribute {name!r}")
+
+
+def __dir__():
+    return sorted(__all__)

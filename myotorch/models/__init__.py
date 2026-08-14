@@ -28,7 +28,18 @@ from myotorch.models.components import (
     PSerf,
     WeightedSum,
 )
-from myotorch.models.raul_net import RaulNetV16, RaulNetV17, RaulNetV18, RaulNetV19
+_LAZY = {"RaulNetV16": "myotorch.models.raul_net.v16",
+         "RaulNetV17": "myotorch.models.raul_net.v17",
+         "RaulNetV18": "myotorch.models.raul_net.v18",
+         "RaulNetV19": "myotorch.models.raul_net.v19"}
+
+
+def __getattr__(name):
+    if name in _LAZY:
+        import importlib
+
+        return getattr(importlib.import_module(_LAZY[name]), name)
+    raise AttributeError(f"module 'myotorch.models' has no attribute {name!r}")
 
 __all__ = [
     # Models
