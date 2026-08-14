@@ -36,10 +36,11 @@ class TestModelAPI:
 
     def test_models_exported_from_package(self):
         """Test that main models are exported from myotorch.models."""
-        from myotorch.models import RaulNetV16, RaulNetV17
+        from myotorch.models import RaulNetV16, RaulNetV17, RaulNetV18
 
         assert RaulNetV16 is not None
         assert RaulNetV17 is not None
+        assert RaulNetV18 is not None
 
     def test_components_exported_from_package(self):
         """Test that components are exported from myotorch.models."""

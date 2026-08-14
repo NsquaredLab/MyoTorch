@@ -28,12 +28,13 @@ from myotorch.models.components import (
     PSerf,
     WeightedSum,
 )
-from myotorch.models.raul_net import RaulNetV16, RaulNetV17
+from myotorch.models.raul_net import RaulNetV16, RaulNetV17, RaulNetV18
 
 __all__ = [
     # Models
     "RaulNetV16",
     "RaulNetV17",
+    "RaulNetV18",
     # Components
     "EuclideanDistance",
     "PSerf",
