@@ -12,5 +12,9 @@ References
 
 from myotorch.models.raul_net.v16 import RaulNetV16
 from myotorch.models.raul_net.v17 import RaulNetV17
+from myotorch.models.raul_net.v18 import RaulNetV18
+from myotorch.models.raul_net.v19 import RaulNetV19
 
-__all__ = ["RaulNetV16", "RaulNetV17"]
+__all__ = ["RaulNetV16", "RaulNetV17",
+    "RaulNetV18",
+    "RaulNetV19"]
