@@ -483,9 +483,9 @@ Note: For real training, increase max_epochs and n_windows_per_epoch.
     /home/runner/work/MyoTorch/MyoTorch/.venv/lib/python3.12/site-packages/lightning/pytorch/core/module.py:522: You called `self.log('val/val_loss', ..., logger=True)` but have no logger configured. You can enable one by doing `Trainer(logger=ALogger(...))`
     /home/runner/work/MyoTorch/MyoTorch/.venv/lib/python3.12/site-packages/lightning/pytorch/loops/fit_loop.py:538: Found 20 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
     /home/runner/work/MyoTorch/MyoTorch/.venv/lib/python3.12/site-packages/lightning/pytorch/core/module.py:522: You called `self.log('train/loss', ..., logger=True)` but have no logger configured. You can enable one by doing `Trainer(logger=ALogger(...))`
-    Epoch 0/0  ━━━━━━━━━━━━━━━━━ 16/16 0:00:09 • 0:00:00 1.69it/s loss_step: 53.673 
-                                                                  val_loss: 54.028  
-                                                                  loss_epoch: 54.245
+    Epoch 0/0  ━━━━━━━━━━━━━━━━━ 16/16 0:00:10 • 0:00:00 1.61it/s loss_step: 54.666 
+                                                                  val_loss: 54.202  
+                                                                  loss_epoch: 54.316
 
 
 
@@ -536,9 +536,9 @@ Key benefits:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 13.342 seconds)
+   **Total running time of the script:** (0 minutes 14.207 seconds)
 
-**Estimated memory usage:**  674 MB
+**Estimated memory usage:**  671 MB
 
 
 .. _sphx_glr_download_auto_examples_01_tutorials_4_train_model.py:

@@ -723,9 +723,9 @@ All transforms:
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 7.907 seconds)
+   **Total running time of the script:** (0 minutes 9.225 seconds)
 
-**Estimated memory usage:**  937 MB
+**Estimated memory usage:**  835 MB
 
 
 .. _sphx_glr_download_auto_examples_02_filters_2_temporal_filters.py:

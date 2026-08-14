@@ -559,9 +559,9 @@ about which dimension is being processed.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** (0 minutes 6.589 seconds)
+   **Total running time of the script:** (0 minutes 7.302 seconds)
 
-**Estimated memory usage:**  938 MB
+**Estimated memory usage:**  888 MB
 
 
 .. _sphx_glr_download_auto_examples_01_tutorials_2_complex_filtering.py:
