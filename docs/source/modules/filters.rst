@@ -8,7 +8,7 @@ Works on both CPU and GPU - tensors provide dimension awareness everywhere.
 
 Base Classes
 ------------
-.. currentmodule:: myoverse.transforms
+.. currentmodule:: myotorch.transforms
 .. autosummary::
     :toctree: generated/transforms
     :template: class.rst
@@ -19,7 +19,7 @@ Temporal / Signal Processing
 ----------------------------
 Temporal transforms for EMG feature extraction and signal processing.
 
-.. currentmodule:: myoverse.transforms
+.. currentmodule:: myotorch.transforms
 .. autosummary::
     :toctree: generated/transforms
     :template: class.rst
@@ -42,7 +42,7 @@ Normalization
 -------------
 Normalization transforms for data preprocessing.
 
-.. currentmodule:: myoverse.transforms
+.. currentmodule:: myotorch.transforms
 .. autosummary::
     :toctree: generated/transforms
     :template: class.rst
@@ -60,7 +60,7 @@ Generic Operations
 ------------------
 Generic array operations.
 
-.. currentmodule:: myoverse.transforms
+.. currentmodule:: myotorch.transforms
 .. autosummary::
     :toctree: generated/transforms
     :template: class.rst
@@ -84,7 +84,7 @@ Augmentation
 ------------
 Data augmentation transforms.
 
-.. currentmodule:: myoverse.transforms
+.. currentmodule:: myotorch.transforms
 .. autosummary::
     :toctree: generated/transforms
     :template: class.rst
@@ -102,7 +102,7 @@ Spatial / Grid-Aware
 --------------------
 Spatial transforms for electrode grid processing.
 
-.. currentmodule:: myoverse.transforms
+.. currentmodule:: myotorch.transforms
 .. autosummary::
     :toctree: generated/transforms
     :template: class.rst

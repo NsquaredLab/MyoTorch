@@ -1,7 +1,7 @@
 import numpy as np
 import pytest
 
-from myoverse.datasets.filters.generic import _get_windows_with_shift
+from myotorch.datasets.filters.generic import _get_windows_with_shift
 
 
 class TestGetWindowsWithShift:

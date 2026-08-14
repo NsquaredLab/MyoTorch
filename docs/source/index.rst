@@ -1,4 +1,4 @@
-.. |logo| image:: _static/myoverse_logo.png
+.. |logo| image:: _static/myotorch_logo.png
    :height: 80px
    :align: middle
 
@@ -7,9 +7,9 @@ Welcome to |logo|
 
 **The AI toolkit for myocontrol research**
 
-MyoVerse is your cutting-edge **research** companion for unlocking the secrets hidden within biomechanical data! It's specifically designed for exploring the complex interplay between **electromyography (EMG)** signals, **kinematics** (movement), and **kinetics** (forces).
+MyoTorch is your cutting-edge **research** companion for unlocking the secrets hidden within biomechanical data! It's specifically designed for exploring the complex interplay between **electromyography (EMG)** signals, **kinematics** (movement), and **kinetics** (forces).
 
-Leveraging the power of **PyTorch** and **PyTorch Lightning**, MyoVerse provides a comprehensive suite of tools for researchers and developers working with myoelectric signal analysis and AI-driven biomechanical applications.
+Leveraging the power of **PyTorch** and **PyTorch Lightning**, MyoTorch provides a comprehensive suite of tools for researchers and developers working with myoelectric signal analysis and AI-driven biomechanical applications.
 
 .. raw:: html
 
@@ -28,12 +28,12 @@ Key Features
 * Essential **utilities** to streamline the research workflow
 
 .. important::
-   MyoVerse is built for **research**. While powerful, it's evolving and may not have the same level of stability as foundational libraries like NumPy.
+   MyoTorch is built for **research**. While powerful, it's evolving and may not have the same level of stability as foundational libraries like NumPy.
 
 Package Structure
 ----------------
 
-* **myoverse**: Main package containing:
+* **myotorch**: Main package containing:
    * **datasets**: Data loaders, dataset creators, and preprocessing filters
    * **models**: AI models and components for training and evaluation
    * **utils**: Support for data handling, model training, and analysis
@@ -42,7 +42,7 @@ Package Structure
 Research
 ----------------------
 
-MyoVerse has been used in several publications:
+MyoTorch has been used in several publications:
 
 * IEEE Transactions on Biomedical Engineering (10.1109/TBME.2024.3432800)
 * Journal of Neural Engineering (10.1088/1741-2552/ad3498)

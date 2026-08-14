@@ -15,12 +15,12 @@ base_dir = Path.cwd().parent.parent
 sys.path.insert(0, str(base_dir))
 sys.path.insert(0, os.path.abspath('..'))
 sys.path.insert(0, os.path.abspath('../..'))
-sys.path.insert(0, os.path.abspath('../../myoverse'))
-sys.path.insert(0, os.path.abspath('../../../myoverse'))
+sys.path.insert(0, os.path.abspath('../../myotorch'))
+sys.path.insert(0, os.path.abspath('../../../myotorch'))
 
 print(os.path.abspath('..'))
 
-import myoverse # noqa
+import myotorch # noqa
 
 # Project Information
 poetry_info = toml.load(base_dir / "pyproject.toml")["project"]
@@ -98,21 +98,21 @@ exclude_patterns = ["auto_examples/", "Thumbs.db", ".DS_Store"]
 html_context = {
     "AUTHOR": author,
     "VERSION": version,
-    "DESCRIPTION": "MyoVerse is a Python package for the analysis of myoelectric signals and hand kinematics.",
+    "DESCRIPTION": "MyoTorch is a Python package for the analysis of myoelectric signals and hand kinematics.",
     "github_user": "NsquaredLab",
-    "github_repo": "MyoVerse",
+    "github_repo": "MyoTorch",
     "github_version": "master",
     "doc_path": "docs",
 }
 
 html_theme = "pydata_sphinx_theme"
 html_theme_options = {
-    "github_url": "https://github.com/NsquaredLab/MyoVerse",
+    "github_url": "https://github.com/NsquaredLab/MyoTorch",
     "navbar_start": ["navbar-logo", "navbar-version.html", "header-text.html"],
     "show_prev_next": False,
 }
 html_static_path = ["_static"]
-html_logo = "_static/myoverse_logo.png"
+html_logo = "_static/myotorch_logo.png"
 html_css_files = ["custom.css"]
 html_title = f"{project} {version} Documentation"
 

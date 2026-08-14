@@ -4,7 +4,7 @@ import numpy as np
 import pytest
 from functools import partial
 
-from myoverse.datasets.filters.generic import (
+from myotorch.datasets.filters.generic import (
     ApplyFunctionFilter,
     IndexDataFilter,
     ChunkizeDataFilter,

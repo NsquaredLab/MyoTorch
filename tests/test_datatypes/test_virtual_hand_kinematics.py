@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from unittest.mock import patch, MagicMock
 
-from myoverse.datatypes import VirtualHandKinematics
+from myotorch.datatypes import VirtualHandKinematics
 
 
 class TestVirtualHandKinematics(unittest.TestCase):

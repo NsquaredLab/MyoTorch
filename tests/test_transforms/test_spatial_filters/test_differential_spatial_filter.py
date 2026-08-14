@@ -2,7 +2,7 @@ import unittest
 
 import numpy as np
 
-from myoverse.datasets.filters.spatial import DifferentialSpatialFilter
+from myotorch.datasets.filters.spatial import DifferentialSpatialFilter
 
 
 class TestDifferentialSpatialFilter(unittest.TestCase):

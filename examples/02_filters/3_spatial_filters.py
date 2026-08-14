@@ -3,7 +3,7 @@
 Applying Spatial Filters to EMG Data
 ====================================
 
-This example demonstrates how to use spatial filters on EMG data using MyoVerse.
+This example demonstrates how to use spatial filters on EMG data using MyoTorch.
 Spatial filters operate on electrode grids to compute spatial derivatives and
 enhance local patterns while reducing common-mode noise.
 
@@ -18,8 +18,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import torch
 
-import myoverse
-from myoverse.transforms import NDD, LSD, TSD, IB2, Compose, RMS, Bandpass
+import myotorch
+from myotorch.transforms import NDD, LSD, TSD, IB2, Compose, RMS, Bandpass
 
 plt.style.use("fivethirtyeight")
 plt.rcParams["axes.grid"] = False
@@ -30,8 +30,8 @@ plt.rcParams["axes.grid"] = False
 # Load EMG data and create a tensor with grid layouts.
 
 # Get the path to the data file
-# Find data directory relative to myoverse package (works in all contexts)
-_pkg_dir = Path(myoverse.__file__).parent.parent
+# Find data directory relative to myotorch package (works in all contexts)
+_pkg_dir = Path(myotorch.__file__).parent.parent
 DATA_DIR = _pkg_dir / "examples" / "data"
 if not DATA_DIR.exists():
     DATA_DIR = Path.cwd() / "examples" / "data"
@@ -46,7 +46,7 @@ grid1 = np.arange(64).reshape(8, 8)  # 8x8 grid
 grid2 = np.arange(64, 80).reshape(4, 4)  # 4x4 grid
 
 # Create EMG tensor with grid layouts
-emg = myoverse.emg_tensor(
+emg = myotorch.emg_tensor(
     raw_data,
     grid_layouts=[grid1, grid2],
     fs=SAMPLING_FREQ,
@@ -172,7 +172,7 @@ plot_spatial_filter(emg_ib2, [grid1, grid2], "IB2 Filter - All Grids")
 # --------------------------------------
 # Spatial filters can be combined with temporal filters in a pipeline.
 
-from myoverse.transforms import Stack
+from myotorch.transforms import Stack
 
 # Compose: Bandpass -> NDD -> RMS
 pipeline = Compose([
@@ -252,7 +252,7 @@ else:
 #
 # Key points:
 #
-# 1. Create EMG data with ``myoverse.emg_tensor(data, grid_layouts=[...])``
+# 1. Create EMG data with ``myotorch.emg_tensor(data, grid_layouts=[...])``
 # 2. Grid layouts are stored as tensor attributes
 # 3. Spatial filters read grid info automatically
 # 4. Combine with temporal filters using ``Compose``

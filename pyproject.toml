@@ -1,5 +1,5 @@
 [project]
-name = "MyoVerse"
+name = "myotorch"
 version = "2.0.0"
 description = "AI toolkit for myocontrol research, processing EMG signals, kinematics, and kinetics using PyTorch."
 readme = "README.md"
@@ -54,10 +54,10 @@ url = "https://download.pytorch.org/whl/cu124"
 explicit = true
 
 [project.urls]
-"PyPI" = "https://pypi.org/project/MyoVerse/"
+"PyPI" = "https://pypi.org/project/MyoTorch/"
 "PyTorch CUDA Wheels" = "https://download.pytorch.org/whl/cu124/"
-"GitHub" = "https://github.com/NsquaredLab/MyoVerse"
-"Documentation" = "https://nsquaredlab.github.io/MyoVerse/"
+"GitHub" = "https://github.com/NsquaredLab/MyoTorch"
+"Documentation" = "https://nsquaredlab.github.io/MyoTorch/"
 
 [dependency-groups]
 docs = [
@@ -86,7 +86,7 @@ include-package-data = true
 
 [tool.setuptools.packages.find]
 where = ["."]
-include = ["myoverse*"]
+include = ["myotorch*"]
 
 [tool.setuptools.package-data]
-myoverse = ["py.typed"]
+myotorch = ["py.typed"]

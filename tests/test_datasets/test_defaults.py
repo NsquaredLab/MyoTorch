@@ -7,18 +7,18 @@ import shutil
 import warnings
 from unittest.mock import patch, MagicMock
 
-from myoverse.datasets.defaults import EMBCDataset, CastelliniDataset
-from myoverse.datasets.filters.emg_augmentations import (
+from myotorch.datasets.defaults import EMBCDataset, CastelliniDataset
+from myotorch.datasets.filters.emg_augmentations import (
     GaussianNoise,
     MagnitudeWarping,
     WaveletDecomposition,
 )
-from myoverse.datasets.filters.generic import (
+from myotorch.datasets.filters.generic import (
     ApplyFunctionFilter,
     IndexDataFilter,
     IdentityFilter,
 )
-from myoverse.datasets.filters.temporal import RMSFilter, SOSFrequencyFilter
+from myotorch.datasets.filters.temporal import RMSFilter, SOSFrequencyFilter
 
 
 class TestDefaultDatasets(unittest.TestCase):
@@ -69,7 +69,7 @@ class TestDefaultDatasets(unittest.TestCase):
         # Remove temporary directory
         shutil.rmtree(self.temp_dir)
 
-    @patch("myoverse.datasets.defaults.EMGDataset")
+    @patch("myotorch.datasets.defaults.EMGDataset")
     def test_embc_dataset_initialization(self, mock_emg_dataset):
         """Test initialization of EMBCDataset."""
         # Create the EMBC dataset
@@ -106,7 +106,7 @@ class TestDefaultDatasets(unittest.TestCase):
             embc_dataset_with_data.ground_truth_data, self.ground_truth_data
         )
 
-    @patch("myoverse.datasets.defaults.EMGDataset")
+    @patch("myotorch.datasets.defaults.EMGDataset")
     def test_embc_dataset_create(self, mock_emg_dataset):
         """Test creating the EMBC dataset configuration."""
         # Create a mock instance for the EMGDataset class
@@ -162,7 +162,7 @@ class TestDefaultDatasets(unittest.TestCase):
         # Verify that create_dataset was called on the instance
         mock_instance.create_dataset.assert_called_once()
 
-    @patch("myoverse.datasets.defaults.EMGDataset")
+    @patch("myotorch.datasets.defaults.EMGDataset")
     def test_castellini_dataset_initialization(self, mock_emg_dataset):
         """Test initialization of CastelliniDataset."""
         # Create the Castellini dataset
@@ -199,7 +199,7 @@ class TestDefaultDatasets(unittest.TestCase):
             castellini_dataset_with_data.ground_truth_data, self.ground_truth_data
         )
 
-    @patch("myoverse.datasets.defaults.EMGDataset")
+    @patch("myotorch.datasets.defaults.EMGDataset")
     def test_castellini_dataset_create(self, mock_emg_dataset):
         """Test creating the Castellini dataset configuration."""
         # Create a mock instance for the EMGDataset class
@@ -299,7 +299,7 @@ class TestDefaultDatasets(unittest.TestCase):
         # Verify that create_dataset was called on the instance
         mock_instance.create_dataset.assert_called_once()
 
-    @patch("myoverse.datasets.supervised.EMGDataset.create_dataset")
+    @patch("myotorch.datasets.supervised.EMGDataset.create_dataset")
     def test_embc_dataset_integration(self, mock_create_dataset):
         """Test EMBC dataset with a mocked create_dataset method."""
         # Create the EMBC dataset
@@ -318,7 +318,7 @@ class TestDefaultDatasets(unittest.TestCase):
         # Check that create_dataset was called
         mock_create_dataset.assert_called_once()
 
-    @patch("myoverse.datasets.supervised.EMGDataset.create_dataset")
+    @patch("myotorch.datasets.supervised.EMGDataset.create_dataset")
     def test_castellini_dataset_integration(self, mock_create_dataset):
         """Test Castellini dataset with a mocked create_dataset method."""
         # Create the Castellini dataset

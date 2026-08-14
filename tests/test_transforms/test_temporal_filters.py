@@ -6,7 +6,7 @@ import pytest
 from scipy.signal import butter
 from scipy.fft import rfft, rfftfreq
 
-from myoverse.datasets.filters.temporal import (
+from myotorch.datasets.filters.temporal import (
     SSCFilter,
     SpectralInterpolationFilter,
     RMSFilter,
@@ -2067,7 +2067,7 @@ class TestTemporalFilters(unittest.TestCase):
 
     def test_SpectralInterpolationFilter_specific_frequencies(self):
         """Test that the filter specifically targets the given frequencies."""
-        from myoverse.datasets.filters.temporal import SpectralInterpolationFilter
+        from myotorch.datasets.filters.temporal import SpectralInterpolationFilter
 
         # Create test data with specific frequencies
         fs = 2000  # Sample frequency 2 kHz
