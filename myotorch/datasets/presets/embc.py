@@ -112,7 +112,9 @@ def embc_train_transform(
         Stack(
             {
                 "raw": Identity(),
-                "filtered": Lowpass(
+                # Legacy config on purpose: published EMBC checkpoints were
+                # trained with the clamped biquad cascade and depend on it.
+                "filtered": Lowpass.legacy(
                     cfg.lowpass_cutoff, fs=cfg.sampling_frequency, dim="time"
                 ),
             },
@@ -149,7 +151,9 @@ def embc_eval_transform(config: EMBCConfig | None = None) -> Compose:
             Stack(
                 {
                     "raw": Identity(),
-                    "filtered": Lowpass(
+                    # Legacy config on purpose: published EMBC checkpoints were
+                    # trained with the clamped biquad cascade and depend on it.
+                    "filtered": Lowpass.legacy(
                         cfg.lowpass_cutoff, fs=cfg.sampling_frequency, dim="time"
                     ),
                 },

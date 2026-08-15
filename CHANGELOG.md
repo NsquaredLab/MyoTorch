@@ -7,6 +7,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Breaking Changes
+- **`Lowpass`/`Highpass`/`Bandpass` default filter changed**: the old torchaudio biquad cascade clamped every pass to [-1, 1] (saturating 94.7% of raw EMG samples) and started from zero filter state each call (~48% of a 320-sample window was startup transient). The new default is an unclamped scipy-designed Butterworth SOS run through `torchaudio.functional.lfilter` with an edge-replication warmup that approximates persistent-state streaming. Outputs therefore change for any pipeline using the defaults. Checkpoints trained with the old preprocessing must use `Lowpass.legacy(...)` (and the matching `Highpass.legacy`/`Bandpass.legacy`), which reproduces the old behavior bit-for-bit; the EMBC presets now pin `Lowpass.legacy` for this reason. A one-time warning is emitted when a clamping config sees input outside [-1, 1]. Note: at the same `order`, the new true-Butterworth design is shallower than the legacy biquad cascade (order=4: −24 dB at 2× cutoff vs −49 dB, since the cascade stacked 4 biquads = 8 poles); pass `order=8` for comparable steepness.
+
 ## [2.0.0] - 2026-01-22
 
 ### Breaking Changes
