@@ -10,6 +10,37 @@ import numpy as np
 T = TypeVar("T", bound=np.ndarray)
 
 
+def center_bounds(n_samples: int, ratio: float) -> tuple[int, int]:
+    """Indices of the centered extraction, preserving integer rounding."""
+    half_amount = int(n_samples * ratio / 2)
+    middle = n_samples // 2
+    return middle - half_amount, middle + half_amount
+
+
+def splice_positions(
+    n_samples: int, test_ratio: float, val_ratio: float,
+) -> dict[str, list[int]]:
+    """Splices in each split after the two centered extractions.
+
+    ``n_samples`` is the original recording length (the sum of all three
+    stored split lengths), not the length of an individual split. Validation
+    is extracted from testing, so its fraction is ``test_ratio * val_ratio``.
+    Empty extractions and joins at an endpoint are not recording boundaries.
+    """
+    positions = {"training": [], "testing": [], "validation": []}
+    if test_ratio == 0:
+        return positions
+    start, end = center_bounds(n_samples, test_ratio)
+    if 0 < start < n_samples - (end - start) and end > start:
+        positions["training"] = [start]
+    if val_ratio > 0:
+        n_testing = end - start
+        start, end = center_bounds(n_testing, val_ratio)
+        if 0 < start < n_testing - (end - start) and end > start:
+            positions["testing"] = [start]
+    return positions
+
+
 @dataclass
 class SplitResult:
     """Result of a data split operation.
@@ -133,12 +164,11 @@ class DataSplitter:
 
         """
         n_samples = data.shape[0]
-        split_amount = int(n_samples * ratio / 2)
-        middle_index = n_samples // 2
+        start, end = center_bounds(n_samples, ratio)
 
         # Create mask for training data (excludes middle portion)
         mask = np.ones(n_samples, dtype=bool)
-        mask[middle_index - split_amount : middle_index + split_amount] = False
+        mask[start:end] = False
 
         return data[mask], data[~mask]
 

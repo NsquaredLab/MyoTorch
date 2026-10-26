@@ -132,6 +132,10 @@ class DataModule(L.LightningDataModule):
         Data type for tensors.
     cache_in_ram : bool
         Cache entire split in RAM.
+    context : int
+        Real history for inputs in every split, default 0. Targets keep their
+        original window size. With context > 0, windows and their history
+        stay within continuous pieces; crop inputs after filtering.
 
     Examples
     --------
@@ -170,6 +174,7 @@ class DataModule(L.LightningDataModule):
         device: torch.device | str | None = None,
         dtype: torch.dtype = torch.float32,
         cache_in_ram: bool = True,
+        context: int = 0,
     ):
         super().__init__()
         self.data_path = Path(data_path)
@@ -189,6 +194,7 @@ class DataModule(L.LightningDataModule):
         self.device = device
         self.dtype = dtype
         self.cache_in_ram = cache_in_ram
+        self.context = context
 
         if not self.data_path.exists():
             raise FileNotFoundError(f"Dataset not found: {self.data_path}")
@@ -215,6 +221,7 @@ class DataModule(L.LightningDataModule):
                 device=self.device,
                 dtype=self.dtype,
                 cache_in_ram=self.cache_in_ram,
+                context=self.context,
             )
             self.val_dataset = SupervisedDataset(
                 self.data_path,
@@ -228,6 +235,7 @@ class DataModule(L.LightningDataModule):
                 device=self.device,
                 dtype=self.dtype,
                 cache_in_ram=self.cache_in_ram,
+                context=self.context,
             )
 
             # Pre-load cache in main process before workers are spawned
@@ -249,6 +257,7 @@ class DataModule(L.LightningDataModule):
                 device=self.device,
                 dtype=self.dtype,
                 cache_in_ram=self.cache_in_ram,
+                context=self.context,
             )
 
             # Pre-load cache in main process before workers are spawned

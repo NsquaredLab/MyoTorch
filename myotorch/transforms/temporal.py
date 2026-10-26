@@ -3,8 +3,10 @@
 All transforms work with named tensors and run on any device (CPU, CUDA, MPS).
 
 Filter implementations:
-- Bandpass, Highpass, Lowpass: Use torchaudio IIR biquad filters for proper
-  Butterworth-style roll-off. Multiple passes can be applied for steeper slopes.
+- Bandpass, Highpass, Lowpass: scipy-designed Butterworth SOS run through
+  ``torchaudio.functional.lfilter`` (unclamped, from zero state) by default.
+  The legacy clamped torchaudio biquad cascade is available via
+  ``design="biquad_cascade"`` / the ``.legacy()`` classmethods.
 - Notch: Uses FFT-based filtering for sharp, precise narrow-band removal
   (ideal for powerline interference at 50/60 Hz).
 
@@ -27,6 +29,9 @@ Example:
 """
 
 from __future__ import annotations
+
+import math
+import warnings
 
 import torch
 import torchaudio.functional as AF
@@ -169,11 +174,134 @@ class Rectify(TensorTransform):
         return torch.abs(x)
 
 
-class Bandpass(TensorTransform):
-    """Bandpass filter using cascaded torchaudio biquads (GPU-accelerated).
+class _ButterworthFilter(TensorTransform):
+    """Shared machinery for Bandpass/Highpass/Lowpass (GPU-accelerated).
 
-    Uses cascaded highpass and lowpass IIR biquad filters for proper
-    Butterworth-style roll-off at both cutoff frequencies.
+    Two designs:
+
+    - ``design="butter"`` (default): proper Butterworth SOS computed once via
+      ``scipy.signal.butter``, run section-by-section through
+      ``torchaudio.functional.lfilter(clamp=False)``. Torch-differentiable,
+      runs on any device. ``Q`` is ignored (the Butterworth design fixes it).
+    - ``design="biquad_cascade"``: the legacy loop over torchaudio
+      ``*_biquad`` calls. torchaudio hardcodes output clamping to [-1, 1] on
+      this path, so it saturates any signal outside that range (raw EMG spans
+      thousands of units — 94.7% of samples saturated in measurement), and its
+      zero filter state per call makes ~half of a 320-sample window startup
+      transient. Kept only so existing checkpoints keep their exact
+      preprocessing; construct it via the ``.legacy()`` classmethods.
+
+    Filters have memory and each call starts from zero state. Per-window use
+    needs ``context_samples`` of real preceding history, supplied by the
+    dataset's ``context``, followed by
+    ``Index(slice(-window_size, None), dim="time")`` to crop that history.
+    At 20 Hz / 2048 Hz, the fourth-order lowpass contains 99% of its impulse
+    energy within 57 ms and 99.9% within 82 ms; its response stays above 1%
+    of peak for 114 ms, compared with a 156 ms (320-sample) window. On measured
+    EMG, mean deviation from continuous filtering was 21% without history,
+    56% with repeated-edge padding (348% in the first 32 samples), 0.2% with
+    205 real samples, and 0.0% rounded with 410 real samples (200 ms).
+    Finite history approximates persistent state; it is not an exact reset.
+    """
+
+    def __init__(
+        self,
+        *,
+        fs: float,
+        order: int,
+        Q: float,
+        dim: str,
+        clamp: bool,
+        design: str,
+        **kwargs,
+    ):
+        super().__init__(dim=dim, **kwargs)
+        self.fs = fs
+        self.order = order
+        self.Q = Q
+        self.clamp = clamp
+        self.design = design
+
+        if design not in ("butter", "biquad_cascade"):
+            raise ValueError(f"design must be 'butter' or 'biquad_cascade', got {design!r}")
+        self._sos: torch.Tensor | None = None
+        if design == "butter":
+            self._sos = torch.as_tensor(self._design_sos(), dtype=torch.float64)
+        self._warned_clamp = False
+
+    def _lowest_cutoff(self) -> float:
+        """Lowest cutoff in Hz — sets the history duration."""
+        raise NotImplementedError
+
+    @property
+    def context_samples(self) -> int:
+        """Recommended real history: ``ceil(4 * fs / lowest_cutoff)`` samples.
+
+        This is 410 samples for 20 Hz at 2048 Hz. Supply it as the dataset's
+        ``context`` and crop after filtering with
+        ``Index(slice(-window_size, None), dim="time")``.
+        """
+        return math.ceil(4 * self.fs / self._lowest_cutoff())
+
+    def _design_sos(self):
+        """Return the scipy Butterworth SOS array, shape (n_sections, 6)."""
+        raise NotImplementedError
+
+    def _legacy_biquads(self, x: torch.Tensor) -> torch.Tensor:
+        """The pre-fix torchaudio biquad cascade (clamped, zero state)."""
+        raise NotImplementedError
+
+    def _apply(self, x: torch.Tensor) -> torch.Tensor:
+        dim_idx = get_dim_index(x, self.dim)
+        names = x.names
+
+        x = x.rename(None)
+
+        # Move time dimension to last if not already
+        if dim_idx != x.ndim - 1:
+            x = x.movedim(dim_idx, -1)
+
+        # torchaudio's biquad path hardcodes clamping regardless of self.clamp
+        clamps = self.clamp or self.design == "biquad_cascade"
+        if clamps and not self._warned_clamp:
+            peak = x.abs().max().item()
+            if peak > 1:
+                warnings.warn(
+                    f"{self.name}: input exceeds [-1, 1] (max abs {peak:.3g}) but the "
+                    "filter clamps its output to [-1, 1], so the output will saturate. "
+                    "Rescale the input, or use the default design='butter' with "
+                    "clamp=False (only .legacy() configs need the clamped path).",
+                    stacklevel=2,
+                )
+                self._warned_clamp = True
+
+        if self.design == "butter":
+            sos = self._sos.to(device=x.device, dtype=x.dtype)
+            for section in sos:
+                x = AF.lfilter(
+                    x, a_coeffs=section[3:], b_coeffs=section[:3], clamp=self.clamp
+                )
+        else:
+            x = self._legacy_biquads(x)
+
+        # Move time dimension back
+        if dim_idx != x.ndim - 1:
+            x = x.movedim(-1, dim_idx)
+
+        if names[0] is not None:
+            x = x.rename(*names)
+
+        return x
+
+
+class Bandpass(_ButterworthFilter):
+    """Bandpass filter (GPU-accelerated).
+
+    Default is an unclamped Butterworth SOS design starting from zero state.
+    The filter has memory: per-window use needs ``context_samples`` of real
+    history via the dataset's ``context``, then
+    ``Index(slice(-window_size, None), dim="time")``. See ``_ButterworthFilter``
+    for measured history errors and the legacy clamped design.
 
     Parameters
     ----------
@@ -184,11 +312,18 @@ class Bandpass(TensorTransform):
     fs : float
         Sampling frequency in Hz.
     order : int
-        Filter order (number of biquad passes per filter). Default 4.
+        Filter order. For ``design="butter"`` this is scipy's bandpass order
+        (the resulting filter has 2*order poles); for the legacy cascade it is
+        the number of biquad passes per edge. Default 4.
     Q : float
-        Quality factor. Default 0.707 for Butterworth response.
+        Quality factor for the legacy biquad cascade only; ignored by
+        ``design="butter"``. Default 0.707.
     dim : str
         Dimension to filter over.
+    clamp : bool
+        Clamp filter output to [-1, 1]. Default False.
+    design : str
+        "butter" (default) or "biquad_cascade" (legacy).
 
     Examples
     --------
@@ -206,25 +341,49 @@ class Bandpass(TensorTransform):
         order: int = 4,
         Q: float = 0.707,
         dim: str = "time",
+        clamp: bool = False,
+        design: str = "butter",
         **kwargs,
     ):
-        super().__init__(dim=dim, **kwargs)
         self.low = low
         self.high = high
-        self.fs = fs
-        self.order = order
-        self.Q = Q
+        super().__init__(
+            fs=fs, order=order, Q=Q, dim=dim, clamp=clamp, design=design,
+            **kwargs,
+        )
 
-    def _apply(self, x: torch.Tensor) -> torch.Tensor:
-        dim_idx = get_dim_index(x, self.dim)
-        names = x.names
+    @classmethod
+    def legacy(
+        cls,
+        low: float,
+        high: float,
+        fs: float,
+        order: int = 4,
+        Q: float = 0.707,
+        dim: str = "time",
+    ) -> Bandpass:
+        """Pre-fix configuration: clamped torchaudio biquad cascade, no warmup.
 
-        x = x.rename(None)
+        Bit-for-bit identical to the original Bandpass. Existing checkpoints
+        were trained with this preprocessing and depend on it.
+        """
+        return cls(
+            low, high, fs, order=order, Q=Q, dim=dim,
+            clamp=True, design="biquad_cascade",
+        )
 
-        # Move time dimension to last if not already
-        if dim_idx != x.ndim - 1:
-            x = x.movedim(dim_idx, -1)
+    def _lowest_cutoff(self) -> float:
+        return self.low
 
+    def _design_sos(self):
+        from scipy.signal import butter
+
+        return butter(
+            self.order, [self.low, self.high], btype="bandpass",
+            fs=self.fs, output="sos",
+        )
+
+    def _legacy_biquads(self, x: torch.Tensor) -> torch.Tensor:
         # Apply highpass at low cutoff (removes frequencies below low)
         for _ in range(self.order):
             x = AF.highpass_biquad(x, self.fs, self.low, self.Q)
@@ -233,21 +392,17 @@ class Bandpass(TensorTransform):
         for _ in range(self.order):
             x = AF.lowpass_biquad(x, self.fs, self.high, self.Q)
 
-        # Move time dimension back
-        if dim_idx != x.ndim - 1:
-            x = x.movedim(-1, dim_idx)
-
-        if names[0] is not None:
-            x = x.rename(*names)
-
         return x
 
 
-class Highpass(TensorTransform):
-    """Highpass filter using torchaudio biquad (GPU-accelerated).
+class Highpass(_ButterworthFilter):
+    """Highpass filter (GPU-accelerated).
 
-    Uses IIR biquad filter with proper Butterworth-style roll-off.
-    Can apply multiple passes for steeper slope.
+    Default is an unclamped Butterworth SOS design starting from zero state.
+    The filter has memory: per-window use needs ``context_samples`` of real
+    history via the dataset's ``context``, then
+    ``Index(slice(-window_size, None), dim="time")``. See ``_ButterworthFilter``
+    for measured history errors and the legacy clamped design.
 
     Parameters
     ----------
@@ -256,11 +411,17 @@ class Highpass(TensorTransform):
     fs : float
         Sampling frequency in Hz.
     order : int
-        Filter order (number of biquad passes). Default 4 for 24dB/oct slope.
+        Filter order. For ``design="butter"`` this is the Butterworth order;
+        for the legacy cascade it is the number of biquad passes. Default 4.
     Q : float
-        Quality factor. Default 0.707 for Butterworth response.
+        Quality factor for the legacy biquad cascade only; ignored by
+        ``design="butter"``. Default 0.707.
     dim : str
         Dimension to filter over.
+    clamp : bool
+        Clamp filter output to [-1, 1]. Default False.
+    design : str
+        "butter" (default) or "biquad_cascade" (legacy).
 
     """
 
@@ -271,43 +432,64 @@ class Highpass(TensorTransform):
         order: int = 4,
         Q: float = 0.707,
         dim: str = "time",
+        clamp: bool = False,
+        design: str = "butter",
         **kwargs,
     ):
-        super().__init__(dim=dim, **kwargs)
         self.cutoff = cutoff
-        self.fs = fs
-        self.order = order
-        self.Q = Q
+        super().__init__(
+            fs=fs, order=order, Q=Q, dim=dim, clamp=clamp, design=design,
+            **kwargs,
+        )
 
-    def _apply(self, x: torch.Tensor) -> torch.Tensor:
-        dim_idx = get_dim_index(x, self.dim)
-        names = x.names
+    @classmethod
+    def legacy(
+        cls,
+        cutoff: float,
+        fs: float,
+        order: int = 4,
+        Q: float = 0.707,
+        dim: str = "time",
+    ) -> Highpass:
+        """Pre-fix configuration: clamped torchaudio biquad cascade, no warmup.
 
-        x = x.rename(None)
+        Bit-for-bit identical to the original Highpass. Existing checkpoints
+        were trained with this preprocessing and depend on it.
+        """
+        return cls(
+            cutoff, fs, order=order, Q=Q, dim=dim,
+            clamp=True, design="biquad_cascade",
+        )
 
-        # Move time dimension to last if not already
-        if dim_idx != x.ndim - 1:
-            x = x.movedim(dim_idx, -1)
+    def _lowest_cutoff(self) -> float:
+        return self.cutoff
 
+    def _design_sos(self):
+        from scipy.signal import butter
+
+        return butter(self.order, self.cutoff, btype="highpass", fs=self.fs, output="sos")
+
+    def _legacy_biquads(self, x: torch.Tensor) -> torch.Tensor:
         # Apply biquad filter multiple times for higher order
         for _ in range(self.order):
             x = AF.highpass_biquad(x, self.fs, self.cutoff, self.Q)
 
-        # Move time dimension back
-        if dim_idx != x.ndim - 1:
-            x = x.movedim(-1, dim_idx)
-
-        if names[0] is not None:
-            x = x.rename(*names)
-
         return x
 
 
-class Lowpass(TensorTransform):
-    """Lowpass filter using torchaudio biquad (GPU-accelerated).
+class Lowpass(_ButterworthFilter):
+    """Lowpass filter (GPU-accelerated).
 
-    Uses IIR biquad filter with proper Butterworth-style roll-off.
-    Can apply multiple passes for steeper slope.
+    Default is an unclamped Butterworth SOS design starting from zero state.
+    The filter has memory: per-window use needs ``context_samples`` of real
+    history via the dataset's ``context``, then
+    ``Index(slice(-window_size, None), dim="time")``. At 20 Hz / 2048 Hz this
+    is 410 samples (200 ms): measured mean deviation from continuous filtering
+    rounds to 0.0%, versus 21% without history and 0.2% with 205 samples.
+    See ``_ButterworthFilter`` for the impulse-response times. The old
+    default (torchaudio biquad cascade) clamps every pass to [-1, 1] —
+    saturating 94.7% of raw EMG samples in measurement — and starts from zero
+    state each call, leaving ~48% of a 320-sample window as startup transient.
 
     Parameters
     ----------
@@ -316,11 +498,17 @@ class Lowpass(TensorTransform):
     fs : float
         Sampling frequency in Hz.
     order : int
-        Filter order (number of biquad passes). Default 4 for 24dB/oct slope.
+        Filter order. For ``design="butter"`` this is the Butterworth order;
+        for the legacy cascade it is the number of biquad passes. Default 4.
     Q : float
-        Quality factor. Default 0.707 for Butterworth response.
+        Quality factor for the legacy biquad cascade only; ignored by
+        ``design="butter"``. Default 0.707.
     dim : str
         Dimension to filter over.
+    clamp : bool
+        Clamp filter output to [-1, 1]. Default False.
+    design : str
+        "butter" (default) or "biquad_cascade" (legacy).
 
     """
 
@@ -331,34 +519,48 @@ class Lowpass(TensorTransform):
         order: int = 4,
         Q: float = 0.707,
         dim: str = "time",
+        clamp: bool = False,
+        design: str = "butter",
         **kwargs,
     ):
-        super().__init__(dim=dim, **kwargs)
         self.cutoff = cutoff
-        self.fs = fs
-        self.order = order
-        self.Q = Q
+        super().__init__(
+            fs=fs, order=order, Q=Q, dim=dim, clamp=clamp, design=design,
+            **kwargs,
+        )
 
-    def _apply(self, x: torch.Tensor) -> torch.Tensor:
-        dim_idx = get_dim_index(x, self.dim)
-        names = x.names
+    @classmethod
+    def legacy(
+        cls,
+        cutoff: float,
+        fs: float,
+        order: int = 4,
+        Q: float = 0.707,
+        dim: str = "time",
+    ) -> Lowpass:
+        """Pre-fix configuration: clamped torchaudio biquad cascade, no warmup.
 
-        x = x.rename(None)
+        Bit-for-bit identical to the original Lowpass. Existing checkpoints
+        were trained with this preprocessing and depend on it — load them with
+        this config, not the new default.
+        """
+        return cls(
+            cutoff, fs, order=order, Q=Q, dim=dim,
+            clamp=True, design="biquad_cascade",
+        )
 
-        # Move time dimension to last if not already
-        if dim_idx != x.ndim - 1:
-            x = x.movedim(dim_idx, -1)
+    def _lowest_cutoff(self) -> float:
+        return self.cutoff
 
+    def _design_sos(self):
+        from scipy.signal import butter
+
+        return butter(self.order, self.cutoff, btype="lowpass", fs=self.fs, output="sos")
+
+    def _legacy_biquads(self, x: torch.Tensor) -> torch.Tensor:
         # Apply biquad filter multiple times for higher order
         for _ in range(self.order):
             x = AF.lowpass_biquad(x, self.fs, self.cutoff, self.Q)
-
-        # Move time dimension back
-        if dim_idx != x.ndim - 1:
-            x = x.movedim(-1, dim_idx)
-
-        if names[0] is not None:
-            x = x.rename(*names)
 
         return x
 

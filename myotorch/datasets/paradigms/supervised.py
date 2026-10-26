@@ -69,6 +69,14 @@ class SupervisedDataset(WindowedDataset):
         Data type for tensors.
     cache_in_ram : bool
         Cache entire split in RAM.
+    context : int
+        Real preceding samples for inputs; targets always keep window_size.
+        Filter the extended input, then crop to the final window_size samples.
+    context_modalities : Sequence[str] | None
+        Input modalities given history. None selects all non-target inputs.
+    respect_splices : bool | None
+        None enables splice boundaries only with context > 0. Pass True to
+        enable them at context=0; omitting it preserves old window positions.
 
     Examples
     --------
@@ -101,9 +109,14 @@ class SupervisedDataset(WindowedDataset):
         device: torch.device | str | None = None,
         dtype: torch.dtype = torch.float32,
         cache_in_ram: bool = True,
+        context: int = 0,
+        context_modalities: Sequence[str] | None = None,
+        respect_splices: bool | None = None,
     ):
         # Combine inputs and targets for base class
         all_modalities = list(set(inputs) | set(targets))
+        self.inputs = list(inputs)
+        self.targets = list(targets)
 
         super().__init__(
             zarr_path=zarr_path,
@@ -116,10 +129,11 @@ class SupervisedDataset(WindowedDataset):
             device=device,
             dtype=dtype,
             cache_in_ram=cache_in_ram,
+            context=context,
+            context_modalities=context_modalities,
+            respect_splices=respect_splices,
         )
 
-        self.inputs = list(inputs)
-        self.targets = list(targets)
         self.transform = transform
         self.target_transform = target_transform
 
