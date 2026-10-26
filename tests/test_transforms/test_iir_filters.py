@@ -2,7 +2,7 @@
 
 Shipped defect: the torchaudio biquad cascade clamps every pass to [-1, 1]
 (saturating raw EMG) and starts from zero filter state per call. The new
-default is unclamped Butterworth SOS with edge warmup; ``.legacy()`` must
+default is unclamped Butterworth SOS from zero state; ``.legacy()`` must
 stay bit-for-bit identical to the old code because checkpoints depend on it.
 """
 
@@ -59,14 +59,12 @@ def test_legacy_bit_for_bit(x):
     ],
 )
 def test_butter_matches_scipy_and_does_not_clamp(transform, sos, x):
-    """Default design matches scipy sosfilt (same edge padding) within 1e-4 rel."""
+    """Default design matches zero-state scipy sosfilt within 1e-4 rel."""
     y = transform(x).numpy()
     assert np.abs(y).max() > 10  # not clamped to [-1, 1]
 
-    pad = transform.warmup_len
     xn = x.numpy().astype(np.float64)
-    xp = np.concatenate([np.repeat(xn[:, :1], pad, axis=1), xn], axis=1)
-    ref = sosfilt(sos, xp, axis=-1)[:, pad:]
+    ref = sosfilt(sos, xn, axis=-1)
     assert np.abs(y - ref).max() / np.abs(ref).max() < 1e-4
 
 

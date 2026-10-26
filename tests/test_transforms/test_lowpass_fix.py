@@ -2,7 +2,7 @@
 
 The old default (torchaudio biquad cascade) clamped every pass to [-1, 1] and
 started from zero filter state per call. The new default is an unclamped
-scipy-designed Butterworth SOS with an edge-replication warmup; ``.legacy()``
+zero-state scipy-designed Butterworth SOS with real recording history; ``.legacy()``
 must reproduce the old path bit-for-bit because checkpoints depend on it.
 """
 
@@ -14,7 +14,7 @@ import torch
 import torchaudio.functional as AF
 from scipy.signal import butter, sosfilt
 
-from myotorch.transforms import Lowpass
+from myotorch.transforms import Bandpass, Highpass, Lowpass
 
 FS = 2048.0
 CUTOFF = 20.0
@@ -26,16 +26,36 @@ def x():
     return torch.randn(8, 320) * 500  # EMG-scale amplitudes, far outside [-1, 1]
 
 
-def test_scipy_equivalence(x):
-    """New default design matches scipy sosfilt within 1e-4 relative L2."""
-    # warmup=None so both sides start from identical (zero) filter state
-    y = Lowpass(CUTOFF, fs=FS, warmup=None)(x).numpy()
+@pytest.mark.parametrize("offset", [-50, 50])
+@pytest.mark.parametrize("kind", ["lowpass", "highpass", "bandpass"])
+def test_scipy_equivalence(kind, offset):
+    """Default coefficients and zero-state output match scipy on raw EMG."""
+    transform = {
+        "lowpass": Lowpass(20, fs=FS),
+        "highpass": Highpass(20, fs=FS),
+        "bandpass": Bandpass(20, 450, fs=FS),
+    }[kind]
+    cutoff = [20, 450] if kind == "bandpass" else 20
+    sos = butter(4, cutoff, btype=kind, fs=FS, output="sos")
+    np.testing.assert_array_equal(transform._sos.numpy(), sos)
+    xn = (np.random.default_rng(42).normal(0, 90, (8, 320)) + offset).astype(np.float32)
+    ref = sosfilt(sos, xn.astype(np.float64), axis=-1)
+    y = transform(torch.from_numpy(xn)).numpy()
+    assert np.sqrt(np.mean((y - ref) ** 2)) / ref.std() < 1e-4
 
-    sos = butter(4, CUTOFF, btype="lowpass", fs=FS, output="sos")
-    ref = sosfilt(sos, x.numpy().astype(np.float64), axis=-1)
 
-    rel_l2 = np.linalg.norm(y - ref) / np.linalg.norm(ref)
-    assert rel_l2 < 1e-4, f"relative L2 vs scipy: {rel_l2:.3g}"
+@pytest.mark.parametrize("amplitude", [-500, 500])
+def test_step_keeps_amplitude(amplitude):
+    x = torch.full((2, 2048), float(amplitude))
+    y = Lowpass(CUTOFF, fs=FS)(x)
+    torch.testing.assert_close(y[:, -32:], x[:, -32:], rtol=1e-4, atol=0)
+
+
+@pytest.mark.parametrize("transform", [Lowpass(20, FS), Highpass(20, FS), Bandpass(20, 450, FS)])
+def test_context_samples(transform):
+    assert transform.context_samples == 410
+    assert not hasattr(transform, "warmup")
+    assert not hasattr(transform, "warmup_len")
 
 
 def test_no_saturation(x):
@@ -62,42 +82,23 @@ def test_legacy_bit_exact(x):
     assert torch.equal(y, ref)
 
 
-def test_warmup_effectiveness():
-    """Edge warmup makes windowed output track a persistent (continuous) filter."""
-    window = 320
-    n_windows = 10
-    t = torch.arange(n_windows * window, dtype=torch.float64) / FS
-    # Smooth in-band content at EMG scale
-    signal = 500 * (
-        torch.sin(2 * torch.pi * 1.5 * t) + 0.5 * torch.sin(2 * torch.pi * 4.0 * t)
-    )
-
-    lp_edge = Lowpass(CUTOFF, fs=FS)
-    lp_zero = Lowpass(CUTOFF, fs=FS, warmup=None)
-
-    # Persistent reference: the whole recording filtered once
-    ref = lp_edge(signal)
-
-    start = window // 4  # window-start region for the improvement ratio
-    tail_devs, start_err_edge, start_err_zero = [], [], []
-    for i in range(1, n_windows):  # skip window 0: it shares the reference's own start
-        sl = slice(i * window, (i + 1) * window)
-        y_edge = lp_edge(signal[sl])
-        y_zero = lp_zero(signal[sl])
-        r = ref[sl]
-
-        half = window // 2
-        tail_devs.append(
-            ((y_edge[half:] - r[half:]).abs().mean() / r[half:].abs().mean()).item()
-        )
-        start_err_edge.append((y_edge[:start] - r[:start]).abs().mean().item())
-        start_err_zero.append((y_zero[:start] - r[:start]).abs().mean().item())
-
-    mean_tail_dev = np.mean(tail_devs)
-    assert mean_tail_dev < 0.05, f"tail deviation {mean_tail_dev:.3%} >= 5%"
-
-    improvement = np.mean(start_err_zero) / np.mean(start_err_edge)
-    assert improvement > 3, f"warmup start-region improvement only {improvement:.2f}x"
+def test_real_history_matches_continuous_filter():
+    """Every cropped window tracks continuous filtering; isolated windows do not."""
+    rng = np.random.default_rng(42)
+    xn = (rng.normal(0, 90, (4, 20_000)) + 50).astype(np.float32)
+    lp = Lowpass(CUTOFF, fs=FS)
+    context, window = lp.context_samples, 320
+    ref = sosfilt(lp._sos.numpy(), xn.astype(np.float64), axis=-1)
+    starts = range(context, xn.shape[-1] - window + 1, window)
+    history = torch.from_numpy(np.stack([xn[:, p-context:p+window] for p in starts]))
+    isolated = history[..., -window:]
+    expected = np.stack([ref[:, p:p+window] for p in starts])
+    filtered = lp(history).numpy()[..., -window:]
+    # Mean absolute deviation in units of the continuous signal's standard deviation.
+    deviations = np.mean(np.abs(filtered - expected), axis=(1, 2)) / ref.std()
+    assert np.all(deviations < 1e-4), deviations.max()
+    without_history = lp(isolated).numpy()
+    assert np.mean(np.abs(without_history - expected)) / ref.std() > 0.05
 
 
 def test_gradient_flow():

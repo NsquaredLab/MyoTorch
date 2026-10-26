@@ -33,6 +33,7 @@ from __future__ import annotations
 
 import warnings
 from collections.abc import Sequence
+from numbers import Integral
 from pathlib import Path
 
 import numpy as np
@@ -40,6 +41,8 @@ import torch
 import zarr
 from torch.utils.data import Dataset
 from zarr.storage import ZipStore
+
+from myotorch.datasets.utils.splitter import splice_positions
 
 # Suppress named tensor experimental warning
 warnings.filterwarnings("ignore", category=UserWarning, message=".*Named tensors.*")
@@ -79,6 +82,20 @@ class WindowedDataset(Dataset):
         Data type for tensors. Default: torch.float32.
     cache_in_ram : bool
         Cache entire split in RAM for faster access. Default: True.
+    context : int
+        Real samples preceding each window. Context modalities load
+        [position-context, position+window_size); other modalities load only
+        the window. Filter first, then crop with
+        ``Index(slice(-window_size, None), dim="time")``. Default: 0.
+    context_modalities : Sequence[str] | None
+        Modalities given history. Defaults to all non-target modalities.
+        Supervised datasets exclude targets even if they are also inputs.
+    respect_splices : bool | None
+        Treat split joins as recording boundaries. None (automatic) enables
+        this when context > 0. With context=0, omitting this option preserves
+        the original window positions exactly; pass True to opt in. False
+        explicitly disables splice handling. Every continuous piece starts
+        its stride grid at ``piece_start + context``.
 
     Examples
     --------
@@ -106,7 +123,12 @@ class WindowedDataset(Dataset):
         device: torch.device | str | None = None,
         dtype: torch.dtype = torch.float32,
         cache_in_ram: bool = True,
+        context: int = 0,
+        context_modalities: Sequence[str] | None = None,
+        respect_splices: bool | None = None,
     ):
+        if not isinstance(context, Integral) or context < 0:
+            raise ValueError("context must be a non-negative integer")
         self.zarr_path = Path(zarr_path)
         self.split = split
         self.window_size = window_size
@@ -116,6 +138,8 @@ class WindowedDataset(Dataset):
         self.device = torch.device(device) if device else None
         self.cache_in_ram = cache_in_ram
         self.dtype = dtype
+        self.context = int(context)
+        self.respect_splices = context > 0 if respect_splices is None else respect_splices
 
         # Validate path
         if not self.zarr_path.exists():
@@ -158,6 +182,17 @@ class WindowedDataset(Dataset):
                     f"Available: {self._available_modalities}",
                 )
 
+        targets = set(getattr(self, "targets", ()))
+        if context_modalities is None:
+            self.context_modalities = [mod for mod in self.modalities if mod not in targets]
+        else:
+            self.context_modalities = list(context_modalities)
+            missing = set(self.context_modalities) - set(self.modalities)
+            if missing:
+                raise ValueError(f"Unknown context modalities: {missing}")
+            if targets.intersection(self.context_modalities):
+                raise ValueError("Context modalities must not include target modalities")
+
         # RAM cache is loaded lazily on first data access
         self._ram_cache = None
         self._cache_loaded = False
@@ -189,19 +224,19 @@ class WindowedDataset(Dataset):
             self._recording_tasks.append(task)
 
         self._total_length = sum(self._recording_lengths)
+        self._splices = self._get_splices() if self.respect_splices else {}
+        self._setup_recording_ranges()
 
         # Compute number of windows
         if window_stride is not None:
             self._n_windows = sum(
-                max(0, (length - window_size) // window_stride + 1)
-                for length in self._recording_lengths
+                (end - start) // window_stride + 1
+                for _, start, end in self._valid_ranges
             )
             self._random_mode = False
         else:
             self._n_windows = n_windows
             self._random_mode = True
-
-        self._setup_recording_ranges()
 
     def __getstate__(self):
         """Prepare state for pickling (used by multiprocessing workers)."""
@@ -258,21 +293,59 @@ class WindowedDataset(Dataset):
         arr = self._split_group[modality][first_task]
         return arr.shape[:-1]
 
+    def _get_splices(self) -> dict[str, list[int]]:
+        """Read boundaries, or reconstruct older centered-extraction splits."""
+        recorded = self._split_group.attrs.get("splices")
+        if recorded is not None:
+            return recorded
+
+        attrs = self._store.attrs
+        test_ratio = attrs.get("test_ratio", 0.2)
+        val_ratio = attrs.get("val_ratio", 0.2)
+        if "test_ratio" not in attrs or "val_ratio" not in attrs:
+            warnings.warn(
+                "Dataset has no splice metadata and missing split ratios; "
+                f"assuming test_ratio={test_ratio}, val_ratio={val_ratio} "
+                "for centered-extraction splice reconstruction.",
+                UserWarning,
+                stacklevel=3,
+            )
+
+        first_mod = self.modalities[0]
+        positions = {}
+        for task in self._recording_tasks:
+            # Sum stored split lengths: inverting ratios loses odd-sample rounding.
+            n_samples = 0
+            for split in ("training", "testing", "validation"):
+                if split in self._store and first_mod in self._store[split]:
+                    group = self._store[split][first_mod]
+                    if task in group:
+                        n_samples += group[task].shape[-1]
+            positions[task] = splice_positions(n_samples, test_ratio, val_ratio)[self.split]
+        return positions
+
     def _setup_recording_ranges(self) -> None:
         """Setup valid sampling ranges for each recording."""
         self._valid_ranges = []
         cumsum = 0
 
         for rec_idx, length in enumerate(self._recording_lengths):
-            if length >= self.window_size:
-                valid_start = cumsum
-                valid_end = cumsum + length - self.window_size
-                self._valid_ranges.append((rec_idx, valid_start, valid_end))
+            task = self._recording_tasks[rec_idx]
+            splices = sorted(set(self._splices.get(task, [])))
+            if any(not isinstance(p, Integral) or not 0 < p < length for p in splices):
+                raise ValueError(f"Invalid splice positions for {task}: {splices}")
+            boundaries = [0, *splices, length]
+            for start, end in zip(boundaries, boundaries[1:]):
+                if end - start >= self.window_size + self.context:
+                    valid_start = cumsum + start + self.context
+                    valid_end = cumsum + end - self.window_size
+                    self._valid_ranges.append((rec_idx, valid_start, valid_end))
             cumsum += length
 
         if not self._valid_ranges:
             raise ValueError(
-                f"No recordings long enough for window_size={self.window_size}",
+                f"No continuous pieces long enough for window_size={self.window_size} "
+                f"and context={self.context}",
             )
 
         self._total_valid = sum(end - start + 1 for _, start, end in self._valid_ranges)
@@ -306,15 +379,11 @@ class WindowedDataset(Dataset):
     def _get_deterministic_position(self, idx: int) -> tuple[int, int]:
         """Get deterministic window position for given index."""
         cumsum = 0
-        for rec_idx, length in enumerate(self._recording_lengths):
-            valid_positions = max(
-                0,
-                (length - self.window_size) // self.window_stride + 1,
-            )
+        for rec_idx, start, end in self._valid_ranges:
+            valid_positions = (end - start) // self.window_stride + 1
             if idx < cumsum + valid_positions:
                 local_idx = idx - cumsum
-                local_pos = local_idx * self.window_stride
-                return rec_idx, local_pos
+                return self._global_to_local(start + local_idx * self.window_stride)
             cumsum += valid_positions
 
         raise ValueError(f"Index {idx} out of range")
@@ -391,13 +460,14 @@ class WindowedDataset(Dataset):
 
         # Validate window fits within recording
         end_pos = local_pos + self.window_size
-        if end_pos > arr.shape[-1]:
+        start_pos = local_pos - self.context if modality in self.context_modalities else local_pos
+        if start_pos < 0 or end_pos > arr.shape[-1]:
             raise ValueError(
-                f"Window [{local_pos}:{end_pos}] exceeds recording length {arr.shape[-1]} "
-                f"for variable {var_name}",
+                f"Window [{start_pos}:{end_pos}] exceeds recording length {arr.shape[-1]} "
+                f"for variable {var_path}",
             )
 
-        data = arr[..., local_pos:end_pos]
+        data = arr[..., start_pos:end_pos]
 
         if self.device is None:
             return np.ascontiguousarray(data)

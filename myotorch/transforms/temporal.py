@@ -4,7 +4,7 @@ All transforms work with named tensors and run on any device (CPU, CUDA, MPS).
 
 Filter implementations:
 - Bandpass, Highpass, Lowpass: scipy-designed Butterworth SOS run through
-  ``torchaudio.functional.lfilter`` (unclamped, with edge warmup) by default.
+  ``torchaudio.functional.lfilter`` (unclamped, from zero state) by default.
   The legacy clamped torchaudio biquad cascade is available via
   ``design="biquad_cascade"`` / the ``.legacy()`` classmethods.
 - Notch: Uses FFT-based filtering for sharp, precise narrow-band removal
@@ -191,12 +191,17 @@ class _ButterworthFilter(TensorTransform):
       transient. Kept only so existing checkpoints keep their exact
       preprocessing; construct it via the ``.legacy()`` classmethods.
 
-    ``warmup="edge"`` prepends ``warmup_len`` copies of the first sample
-    before filtering and crops them after — equivalent to steady-state
-    (``lfilter_zi``-style) initialisation for step inputs, which makes
-    windowed output match a persistent-state streaming filter within a couple
-    percent. ``warmup=None`` restores the legacy zero-state transient.
-    ``warmup_len`` defaults to ``ceil(2 * fs / lowest_cutoff)``.
+    Filters have memory and each call starts from zero state. Per-window use
+    needs ``context_samples`` of real preceding history, supplied by the
+    dataset's ``context``, followed by
+    ``Index(slice(-window_size, None), dim="time")`` to crop that history.
+    At 20 Hz / 2048 Hz, the fourth-order lowpass contains 99% of its impulse
+    energy within 57 ms and 99.9% within 82 ms; its response stays above 1%
+    of peak for 114 ms, compared with a 156 ms (320-sample) window. On measured
+    EMG, mean deviation from continuous filtering was 21% without history,
+    56% with repeated-edge padding (348% in the first 32 samples), 0.2% with
+    205 real samples, and 0.0% rounded with 410 real samples (200 ms).
+    Finite history approximates persistent state; it is not an exact reset.
     """
 
     def __init__(
@@ -208,8 +213,6 @@ class _ButterworthFilter(TensorTransform):
         dim: str,
         clamp: bool,
         design: str,
-        warmup: str | None,
-        warmup_len: int | None,
         **kwargs,
     ):
         super().__init__(dim=dim, **kwargs)
@@ -218,26 +221,27 @@ class _ButterworthFilter(TensorTransform):
         self.Q = Q
         self.clamp = clamp
         self.design = design
-        self.warmup = warmup
 
         if design not in ("butter", "biquad_cascade"):
             raise ValueError(f"design must be 'butter' or 'biquad_cascade', got {design!r}")
-        if warmup not in (None, "edge"):
-            raise ValueError(f"warmup must be None or 'edge', got {warmup!r}")
-
-        if warmup_len is not None:
-            self.warmup_len = int(warmup_len)
-        else:
-            self.warmup_len = math.ceil(2 * fs / self._lowest_cutoff())
-
         self._sos: torch.Tensor | None = None
         if design == "butter":
             self._sos = torch.as_tensor(self._design_sos(), dtype=torch.float64)
         self._warned_clamp = False
 
     def _lowest_cutoff(self) -> float:
-        """Lowest cutoff in Hz — sets the slowest time constant for warmup."""
+        """Lowest cutoff in Hz — sets the history duration."""
         raise NotImplementedError
+
+    @property
+    def context_samples(self) -> int:
+        """Recommended real history: ``ceil(4 * fs / lowest_cutoff)`` samples.
+
+        This is 410 samples for 20 Hz at 2048 Hz. Supply it as the dataset's
+        ``context`` and crop after filtering with
+        ``Index(slice(-window_size, None), dim="time")``.
+        """
+        return math.ceil(4 * self.fs / self._lowest_cutoff())
 
     def _design_sos(self):
         """Return the scipy Butterworth SOS array, shape (n_sections, 6)."""
@@ -271,12 +275,6 @@ class _ButterworthFilter(TensorTransform):
                 )
                 self._warned_clamp = True
 
-        n_pad = self.warmup_len if self.warmup == "edge" else 0
-        if n_pad:
-            x = torch.cat(
-                [x[..., :1].expand(*x.shape[:-1], n_pad), x], dim=-1
-            )
-
         if self.design == "butter":
             sos = self._sos.to(device=x.device, dtype=x.dtype)
             for section in sos:
@@ -285,9 +283,6 @@ class _ButterworthFilter(TensorTransform):
                 )
         else:
             x = self._legacy_biquads(x)
-
-        if n_pad:
-            x = x[..., n_pad:]
 
         # Move time dimension back
         if dim_idx != x.ndim - 1:
@@ -302,9 +297,11 @@ class _ButterworthFilter(TensorTransform):
 class Bandpass(_ButterworthFilter):
     """Bandpass filter (GPU-accelerated).
 
-    Default is an unclamped Butterworth SOS design with edge warmup; see
-    ``_ButterworthFilter`` for the design/clamp/warmup semantics and why the
-    legacy clamped biquad cascade is unsafe for raw EMG.
+    Default is an unclamped Butterworth SOS design starting from zero state.
+    The filter has memory: per-window use needs ``context_samples`` of real
+    history via the dataset's ``context``, then
+    ``Index(slice(-window_size, None), dim="time")``. See ``_ButterworthFilter``
+    for measured history errors and the legacy clamped design.
 
     Parameters
     ----------
@@ -327,10 +324,6 @@ class Bandpass(_ButterworthFilter):
         Clamp filter output to [-1, 1]. Default False.
     design : str
         "butter" (default) or "biquad_cascade" (legacy).
-    warmup : str | None
-        "edge" (default) or None (legacy zero-state transient).
-    warmup_len : int | None
-        Warmup samples; default ``ceil(2 * fs / low)``.
 
     Examples
     --------
@@ -350,15 +343,13 @@ class Bandpass(_ButterworthFilter):
         dim: str = "time",
         clamp: bool = False,
         design: str = "butter",
-        warmup: str | None = "edge",
-        warmup_len: int | None = None,
         **kwargs,
     ):
         self.low = low
         self.high = high
         super().__init__(
             fs=fs, order=order, Q=Q, dim=dim, clamp=clamp, design=design,
-            warmup=warmup, warmup_len=warmup_len, **kwargs,
+            **kwargs,
         )
 
     @classmethod
@@ -378,7 +369,7 @@ class Bandpass(_ButterworthFilter):
         """
         return cls(
             low, high, fs, order=order, Q=Q, dim=dim,
-            clamp=True, design="biquad_cascade", warmup=None,
+            clamp=True, design="biquad_cascade",
         )
 
     def _lowest_cutoff(self) -> float:
@@ -407,9 +398,11 @@ class Bandpass(_ButterworthFilter):
 class Highpass(_ButterworthFilter):
     """Highpass filter (GPU-accelerated).
 
-    Default is an unclamped Butterworth SOS design with edge warmup; see
-    ``_ButterworthFilter`` for the design/clamp/warmup semantics and why the
-    legacy clamped biquad cascade is unsafe for raw EMG.
+    Default is an unclamped Butterworth SOS design starting from zero state.
+    The filter has memory: per-window use needs ``context_samples`` of real
+    history via the dataset's ``context``, then
+    ``Index(slice(-window_size, None), dim="time")``. See ``_ButterworthFilter``
+    for measured history errors and the legacy clamped design.
 
     Parameters
     ----------
@@ -429,10 +422,6 @@ class Highpass(_ButterworthFilter):
         Clamp filter output to [-1, 1]. Default False.
     design : str
         "butter" (default) or "biquad_cascade" (legacy).
-    warmup : str | None
-        "edge" (default) or None (legacy zero-state transient).
-    warmup_len : int | None
-        Warmup samples; default ``ceil(2 * fs / cutoff)``.
 
     """
 
@@ -445,14 +434,12 @@ class Highpass(_ButterworthFilter):
         dim: str = "time",
         clamp: bool = False,
         design: str = "butter",
-        warmup: str | None = "edge",
-        warmup_len: int | None = None,
         **kwargs,
     ):
         self.cutoff = cutoff
         super().__init__(
             fs=fs, order=order, Q=Q, dim=dim, clamp=clamp, design=design,
-            warmup=warmup, warmup_len=warmup_len, **kwargs,
+            **kwargs,
         )
 
     @classmethod
@@ -471,7 +458,7 @@ class Highpass(_ButterworthFilter):
         """
         return cls(
             cutoff, fs, order=order, Q=Q, dim=dim,
-            clamp=True, design="biquad_cascade", warmup=None,
+            clamp=True, design="biquad_cascade",
         )
 
     def _lowest_cutoff(self) -> float:
@@ -493,8 +480,13 @@ class Highpass(_ButterworthFilter):
 class Lowpass(_ButterworthFilter):
     """Lowpass filter (GPU-accelerated).
 
-    Default is an unclamped Butterworth SOS design with edge warmup; see
-    ``_ButterworthFilter`` for the design/clamp/warmup semantics. The old
+    Default is an unclamped Butterworth SOS design starting from zero state.
+    The filter has memory: per-window use needs ``context_samples`` of real
+    history via the dataset's ``context``, then
+    ``Index(slice(-window_size, None), dim="time")``. At 20 Hz / 2048 Hz this
+    is 410 samples (200 ms): measured mean deviation from continuous filtering
+    rounds to 0.0%, versus 21% without history and 0.2% with 205 samples.
+    See ``_ButterworthFilter`` for the impulse-response times. The old
     default (torchaudio biquad cascade) clamps every pass to [-1, 1] —
     saturating 94.7% of raw EMG samples in measurement — and starts from zero
     state each call, leaving ~48% of a 320-sample window as startup transient.
@@ -517,10 +509,6 @@ class Lowpass(_ButterworthFilter):
         Clamp filter output to [-1, 1]. Default False.
     design : str
         "butter" (default) or "biquad_cascade" (legacy).
-    warmup : str | None
-        "edge" (default) or None (legacy zero-state transient).
-    warmup_len : int | None
-        Warmup samples; default ``ceil(2 * fs / cutoff)``.
 
     """
 
@@ -533,14 +521,12 @@ class Lowpass(_ButterworthFilter):
         dim: str = "time",
         clamp: bool = False,
         design: str = "butter",
-        warmup: str | None = "edge",
-        warmup_len: int | None = None,
         **kwargs,
     ):
         self.cutoff = cutoff
         super().__init__(
             fs=fs, order=order, Q=Q, dim=dim, clamp=clamp, design=design,
-            warmup=warmup, warmup_len=warmup_len, **kwargs,
+            **kwargs,
         )
 
     @classmethod
@@ -560,7 +546,7 @@ class Lowpass(_ButterworthFilter):
         """
         return cls(
             cutoff, fs, order=order, Q=Q, dim=dim,
-            clamp=True, design="biquad_cascade", warmup=None,
+            clamp=True, design="biquad_cascade",
         )
 
     def _lowest_cutoff(self) -> float:

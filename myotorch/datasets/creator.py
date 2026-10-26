@@ -58,7 +58,7 @@ from rich.tree import Tree
 from zarr.storage import ZipStore
 
 from myotorch.datasets.modality import Modality
-from myotorch.datasets.utils.splitter import DataSplitter
+from myotorch.datasets.utils.splitter import DataSplitter, center_bounds, splice_positions
 
 
 class DatasetCreator:
@@ -174,12 +174,15 @@ class DatasetCreator:
         store.attrs["sampling_frequency"] = self.sampling_frequency
         store.attrs["modalities"] = list(self.modalities.keys())
         store.attrs["tasks"] = self.tasks_to_use
+        store.attrs["test_ratio"] = self.splitter.test_ratio
+        store.attrs["val_ratio"] = self.splitter.val_ratio
         store.attrs["dims"] = {
             name: list(mod.dims) for name, mod in self.modalities.items()
         }
 
         # Create split groups with nested modality subgroups
         for split in ["training", "validation", "testing"]:
+            store.create_group(split).attrs["splices"] = {}
             for mod_name in self.modalities:
                 store.create_group(f"{split}/{mod_name}")
 
@@ -287,6 +290,14 @@ class DatasetCreator:
             if task in self._data[name]
         )
 
+        positions = splice_positions(
+            min_len, self.splitter.test_ratio, self.splitter.val_ratio,
+        )
+        for split, splices in positions.items():
+            per_task = dict(store[split].attrs["splices"])
+            per_task[task] = splices
+            store[split].attrs["splices"] = per_task
+
         # Process each modality
         for mod_name in self.modalities:
             if task not in self._data[mod_name]:
@@ -311,10 +322,8 @@ class DatasetCreator:
 
         Returns (edges, center) where edges are the concatenated start/end portions.
         """
-        n_samples = data.shape[-1]
-        half_amount = int(n_samples * ratio / 2)
-        middle = n_samples // 2
-        start, end = middle - half_amount, middle + half_amount
+        # Shared rounding with splice_positions and old-dataset inference.
+        start, end = center_bounds(data.shape[-1], ratio)
 
         center = data[..., start:end]
         edges = np.concatenate([data[..., :start], data[..., end:]], axis=-1)

@@ -24,9 +24,9 @@ dependencies = [
     "xrscipy>=0.4.0",  # scipy functions for xarray (dimension-aware signal processing)
     "zarr>=3.0.0",  # Zarr 3 with new API (ZarrIO abstraction handles compatibility)
     "zarrs>=0.2.0",  # Rust-based codec pipeline for faster I/O
-    "torch>=2.6.0",
-    "torchvision>=0.21.0",
-    "torchaudio>=2.6.0",  # IIR biquad filters for temporal transforms
+    "torch>=2.6.0,<2.11",
+    "torchvision>=0.21.0,<0.26",
+    "torchaudio>=2.6.0,<2.11",  # IIR biquad filters for temporal transforms
 ]
 
 [tool.uv.sources]
